@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Globalization;
 
 namespace BloodBank.Controllers
 {
@@ -33,6 +34,7 @@ namespace BloodBank.Controllers
             }
             else
             {
+                user = await _userManager.FindByNameAsync(username);
                 var response = await _signInManager.PasswordSignInAsync(user, password, true, true);
                 if (response.Succeeded)
                 {
@@ -58,14 +60,14 @@ namespace BloodBank.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> RegisterAsync(string username, string password, string fullname,DateTime birthday)
+        public async Task<IActionResult> RegisterAsync(string username, string password, string fullname)
         {
             var user = new User()
             {
                 UserName = username,
                 EmailConfirmed = true
             };
-            user.Set(fullname,birthday);
+            user.Set(fullname);
             var userCurrent = await _userManager.FindByNameAsync(username);
             if (userCurrent != null)
             {
@@ -94,6 +96,7 @@ namespace BloodBank.Controllers
                     ViewData["Message"] = "Register Failed ! Please check and try again !";
                 }
             }
+            else ViewData["Message"] = "Register Failed ! Please check and try again !";
             return View();
         }
     }

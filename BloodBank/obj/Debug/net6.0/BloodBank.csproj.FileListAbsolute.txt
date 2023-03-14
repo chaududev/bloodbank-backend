@@ -80,3 +80,8 @@ C:\Users\Admin\source\repos\BloodBank\BloodBank\bin\Debug\net6.0\Infrastructure.
 C:\Users\Admin\source\repos\BloodBank\BloodBank\bin\Debug\net6.0\Infrastructure.pdb
 C:\Users\Admin\source\repos\BloodBank\BloodBank\bin\Debug\net6.0\Application.dll
 C:\Users\Admin\source\repos\BloodBank\BloodBank\bin\Debug\net6.0\Application.pdb
+C:\Users\Admin\source\repos\BloodBank\BloodBank\bin\Debug\net6.0\AutoMapper.dll
+C:\Users\Admin\source\repos\BloodBank\BloodBank\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\Admin\source\repos\BloodBank\BloodBank\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\Admin\source\repos\BloodBank\BloodBank\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\Admin\source\repos\BloodBank\BloodBank\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll

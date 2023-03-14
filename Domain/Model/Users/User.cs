@@ -7,15 +7,19 @@ namespace Domain.Model.Users
     public class User : IdentityUser
     {
         [MaxLength(50)]
+        [Required(ErrorMessage = "FullName is required")]
         public string FullName { get; private set; }
-        public DateTime Birthday{ get; private set; }
+        public DateTime? Birthday{ get; private set; }
         [MaxLength(100)]
-        public string Address { get; private set; }
+        public string? Address { get; private set; } = "Unknown";
         public virtual List<Register> Register { get; private set; }
-        public void Set(string fullName, DateTime birthday)
+        public User()
+        {
+        }
+        public void Set(string fullName)
         {
             FullName = fullName.Trim();
-            Birthday = birthday;
+            Register = new List<Register>();
         }
     }
 }
