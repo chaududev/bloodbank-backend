@@ -1,7 +1,14 @@
-using BloodBank.Data;
+
+using Application.IService;
+using Application.Service;
 using Domain.Model.Users;
+using Infrastructure.Data;
+using Infrastructure.IRepository;
+using Infrastructure.Repository;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,12 +20,26 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddIdentity<User, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddAuthentication(options =>
+            {
+    options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+})
+              .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
+               {
+                   options.LoginPath = "/Auth";
+                   options.LogoutPath = "/Auth/logout";
+                   options.AccessDeniedPath = "/";
+               });
 builder.Services.AddControllersWithViews();
+builder.Services.AddTransient(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+builder.Services.AddTransient<IBloodGroupService, BloodGroupService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    app.UseDeveloperExceptionPage();
     app.UseMigrationsEndPoint();
 }
 else
@@ -36,8 +57,11 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}");
+});
 
 app.Run();

@@ -12,5 +12,10 @@ namespace Domain.Model.Users
         [MaxLength(100)]
         public string Address { get; private set; }
         public virtual List<Register> Register { get; private set; }
+        public void Set(string fullName, DateTime birthday)
+        {
+            FullName = fullName.Trim();
+            Birthday = birthday;
+        }
     }
 }

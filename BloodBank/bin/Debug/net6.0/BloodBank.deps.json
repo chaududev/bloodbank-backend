@@ -8,7 +8,9 @@
     ".NETCoreApp,Version=v6.0": {
       "BloodBank/1.0.0": {
         "dependencies": {
+          "Application": "1.0.0",
           "Domain": "1.0.0",
+          "Infrastructure": "1.0.0",
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "6.0.11",
           "Microsoft.AspNetCore.Identity": "2.2.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.14",
@@ -673,12 +675,31 @@
           }
         }
       },
+      "Application/1.0.0": {
+        "dependencies": {
+          "Domain": "1.0.0",
+          "Infrastructure": "1.0.0"
+        },
+        "runtime": {
+          "Application.dll": {}
+        }
+      },
       "Domain/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.14"
         },
         "runtime": {
           "Domain.dll": {}
+        }
+      },
+      "Infrastructure/1.0.0": {
+        "dependencies": {
+          "Domain": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "6.0.14",
+          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.11"
+        },
+        "runtime": {
+          "Infrastructure.dll": {}
         }
       }
     }
@@ -1207,7 +1228,17 @@
       "path": "system.windows.extensions/4.7.0",
       "hashPath": "system.windows.extensions.4.7.0.nupkg.sha512"
     },
+    "Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Infrastructure/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

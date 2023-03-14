@@ -23,7 +23,7 @@ namespace Domain.Model.Posts
         public virtual Image Image { get; set; }
         public Blog(string title, string description, string content, Guid imageId)
         {
-            Add(Id);
+            Add();
             Update(title, description, content, imageId);
         }
         public void Update(string title, string description, string content, Guid imageId)

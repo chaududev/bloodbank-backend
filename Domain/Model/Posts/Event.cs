@@ -1,11 +1,6 @@
 ﻿using Domain.Model.Base;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Domain.Model.Posts
 {
@@ -32,7 +27,7 @@ namespace Domain.Model.Posts
         public virtual Image Image { get; private set; }
         public Event(string eventName, string description, string content, DateTime startTime, DateTime endTime, Status status, Guid imageId)
         {
-            Add(Id);
+            Add();
             Update(eventName,description,content,startTime,endTime,status,imageId);
         }
         public void Update(string eventName, string description, string content, DateTime startTime, DateTime endTime, Status status, Guid imageId)

@@ -1,0 +1,21 @@
+﻿@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Auth";
+}
+
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-xl-4 col-md-8 col-sm-12 flex-column">
+            <form method="post" action="/Auth/Login" class="form-group">
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" class="form-control" required />
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" class="form-control" required />
+                <p class="text-warning">@ViewBag.Message</p>
+                <button class="btn btn-primary">Login</button>
+            </form>
+        </div>
+    </div>
+</div>

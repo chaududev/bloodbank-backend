@@ -41,7 +41,7 @@ namespace Domain.Model.BloodRegister
 
         public Register(string note, Status status, int bloodId, string userId, DateTime timeSign, Guid qR, string hospitalId)
         {
-            Add(Id);
+            Add();
             Update(note, status, bloodId, userId, timeSign, qR, hospitalId);
         }
         public void Update(string note, Status status, int bloodId, string userId, DateTime timeSign, Guid qR, string hospitalId)

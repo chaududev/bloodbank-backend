@@ -18,7 +18,7 @@ namespace Domain.Model.BloodRegister
 
         public BloodGroup(string name, string description)
         {
-            Add(Id);
+            Add();
             Update(name,description);
             Register = new List<Register>();
         }

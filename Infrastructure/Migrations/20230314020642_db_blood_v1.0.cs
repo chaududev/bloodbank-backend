@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace BloodBank.Migrations
+namespace Infrastructure.Migrations
 {
-    public partial class db_blood_v15 : Migration
+    public partial class db_blood_v10 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

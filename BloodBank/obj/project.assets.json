@@ -1330,6 +1330,20 @@
           }
         }
       },
+      "Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Domain": "1.0.0",
+          "Infrastructure": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Application.dll": {}
+        }
+      },
       "Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -1341,6 +1355,21 @@
         },
         "runtime": {
           "bin/placeholder/Domain.dll": {}
+        }
+      },
+      "Infrastructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Domain": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "6.0.14",
+          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.11"
+        },
+        "compile": {
+          "bin/placeholder/Infrastructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Infrastructure.dll": {}
         }
       }
     }
@@ -3170,15 +3199,27 @@
         "version.txt"
       ]
     },
+    "Application/1.0.0": {
+      "type": "project",
+      "path": "../Application/Application.csproj",
+      "msbuildProject": "../Application/Application.csproj"
+    },
     "Domain/1.0.0": {
       "type": "project",
       "path": "../Domain/Domain.csproj",
       "msbuildProject": "../Domain/Domain.csproj"
+    },
+    "Infrastructure/1.0.0": {
+      "type": "project",
+      "path": "../Infrastructure/Infrastructure.csproj",
+      "msbuildProject": "../Infrastructure/Infrastructure.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "Application >= 1.0.0",
       "Domain >= 1.0.0",
+      "Infrastructure >= 1.0.0",
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 6.0.11",
       "Microsoft.AspNetCore.Identity >= 2.2.0",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 6.0.14",
@@ -3214,8 +3255,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
+            "C:\\Users\\Admin\\source\\repos\\BloodBank\\Application\\Application.csproj": {
+              "projectPath": "C:\\Users\\Admin\\source\\repos\\BloodBank\\Application\\Application.csproj"
+            },
             "C:\\Users\\Admin\\source\\repos\\BloodBank\\Domain\\Domain.csproj": {
               "projectPath": "C:\\Users\\Admin\\source\\repos\\BloodBank\\Domain\\Domain.csproj"
+            },
+            "C:\\Users\\Admin\\source\\repos\\BloodBank\\Infrastructure\\Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\Admin\\source\\repos\\BloodBank\\Infrastructure\\Infrastructure.csproj"
             }
           }
         }

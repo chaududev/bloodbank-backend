@@ -65,7 +65,7 @@ namespace Infrastructure.Repository
             
         }
 
-        public void Update(int id, T entity)
+        public void Update(T entity)
         {
 
                 db.Set<T>().Attach(entity);

@@ -76,3 +76,7 @@ C:\Users\Admin\source\repos\BloodBank\BloodBank\obj\Debug\net6.0\BloodBank.genru
 C:\Users\Admin\source\repos\BloodBank\BloodBank\obj\Debug\net6.0\ref\BloodBank.dll
 C:\Users\Admin\source\repos\BloodBank\BloodBank\bin\Debug\net6.0\Domain.dll
 C:\Users\Admin\source\repos\BloodBank\BloodBank\bin\Debug\net6.0\Domain.pdb
+C:\Users\Admin\source\repos\BloodBank\BloodBank\bin\Debug\net6.0\Infrastructure.dll
+C:\Users\Admin\source\repos\BloodBank\BloodBank\bin\Debug\net6.0\Infrastructure.pdb
+C:\Users\Admin\source\repos\BloodBank\BloodBank\bin\Debug\net6.0\Application.dll
+C:\Users\Admin\source\repos\BloodBank\BloodBank\bin\Debug\net6.0\Application.pdb
