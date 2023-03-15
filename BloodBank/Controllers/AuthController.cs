@@ -52,7 +52,6 @@ namespace BloodBank.Controllers
             await _signInManager.SignOutAsync();
             return Redirect("/");
         }
-
         [HttpGet]
         public IActionResult Register()
         {

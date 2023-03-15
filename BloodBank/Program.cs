@@ -24,6 +24,15 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddIdentity<User, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    options.Password.RequireDigit = true;
+    options.Password.RequireLowercase = false;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireUppercase = false;
+    options.Password.RequiredLength = 6;
+    options.Password.RequiredUniqueChars = 0;
+});
 builder.Services.AddAuthentication(options =>
             {
     options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
@@ -57,6 +66,7 @@ builder.Services.AddTransient<IBloodGroupService, BloodGroupService>();
 builder.Services.AddTransient<IImageService, ImageService>();
 builder.Services.AddTransient<IBlogService,BlogService>();
 builder.Services.AddTransient<IEventService, EventService>();
+builder.Services.AddTransient<IHospitalService,HospitalService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

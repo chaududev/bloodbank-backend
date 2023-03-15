@@ -1,6 +1,7 @@
 ﻿using Domain.Model.BloodRegister;
 using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Model.Users
 {
@@ -13,6 +14,9 @@ namespace Domain.Model.Users
         [MaxLength(100)]
         public string? Address { get; private set; } = "Unknown";
         public virtual List<Register> Register { get; private set; }
+        public int? HospitalId { get; private set; }
+        [ForeignKey("HospitalId")]
+        public virtual Hospital? Hospital { get; private set; }
         public User()
         {
         }
@@ -20,6 +24,10 @@ namespace Domain.Model.Users
         {
             FullName = fullName.Trim();
             Register = new List<Register>();
+        }
+        public void SetHospital(int hospitalId)
+        {
+            HospitalId= hospitalId;
         }
     }
 }

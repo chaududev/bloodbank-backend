@@ -86,3 +86,5 @@ C:\Users\Admin\source\repos\BloodBank\BloodBank\bin\Debug\net6.0\Swashbuckle.Asp
 C:\Users\Admin\source\repos\BloodBank\BloodBank\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\Admin\source\repos\BloodBank\BloodBank\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\Admin\source\repos\BloodBank\BloodBank\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\Admin\source\repos\BloodBank\BloodBank\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Admin\source\repos\BloodBank\BloodBank\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll

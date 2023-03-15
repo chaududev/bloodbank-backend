@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230315033128_db_bankblood_v1.0")]
-    partial class db_bankblood_v10
+    [Migration("20230315090335_db_blood_v1.6")]
+    partial class db_blood_v16
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -94,9 +94,8 @@ namespace Infrastructure.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("HospitalId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("HospitalId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Note")
                         .IsRequired()
@@ -222,19 +221,29 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Domain.Model.Users.Hospital", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Hospitals");
                 });
@@ -270,6 +279,9 @@ namespace Infrastructure.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<int?>("HospitalId")
+                        .HasColumnType("int");
+
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 
@@ -304,6 +316,8 @@ namespace Infrastructure.Migrations
                         .HasColumnType("nvarchar(256)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("HospitalId");
 
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
@@ -506,13 +520,13 @@ namespace Infrastructure.Migrations
                     b.Navigation("Image");
                 });
 
-            modelBuilder.Entity("Domain.Model.Users.Hospital", b =>
+            modelBuilder.Entity("Domain.Model.Users.User", b =>
                 {
-                    b.HasOne("Domain.Model.Users.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
+                    b.HasOne("Domain.Model.Users.Hospital", "Hospital")
+                        .WithMany("Users")
+                        .HasForeignKey("HospitalId");
 
-                    b.Navigation("User");
+                    b.Navigation("Hospital");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -586,6 +600,8 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("Domain.Model.Users.Hospital", b =>
                 {
                     b.Navigation("Confirm");
+
+                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("Domain.Model.Users.User", b =>
