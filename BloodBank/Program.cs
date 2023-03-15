@@ -6,6 +6,7 @@ using Infrastructure.Data;
 using Infrastructure.IRepository;
 using Infrastructure.Repository;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Identity.UI.Services;
@@ -34,12 +35,27 @@ builder.Services.AddAuthentication(options =>
                    options.LogoutPath = "/Auth/logout";
                    options.AccessDeniedPath = "/";
                });
+var uploadsFolder = Path.Combine(builder.Environment.ContentRootPath, "uploads");
+Directory.CreateDirectory(uploadsFolder);
+builder.Services.Configure<FormOptions>(options =>
+{
+    options.MemoryBufferThreshold = Int32.MaxValue;
+    options.ValueLengthLimit = Int32.MaxValue;
+    options.MultipartBodyLengthLimit = Int64.MaxValue;
+});
+
+builder.Services.Configure<IISServerOptions>(options =>
+{
+    options.MaxRequestBodySize = Int64.MaxValue;
+});
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllersWithViews();
 builder.Services.AddTransient(typeof(IBaseRepository<>), typeof(BaseRepository<>));
 builder.Services.AddTransient<IBloodGroupService, BloodGroupService>();
+builder.Services.AddTransient<IImageService, ImageService>();
+builder.Services.AddTransient<IBlogService,BlogService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -24,23 +24,25 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Domain.Model.Base.Image", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("ContentType")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<byte[]>("Data")
-                        .IsRequired()
-                        .HasColumnType("varbinary(max)");
-
                     b.Property<string>("FileName")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Url")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -98,8 +100,8 @@ namespace Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("QR")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("QR")
+                        .HasColumnType("int");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
@@ -149,8 +151,8 @@ namespace Infrastructure.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<Guid>("ImageId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("ImageId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -196,8 +198,8 @@ namespace Infrastructure.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<Guid>("ImageId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("ImageId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("StartTime")
                         .HasColumnType("datetime2");
@@ -244,11 +246,10 @@ namespace Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Address")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<DateTime>("Birthday")
+                    b.Property<DateTime?>("Birthday")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ConcurrencyStamp")

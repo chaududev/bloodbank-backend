@@ -19,14 +19,14 @@ namespace Domain.Model.Posts
         public string Description { get; private set; }
         public string Content { get; private set; }
         [ForeignKey("Image")]
-        public Guid ImageId { get; set; }
-        public virtual Image Image { get; set; }
-        public Blog(string title, string description, string content, Guid imageId)
+        public int ImageId { get; private set; }
+        public virtual Image? Image { get; private set; }
+        public Blog(string title, string description, string content, int imageId)
         {
             Add();
             Update(title, description, content, imageId);
         }
-        public void Update(string title, string description, string content, Guid imageId)
+        public void Update(string title, string description, string content, int imageId)
         {
             Update();
             Title = title.Trim();

@@ -85,3 +85,4 @@ C:\Users\Admin\source\repos\BloodBank\BloodBank\bin\Debug\net6.0\Microsoft.OpenA
 C:\Users\Admin\source\repos\BloodBank\BloodBank\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\Admin\source\repos\BloodBank\BloodBank\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\Admin\source\repos\BloodBank\BloodBank\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\Admin\source\repos\BloodBank\BloodBank\bin\Debug\net6.0\Newtonsoft.Json.dll

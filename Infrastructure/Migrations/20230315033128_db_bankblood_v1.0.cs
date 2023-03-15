@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Infrastructure.Migrations
 {
-    public partial class db_blood_v10 : Migration
+    public partial class db_bankblood_v10 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -29,8 +29,8 @@ namespace Infrastructure.Migrations
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     FullName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Birthday = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Address = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Birthday = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Address = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -71,10 +71,11 @@ namespace Infrastructure.Migrations
                 name: "Images",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     FileName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     ContentType = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Data = table.Column<byte[]>(type: "varbinary(max)", nullable: false)
+                    Url = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -214,7 +215,7 @@ namespace Infrastructure.Migrations
                     Title = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ImageId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ImageId = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -241,7 +242,7 @@ namespace Infrastructure.Migrations
                     StartTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EndTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
-                    ImageId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ImageId = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -267,7 +268,7 @@ namespace Infrastructure.Migrations
                     BloodId = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: false),
                     TimeSign = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    QR = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    QR = table.Column<int>(type: "int", nullable: false),
                     HospitalId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)

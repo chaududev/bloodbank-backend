@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "VK3mw73Ijt+KWN03GUEswfBw1uWiyUxHjAKCN0loh9E+5mjqllyc4zfIvwEA2diRrKBNVUWe0oBN8/uBDGAc4g==",
+  "dgSpecHash": "b4GZVaX6OTUwB3A8cgTosEvZZ311VsqVB03FUjt4j+tonODCw98eFWvsy6Fhfx4QMlzfiYR10F75tpypXM2C4Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\BloodBank.csproj",
   "expectedPackageFiles": [
@@ -63,6 +63,7 @@
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.5.0\\swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",

@@ -33,18 +33,18 @@ namespace Domain.Model.BloodRegister
         //xacnhan
         public DateTime TimeSign { get; private set; }
         [ForeignKey("Image")]
-        public Guid QR { get; private set; }
+        public int QR { get; private set; }
         public virtual Image Image { get; private set; }
         public string HospitalId { get; private set; }
         [ForeignKey("HospitalId")]
         public virtual Hospital Hospital { get; private set; }
 
-        public Register(string note, Status status, int bloodId, string userId, DateTime timeSign, Guid qR, string hospitalId)
+        public Register(string note, Status status, int bloodId, string userId, DateTime timeSign, int qR, string hospitalId)
         {
             Add();
             Update(note, status, bloodId, userId, timeSign, qR, hospitalId);
         }
-        public void Update(string note, Status status, int bloodId, string userId, DateTime timeSign, Guid qR, string hospitalId)
+        public void Update(string note, Status status, int bloodId, string userId, DateTime timeSign, int qR, string hospitalId)
         {
             Update();
             Note = note.Trim();
