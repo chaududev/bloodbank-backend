@@ -56,6 +56,7 @@ builder.Services.AddTransient(typeof(IBaseRepository<>), typeof(BaseRepository<>
 builder.Services.AddTransient<IBloodGroupService, BloodGroupService>();
 builder.Services.AddTransient<IImageService, ImageService>();
 builder.Services.AddTransient<IBlogService,BlogService>();
+builder.Services.AddTransient<IEventService, EventService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

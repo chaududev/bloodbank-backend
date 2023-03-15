@@ -43,12 +43,6 @@ namespace Application.Service
             return repository.GetById(includeProperties, id);
         }
 
-        public int GetImageId(int id)
-        {
-            Blog entity = this.GetById(id);
-            return entity.ImageId;
-        }
-
         public (IEnumerable<Blog> data, int total) GetList(string? key, int? pageSize, int? page)
         {
             Expression<Func<Blog, bool>> filter = null;
@@ -66,9 +60,8 @@ namespace Application.Service
             {
                 throw new Exception($"The entity with ID {id} was not found.");
             }
-            Blog newEntity = new Blog(title, description, content, imageId);
-            newEntity.SetId(id);
-            repository.Update(newEntity);
+            entity.Update(title, description, content, imageId);
+            repository.Update(entity);
         }
     }
 }

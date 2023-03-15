@@ -15,6 +15,5 @@ namespace Application.IService
         void Add(string title, string description, string content, int imageId);
         void Update(int id, string title, string description, string content, int imageId);
         void Delete(int id);
-        int GetImageId(int id);
     }
 }

@@ -3,24 +3,22 @@ using BloodBank.Mapper;
 using BloodBank.ViewModels;
 using Domain.Model.Posts;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.OpenApi.Writers;
 using Newtonsoft.Json;
-using System;
 
-namespace BlogBank.ApiControllers
+namespace BloodBank.ApiControllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class BlogController : ControllerBase
+    public class EventController : ControllerBase
     {
-        readonly IBlogService BlogService;
+        readonly IEventService EventService;
         readonly IImageService ImageService;
-        readonly MappingService<Blog, BlogViewModel> mapper;
-        public BlogController(IBlogService BlogService,IImageService ImageService)
+        readonly MappingService<Event, EventViewModel> mapper;
+        public EventController(IEventService EventService, IImageService ImageService)
         {
-            this.BlogService = BlogService;
+            this.EventService = EventService;
             this.ImageService = ImageService;
-            this.mapper = new MappingService<Blog, BlogViewModel>();
+            this.mapper = new MappingService<Event, EventViewModel>();
         }
 
         [HttpGet]
@@ -28,7 +26,7 @@ namespace BlogBank.ApiControllers
         {
             try
             {
-                var rs = BlogService.GetList(key, pageSize, page);
+                var rs = EventService.GetList(key, pageSize, page);
                 return Ok(new PagingResponse()
                 {
                     Count = rs.data.Count(),
@@ -46,7 +44,7 @@ namespace BlogBank.ApiControllers
         {
             try
             {
-                var rs = BlogService.GetById(id);
+                var rs = EventService.GetById(id);
                 if (rs == null)
                 {
                     return NotFound();
@@ -61,51 +59,9 @@ namespace BlogBank.ApiControllers
         [HttpPost]
         public async Task<IActionResult> Insert([FromForm] string jsonString, IFormFile file)
         {
-                if (file == null || file.Length == 0)
-                {
-                    return BadRequest("No image uploaded");
-                }
-                if (jsonString == null)
-                {
-                    return BadRequest("No jsonString uploaded");
-                }
-                try
-                {
-                        BlogViewModel blog = JsonConvert.DeserializeObject<BlogViewModel>(jsonString);
-                        if (!TryValidateModel(blog))
-                        {
-                            var errors = ModelState.Values.SelectMany(v => v.Errors);
-                        }
-                        var productImage = await ImageService.ConvertImageToProductImageAsync(file);
-                        if (ModelState.IsValid)
-                        {
-                            BlogService.Add(blog.Title,blog.Description,blog.Content, productImage.Id);
-                            return Ok();
-                        }
-                        return UnprocessableEntity(ModelState);
-
-                     }
-                catch (JsonException ex)
-                {
-                        return BadRequest(ex.Message);
-                }
-                catch (Exception e)
-                {
-                            return BadRequest(e.Message);
-                }
-        }
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, [FromForm] string jsonString, IFormFile? file)
-        {
-            var idImage = 0;
             if (file == null || file.Length == 0)
             {
-                idImage= BlogService.GetById(id).ImageId;
-            }
-            else
-            {
-                var productImage = await ImageService.ConvertImageToProductImageAsync(file);
-                idImage=productImage.Id;
+                return BadRequest("No image uploaded");
             }
             if (jsonString == null)
             {
@@ -113,14 +69,56 @@ namespace BlogBank.ApiControllers
             }
             try
             {
-                BlogViewModel blog = JsonConvert.DeserializeObject<BlogViewModel>(jsonString);
-                if (!TryValidateModel(blog))
+                EventViewModel Event = JsonConvert.DeserializeObject<EventViewModel>(jsonString);
+                if (!TryValidateModel(Event))
+                {
+                    var errors = ModelState.Values.SelectMany(v => v.Errors);
+                }
+                var productImage = await ImageService.ConvertImageToProductImageAsync(file);
+                if (ModelState.IsValid)
+                {
+                    EventService.Add(Event.EventName,Event.Description,Event.Content,Event.StartTime,Event.EndTime,Event.Status, productImage.Id);
+                    return Ok();
+                }
+                return UnprocessableEntity(ModelState);
+
+            }
+            catch (JsonException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(int id, [FromForm] string jsonString, IFormFile? file)
+        {
+            var idImage = 0;
+            if (file == null || file.Length == 0)
+            {
+                idImage = EventService.GetById(id).ImageId;
+            }
+            else
+            {
+                var productImage = await ImageService.ConvertImageToProductImageAsync(file);
+                idImage = productImage.Id;
+            }
+            if (jsonString == null)
+            {
+                return BadRequest("No jsonString uploaded");
+            }
+            try
+            {
+                EventViewModel Event = JsonConvert.DeserializeObject<EventViewModel>(jsonString);
+                if (!TryValidateModel(Event))
                 {
                     var errors = ModelState.Values.SelectMany(v => v.Errors);
                 }
                 if (ModelState.IsValid)
                 {
-                    BlogService.Update(id,blog.Title, blog.Description, blog.Content, idImage);
+                    EventService.Update(id, Event.EventName, Event.Description, Event.Content, Event.StartTime, Event.EndTime, Event.Status, idImage);
                     return Ok();
                 }
                 return UnprocessableEntity(ModelState);
@@ -140,7 +138,7 @@ namespace BlogBank.ApiControllers
         {
             try
             {
-                BlogService.Delete(id);
+                EventService.Delete(id);
                 return Ok();
             }
             catch (Exception e)
@@ -150,3 +148,4 @@ namespace BlogBank.ApiControllers
         }
     }
 }
+

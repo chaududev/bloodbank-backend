@@ -6,7 +6,7 @@ namespace BloodBank.ViewModels
     public class BlogViewModel
     {
         public int Id { get; private set; }
-        [Required(ErrorMessage = "Name is required")]
+        [Required(ErrorMessage = "Title is required")]
         public string Title { get; set; }
         [Required(ErrorMessage = "Description is required")]
         public string Description { get; set; }

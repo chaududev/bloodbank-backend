@@ -10,10 +10,6 @@ namespace Domain.Model.Base
         public int Id { get; private set; }
         public DateTime CreatedAt { get; private set; }
         public DateTime UpdatedAt { get; private set; }
-        public void SetId(int id)
-        {
-            Id = id;
-        }
         public void Add()
         {
             CreatedAt=DateTime.Now;

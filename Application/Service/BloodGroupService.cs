@@ -50,9 +50,8 @@ namespace Application.Service
             {
                 throw new Exception($"The entity with ID {id} was not found.");
             }
-            BloodGroup newEntity  = new BloodGroup(name, description);
-            newEntity.SetId(id);
-            repository.Update(newEntity);
+            entity.Update(name, description);
+            repository.Update(entity);
         }
     }
 }
