@@ -20,10 +20,24 @@ namespace Domain.Model.Users
         public User()
         {
         }
+        public User(string userName, string fullName, string? email, DateTime? birthday, string? address)
+        {
+            Update(userName,fullName, email, birthday, address);
+            EmailConfirmed = true;
+            Register = new List<Register>();
+        }
+        public void Update(string userName,string fullName, string? email,DateTime? birthday, string? address)
+        {
+            FullName = fullName.Trim();
+            UserName = userName.Trim();
+            Email = email.Trim() ?? "Unknown@abc.com";
+            Birthday = birthday;
+            Address = address.Trim() ?? "Unknown";
+
+        }
         public void Set(string fullName)
         {
             FullName = fullName.Trim();
-            Register = new List<Register>();
         }
         public void SetHospital(int hospitalId)
         {

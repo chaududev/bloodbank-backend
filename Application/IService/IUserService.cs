@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Domain.Model.Base;
+using Domain.Model.Users;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +10,6 @@ namespace Application.IService
 {
     public interface IUserService
     {
-        Task<String> token(string username, string password);
+        JWToken GenerateJwtToken(User user,string roleName);
     }
 }

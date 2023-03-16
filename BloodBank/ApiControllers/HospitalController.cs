@@ -3,12 +3,16 @@ using BloodBank.Mapper;
 using BloodBank.ViewModels;
 using Domain.Model.BloodRegister;
 using Domain.Model.Users;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace BloodBank.ApiControllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize(Roles = "ADMIN")]
     public class HospitalController : ControllerBase
     {
         readonly IHospitalService HospitalService;
