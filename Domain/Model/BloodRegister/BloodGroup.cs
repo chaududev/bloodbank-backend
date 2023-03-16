@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Domain.Model.BloodRegister
@@ -14,6 +15,7 @@ namespace Domain.Model.BloodRegister
         public string Name { get; private set; }
         [MaxLength(100)]
         public string Description { get; private set; }
+        [JsonIgnore]
         public List<Register> Register { get; set; }
 
         public BloodGroup(string name, string description)

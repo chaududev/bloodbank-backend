@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "68oGado+38I4AOiZ5SB8lPFyu4I8uR3BT6emPtBRlGqxjCQYFa9MwxNY3oe/AriY+mW4ZvwPM3a9wR8oPzgALg==",
+  "dgSpecHash": "yQ6E48+MZOHIQwLH6rbRb7+VNzQ+w31yhoROGPKPBZNa2fkB3ce1814vcOIHyrHQHVwfytUXlYE7pQfJGx80Aw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Admin\\source\\repos\\BloodBank\\Application\\Application.csproj",
   "expectedPackageFiles": [
@@ -49,7 +49,8 @@
     "C:\\Users\\Admin\\.nuget\\packages\\system.security.permissions\\4.7.0\\system.security.permissions.4.7.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\system.text.encoding.codepages\\4.7.0\\system.text.encoding.codepages.4.7.0.nupkg.sha512",
-    "C:\\Users\\Admin\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512"
+    "C:\\Users\\Admin\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\zxing.net\\0.16.9\\zxing.net.0.16.9.nupkg.sha512"
   ],
   "logs": []
 }

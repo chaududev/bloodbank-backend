@@ -245,6 +245,30 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\20230316115653-anh-1-9607.jpg",
+      "PackagePath": "staticwebassets\\uploads\\posts\\20230316115653-anh-1-9607.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\anh-20230316114759tieu-su-ca-si-lisa-blackpink-3.jpeg",
+      "PackagePath": "staticwebassets\\uploads\\posts\\anh-20230316114759tieu-su-ca-si-lisa-blackpink-3.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\qr\\QR-20230316120142-0c20e3d5-9734-431e-8dd1-f190294d8f56.svg",
+      "PackagePath": "staticwebassets\\uploads\\qr\\QR-20230316120142-0c20e3d5-9734-431e-8dd1-f190294d8f56.svg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\qr\\QR-chauhoangbichdu-eb3ef594-5f43-473b-8d7b-c0b03a7adde5.svg",
+      "PackagePath": "staticwebassets\\uploads\\qr\\QR-chauhoangbichdu-eb3ef594-5f43-473b-8d7b-c0b03a7adde5.svg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\qr\\QR-chauhoangbichduahihihihdsafhsafskfhsfherwhrsdjsdkzdmzcnehjrwkjrkwejrknmssd-44914eb8-a1a6-40b9-849b-a3fc81e991fe.svg",
+      "PackagePath": "staticwebassets\\uploads\\qr\\QR-chauhoangbichduahihihihdsafhsafskfhsfherwhrsdjsdkzdmzcnehjrwkjrkwejrknmssd-44914eb8-a1a6-40b9-849b-a3fc81e991fe.svg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\qr\\QR-data-89295717-3678-44d5-91d0-9c16244e5082.svg",
+      "PackagePath": "staticwebassets\\uploads\\qr\\QR-data-89295717-3678-44d5-91d0-9c16244e5082.svg"
+    },
+    {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.BloodBank.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

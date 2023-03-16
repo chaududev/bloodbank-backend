@@ -33,5 +33,23 @@ namespace BloodBank.ApiControllers
                 return BadRequest(e.Message);
             }
         }
+        [HttpPost("qr")]
+        public IActionResult GetQr(string data)
+        {
+
+            if (data == null || data.Length == 0)
+            {
+                return BadRequest("No data");
+            }
+            try
+            {
+                var productImage = _imageService.GenerateQRCode(data);
+                return Ok(productImage);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
     }
 }

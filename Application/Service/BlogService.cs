@@ -23,8 +23,8 @@ namespace Application.Service
 
         public void Add(string title, string description, string content, int imageId)
         {
-            Blog Entity = new Blog(title, description, content, imageId);
-            repository.Add(Entity);
+            Blog entity = new Blog(title, description, content, imageId);
+            repository.Add(entity);
         }
 
         public void Delete(int id)

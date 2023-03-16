@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "HTaYvD/G4Jhd0ieT/mGmssBaomu8WfSM7uTdQEtBmhFu0VFaBcWaLsIEHnre2XVySl6oa4C+9S6CkDxGlZ1GiQ==",
+  "dgSpecHash": "kRhZnuC4EZoJxj/KeFeX81ksfzw/mbn8iUbcp3vgGtQkqNWApBeMz085c9QVhG7CWWn8rjBY++G/bX9t3CcExg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\BloodBank.csproj",
   "expectedPackageFiles": [
@@ -91,7 +91,8 @@
     "C:\\Users\\Admin\\.nuget\\packages\\system.text.encoding.codepages\\4.7.0\\system.text.encoding.codepages.4.7.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\system.text.encodings.web\\4.7.2\\system.text.encodings.web.4.7.2.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\system.text.json\\4.7.2\\system.text.json.4.7.2.nupkg.sha512",
-    "C:\\Users\\Admin\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512"
+    "C:\\Users\\Admin\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\zxing.net\\0.16.9\\zxing.net.0.16.9.nupkg.sha512"
   ],
   "logs": []
 }
