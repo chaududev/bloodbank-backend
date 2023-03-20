@@ -1,50 +1,71 @@
-﻿<!DOCTYPE html>
+﻿@using Domain.Model.Users;
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>@ViewData["Title"] - BloodBank</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/BloodBank.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site2.min.css">
+    <script type="text/javascript" src="~/js/site.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav role="navigation" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3 navbar-custom">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">BloodBank</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                    <partial name="_LoginPartial" />
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button data-target="#bs-content-row-navbar-collapse-5" data-toggle="collapse" class="navbar-toggle" type="button">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="#" class="navbar-brand">Blood Bank - Admin</a>
                 </div>
-            </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div id="bs-content-row-navbar-collapse-5" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active"><a href="/home">Home</a></li>
+                        <li class="active"><a href="/home/privacy">Privacy</a></li>
+                        <!-- <li class="disabled"><a href="#">Link</a></li> -->
+                        <partial name="_LoginPartial" />
+                    </ul>
+
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - BloodBank - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <div class="container-fluid">
+             <div class="row row-offcanvas row-offcanvas-left">
+                    <partial name="_NavigationPartial" />
+                    <div class="col-xs-12 col-sm-9 content">
+                        <div role="main" class="panel panel-default">
+                            @RenderBody()
+                        </div>
+                    </div>
+             </div>
+         </div>
+        <footer class="border-top footer text-muted">
+            <div class="container">
+                &copy; 2023 - BloodBank - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+        </footer>
+    }
+    else
+    {
+        <div role="main">
+             @RenderBody()            
         </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+     }
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

@@ -1,4 +1,4 @@
-﻿using BloodBank.Models;
+﻿using BloodBank.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 

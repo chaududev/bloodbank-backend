@@ -2,12 +2,9 @@
     Layout = "/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = "Register";
 }
-
-
-<div class="container">
-    <div class="row">
-        <div class="col-xl-4 col-md-8 col-sm-12 flex-column">
-            <form method="post" action="/Auth/Register" class="form-group">
+<div class="container col d-flex justify-content-center">
+            <form method="post" action="/Auth/Register" class="form-control ">
+                <h3 class="form-signin-heading text-dark text-center">@ViewData["Title"]</h3>
                 <label for="username">Username</label>
                 <input type="text" name="username" id="username" class="form-control" required />
 
@@ -17,10 +14,19 @@
                 <label for="password">Password</label>
                 <input type="password" name="password" id="password" minlength="8" class="form-control" required />
 
+                <label for="passwordConfirm">Confirm Password</label>
+                <input type="password" name="passwordConfirm" id="passwordConfirm" minlength="8" class="form-control" required />
 
-                <p class="text-warning">@ViewData["Message"]</p>
-                <button class="btn btn-primary">Register</button>
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" class="form-control" />
+
+                <label for="birthday">Birthday</label>
+                <input type="date" name="birthday" id="birthday" class="form-control" />
+
+                <label for="address">Address</label>
+                <input type="text" name="address" id="address" class="form-control" />
+
+                <p class="text-warning text-center">@ViewData["Message"]</p>
+                <button class="btn btn-dark btn-lg btn-block" type="submit">Register</button>
             </form>
-        </div>
-    </div>
 </div>

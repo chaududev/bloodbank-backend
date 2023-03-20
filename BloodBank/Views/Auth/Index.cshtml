@@ -1,21 +1,59 @@
-﻿@{
+﻿
+@model LoginViewModel
+@{
     Layout = "/Views/Shared/_Layout.cshtml";
-    ViewData["Title"] = "Auth";
+    ViewData["Title"] = "Sign in";
 }
-
-
 <div class="container">
-
-    <div class="row">
-        <div class="col-xl-4 col-md-8 col-sm-12 flex-column">
-            <form method="post" action="/Auth/Login" class="form-group">
-                <label for="username">Username</label>
-                <input type="text" name="username" id="username" class="form-control" required />
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password" class="form-control" required />
-                <p class="text-warning">@ViewBag.Message</p>
-                <button class="btn btn-primary">Login</button>
-            </form>
+    <form class="form-signin" role="form" method="post" action="/Auth/Login">
+        <h3 class="form-signin-heading text-dark text-center">@ViewData["Title"]</h3>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <i class="glyphicon glyphicon-user"></i>
+                </div>
+                <input type="text" name="username" id="username" class="form-control" placeholder="Username" required />
+            </div>
         </div>
-    </div>
+
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <i class=" glyphicon glyphicon-lock "></i>
+                </div>
+                <input type="password" name="password" id="password" class="form-control" placeholder="Password" required /> 
+                 <div class="input-group-addon">
+                    <i class="far fa-eye end-box" id="see-password"></i>
+                </div>
+            </div>
+        </div>
+        <p class="text-dark text-center">@ViewBag.Message</p>
+        <button class="btn btn-dark btn-lg btn-block" type="submit">Sign in</button>
+    </form>
+
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            let showPass = false;
+            $('#see-password').on("click", function (event) {
+                showPass = !showPass;
+                if (showPass == true) {
+                    $('#password').prop('type', 'text');
+                    $('#see-password').toggleClass('fa-eye');
+                    $('#see-password').toggleClass('fa-eye-slash');
+                }
+                if (showPass == false) {
+                    $('#password').prop('type', 'password');
+                    $('#see-password').toggleClass('fa-eye-slash');
+                    $('#see-password').toggleClass('fa-eye');
+                }
+
+            });
+        });
+    </script>
+}

@@ -1,8 +1,10 @@
-﻿using Domain.Model.Users;
+﻿using BloodBank.ViewModels;
+using Domain.Model.Users;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Globalization;
+using System.Net.Http;
 
 namespace BloodBank.Controllers
 {
@@ -25,17 +27,17 @@ namespace BloodBank.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> LoginAsync(string username, string password)
+        public async Task<IActionResult> LoginAsync(LoginViewModel login)
         {
-            var user = await _userManager.FindByNameAsync(username);
+            var user = await _userManager.FindByNameAsync(login.Username);
             if (user == null)
             {
                 TempData["Message"] = "Username doesn't exist !";
             }
             else
             {
-                user = await _userManager.FindByNameAsync(username);
-                var response = await _signInManager.PasswordSignInAsync(user, password, true, true);
+                user = await _userManager.FindByNameAsync(login.Username);
+                var response = await _signInManager.PasswordSignInAsync(user, login.Password, true, true);
                 if (response.Succeeded)
                 {
                     return Redirect("/");
@@ -59,43 +61,50 @@ namespace BloodBank.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> RegisterAsync(string username, string password, string fullname)
+        public async Task<IActionResult> RegisterAsync(RegisterViewModel model)
         {
-            var user = new User()
+            var user = new User(model.Username, model.FullName, model.Email, model.Birthday, model.Address);
+            var userCurrent = await _userManager.FindByNameAsync(model.Username);
+            if (!ModelState.IsValid)
             {
-                UserName = username,
-                EmailConfirmed = true
-            };
-            user.Set(fullname);
-            var userCurrent = await _userManager.FindByNameAsync(username);
-            if (userCurrent != null)
+                var errors = ModelState.Values.SelectMany(v => v.Errors);
+                foreach (var error in errors)
+                {
+                    ViewData["Message"] = error.ErrorMessage;
+                }
+            }
+
+            else if (userCurrent != null)
             {
                 ViewData["Message"] = "Username is exist !";
             }
-            var createResponse = await _userManager.CreateAsync(user, password);
-            if (createResponse.Succeeded)
+            else 
             {
-                var role = await _roleManager.FindByNameAsync("USER");
-                if (role == null)
+                var createResponse = await _userManager.CreateAsync(user, model.Password);
+                if (createResponse.Succeeded)
                 {
-                    role = new IdentityRole()
+                    var role = await _roleManager.FindByNameAsync("USER");
+                    if (role == null)
                     {
-                        Name = "USER",
-                    };
+                        role = new IdentityRole()
+                        {
+                            Name = "USER",
+                        };
 
-                    var responseRole = await _roleManager.CreateAsync(role);
+                        var responseRole = await _roleManager.CreateAsync(role);
+                    }
+                    var responseAddRoleToUser = await _userManager.AddToRoleAsync(user, role.Name);
+                    if (responseAddRoleToUser.Succeeded)
+                    {
+                        ViewData["Message"] = "Register Success!";
+                    }
+                    else
+                    {
+                        ViewData["Message"] = "Register Failed ! Please check and try again !";
+                    }
                 }
-                var responseAddRoleToUser = await _userManager.AddToRoleAsync(user, role.Name);
-                if (responseAddRoleToUser.Succeeded)
-                {
-                    ViewData["Message"] = "Register Success!";
-                }
-                else
-                {
-                    ViewData["Message"] = "Register Failed ! Please check and try again !";
-                }
+                else ViewData["Message"] = "Register Failed ! Please check and try again !";
             }
-            else ViewData["Message"] = "Register Failed ! Please check and try again !";
             return View();
         }
     }

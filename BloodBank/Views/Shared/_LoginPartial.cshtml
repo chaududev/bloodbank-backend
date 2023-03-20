@@ -5,22 +5,27 @@
 <ul class="navbar-nav">
     @if (SignInManager.IsSignedIn(User))
     {
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Home" title="Manage">Hello @User.Identity.Name!</a>
-        </li>
-        <li class="nav-item">
-            <form class="form-inline" action="/Auth/logout">
-                <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
-            </form>
+        <li class="active"><a href="/swagger">Documentation</a></li>
+        <li class="text-dark">......</li>
+        <li class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">@User.Identity.Name </a>
+            <ul role="menu" class="dropdown-menu">
+                <li class="dropdown-header">Setting</li>
+               <li class="disabled"><a href="#">Profile</a></li>
+                <li class="divider"></li>
+                <li class="disabled"><a href="#">Change Password</a></li>
+                <li class="divider"></li>
+                <li class="active"><a href="/Auth/logout">Signout</a></li>
+            </ul>
         </li>
     }
     else
     {
         <li class="nav-item">
-            <a class="nav-link text-dark" href="/Auth/Register">Register</a>
+            <a class="nav-link text-white" href="/Auth/Register">Register</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-dark" href="/Auth">Login</a>
+            <a class="nav-link text-white" href="/Auth">Login</a>
         </li>
     }
 </ul>

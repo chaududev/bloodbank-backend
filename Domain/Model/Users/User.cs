@@ -22,7 +22,7 @@ namespace Domain.Model.Users
         }
         public User(string userName, string fullName, string? email, DateTime? birthday, string? address)
         {
-            Update(userName,fullName, email, birthday, address);
+            Update(userName,fullName, email??"Unknown@abc.com", birthday??DateTime.MinValue, address??"Unknown");
             EmailConfirmed = true;
             Register = new List<Register>();
         }
@@ -31,7 +31,7 @@ namespace Domain.Model.Users
             FullName = fullName.Trim();
             UserName = userName.Trim();
             Email = email.Trim() ?? "Unknown@abc.com";
-            Birthday = birthday;
+            Birthday = birthday??DateTime.MinValue;
             Address = address.Trim() ?? "Unknown";
 
         }

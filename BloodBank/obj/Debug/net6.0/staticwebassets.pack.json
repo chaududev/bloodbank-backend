@@ -9,12 +9,80 @@
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\css\\site.min.css",
+      "PackagePath": "staticwebassets\\css\\site.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\css\\site2.min.css",
+      "PackagePath": "staticwebassets\\css\\site2.min.css"
+    },
+    {
       "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\fonts\\FontAwesome.otf",
+      "PackagePath": "staticwebassets\\fonts\\FontAwesome.otf"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\fonts\\angularicons.eot",
+      "PackagePath": "staticwebassets\\fonts\\angularicons.eot"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\fonts\\angularicons.svg",
+      "PackagePath": "staticwebassets\\fonts\\angularicons.svg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\fonts\\angularicons.ttf",
+      "PackagePath": "staticwebassets\\fonts\\angularicons.ttf"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\fonts\\angularicons.woff",
+      "PackagePath": "staticwebassets\\fonts\\angularicons.woff"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\fonts\\fontawesome-webfont.eot",
+      "PackagePath": "staticwebassets\\fonts\\fontawesome-webfont.eot"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\fonts\\fontawesome-webfont.svg",
+      "PackagePath": "staticwebassets\\fonts\\fontawesome-webfont.svg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\fonts\\fontawesome-webfont.ttf",
+      "PackagePath": "staticwebassets\\fonts\\fontawesome-webfont.ttf"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\fonts\\fontawesome-webfont.woff",
+      "PackagePath": "staticwebassets\\fonts\\fontawesome-webfont.woff"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\fonts\\glyphicons-halflings-regular.eot",
+      "PackagePath": "staticwebassets\\fonts\\glyphicons-halflings-regular.eot"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\fonts\\glyphicons-halflings-regular.svg",
+      "PackagePath": "staticwebassets\\fonts\\glyphicons-halflings-regular.svg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\fonts\\glyphicons-halflings-regular.ttf",
+      "PackagePath": "staticwebassets\\fonts\\glyphicons-halflings-regular.ttf"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\fonts\\glyphicons-halflings-regular.woff",
+      "PackagePath": "staticwebassets\\fonts\\glyphicons-halflings-regular.woff"
+    },
+    {
       "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\js\\site.min.js",
+      "PackagePath": "staticwebassets\\js\\site.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\js\\site.min.map",
+      "PackagePath": "staticwebassets\\js\\site.min.map"
     },
     {
       "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\lib\\bootstrap\\LICENSE",
@@ -245,8 +313,36 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\image\\banner.jpg",
+      "PackagePath": "staticwebassets\\uploads\\image\\banner.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\image\\photo-1.jpg",
+      "PackagePath": "staticwebassets\\uploads\\image\\photo-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\image\\photo-2.jpg",
+      "PackagePath": "staticwebassets\\uploads\\image\\photo-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\image\\photo-3.jpg",
+      "PackagePath": "staticwebassets\\uploads\\image\\photo-3.jpg"
+    },
+    {
       "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\20230316115653-anh-1-9607.jpg",
       "PackagePath": "staticwebassets\\uploads\\posts\\20230316115653-anh-1-9607.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-20230316120525-Untitled.png",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-20230316120525-Untitled.png"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-20230316140345-tieu-su-ca-si-lisa-blackpink-3.jpeg",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-20230316140345-tieu-su-ca-si-lisa-blackpink-3.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-20230316140512-tải xuống.png",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-20230316140512-tải xuống.png"
     },
     {
       "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\anh-20230316114759tieu-su-ca-si-lisa-blackpink-3.jpeg",
