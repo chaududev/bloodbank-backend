@@ -162,6 +162,14 @@
               "target": "Package",
               "version": "[13.0.3, )"
             },
+            "PageList": {
+              "target": "Package",
+              "version": "[1.2.3, )"
+            },
+            "PagedList": {
+              "target": "Package",
+              "version": "[1.17.0, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.5.0, )"

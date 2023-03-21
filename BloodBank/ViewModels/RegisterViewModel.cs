@@ -2,11 +2,18 @@
 
 namespace BloodBank.ViewModels
 {
-    public class RegisterViewModel
+	public enum Role
+	{
+		USER,
+        HOSPITAL,
+        STAFF,
+        ADMIN
+	}
+	public class RegisterViewModel
     {
         [Required(ErrorMessage = "Username is required")]
         [StringLength(20, MinimumLength = 5, ErrorMessage = "Use 5-20 characters")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
         [Required(ErrorMessage = "FullName is required")]
         public string FullName { get; set; }
         [Required(ErrorMessage = "Password is required")]
@@ -24,6 +31,8 @@ namespace BloodBank.ViewModels
         public string Email { get; set; }
         public DateTime? Birthday { get; set; }
         public string? Address { get; set; }
-
+        public int? HospitalId { get; set; }
+		[EnumDataType(typeof(Role), ErrorMessage = "Role must be between 0 and 3")]
+		public Role Role { get; set; }
     }
 }

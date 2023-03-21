@@ -1,0 +1,87 @@
+﻿@{
+	ViewData["Title"] = "Dashboard";
+} 
+
+<div class="panel-heading">
+	<h3 class="panel-title"><a href="javascript:void(0);" class="toggle-sidebar"><span class="fa fa-angle-double-left" data-toggle="offcanvas" title="Maximize Panel"></span></a>@ViewData["Title"]</h3>
+</div>
+<div class="panel-body">
+    <div class="content-row">
+        <h2 class="content-row-title">@ViewData["Title"]       Recent</h2>
+        <h3 class="content-row-title">Event</h3>
+        <div class="row" id="row">
+           
+        </div>
+        <h3 class="content-row-title">Blog</h3>
+        <div class="row" id="row2">
+        </div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<!-- Devexpress -->
+<script>
+     const main = async () => {
+        var url = '/api/event';
+        var reponse = await fetch(url);
+        var data = await reponse.json();
+        renderSlide0(data.data,data.totalCount);
+    }
+    const main2 = async () => {
+        var url = '/api/blog';
+        var reponse = await fetch(url);
+        var data = await reponse.json();
+        renderSlide1(data.data, data.totalCount);
+    }
+    const renderSlide0 = (data,count) => {
+        var domSlide = document.querySelector("#row");
+        var html ='';
+        var j=count-5;
+        if (count<5) j=0;
+        for (let i = count-1; i >= j; i--) {
+            html += `
+                   <div class="col-sm-6 col-md-3">
+                    <div class="thumbnail">
+                                <img class="img-rounded" src="${data[i].image.url}">
+                        <div class="caption text-center">
+                                    <h3>${data[i].eventName}</h3>
+                                        <p>${data[i].description}</p>
+                            <p>
+                                <a href="/event" class="btn btn-warning" role="button">Manage</a> 
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                    `;
+        }
+        domSlide.innerHTML = html;
+    }
+     const renderSlide1 = (data,count) => {
+        var domSlide = document.querySelector("#row2");
+        var html ='';
+        var j=count-5;
+        if (count<5) j=0;
+        for (let i = count-1; i >= j; i--) {
+            html += `
+                   <div class="col-sm-6 col-md-3">
+                    <div class="thumbnail">
+                                <img class="img-rounded" src="${data[i].image.url}" style="height:200px;">
+                        <div class="caption text-center">
+                                        <h3>${data[i].title}</h3>
+                                        <p>${data[i].description}</p>
+                            <p>
+                                <a href="/blog" class="btn btn-warning" role="button">Manage</a> 
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                    `;
+        }
+        domSlide.innerHTML = html;
+    }
+    main()
+    main2()
+</script>

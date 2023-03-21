@@ -39,7 +39,7 @@ namespace Domain.Model.Users
         {
             FullName = fullName.Trim();
         }
-        public void SetHospital(int hospitalId)
+        public void SetHospital(int? hospitalId)
         {
             HospitalId= hospitalId;
         }

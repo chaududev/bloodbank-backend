@@ -12,7 +12,6 @@ namespace BloodBank.ApiControllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize(Roles = "ADMIN")]
     public class HospitalController : ControllerBase
     {
         readonly IHospitalService HospitalService;

@@ -1,6 +1,8 @@
 ﻿using Application.IService;
 using Domain.Model.Base;
+using Domain.Model.Posts;
 using Domain.Model.Users;
+using Infrastructure.IRepository;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -8,6 +10,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,13 +20,17 @@ namespace Application.Service
     public class UserService : IUserService
     {
         readonly IConfiguration Configuration;
+		readonly IBaseRepository<User> repository;
 
-        public UserService(IConfiguration configuration)
+
+		public UserService(IConfiguration configuration, IBaseRepository<User> repository)
         {
             this.Configuration = configuration;
-        }
+			this.repository = repository;
+		}
 
-        public JWToken GenerateJwtToken(User user,string roleName)
+
+		public JWToken GenerateJwtToken(User user,string roleName)
         {
 
             var claims = new[] {
@@ -43,5 +50,15 @@ namespace Application.Service
                 signingCredentials: signIn) ;
             return new JWToken(new JwtSecurityTokenHandler().WriteToken(token), expiresIn);
         }
-    }
+
+		public (IEnumerable<User> data, int total) GetList(string? key, int? pageSize, int? page)
+		{
+			Expression<Func<User, bool>> filter = null;
+			if (key != null)
+				filter = e => e.UserName.ToUpper().Contains(key.ToUpper());
+			Expression<Func<User, object>>[] includeProperties = { p => p.Hospital };
+			Expression<Func<User, object>> sort = null;
+			return repository.Get(includeProperties, filter, sort, pageSize ?? int.MaxValue, page ?? 1);
+		}
+	}
 }

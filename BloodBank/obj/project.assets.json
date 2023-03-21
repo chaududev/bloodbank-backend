@@ -1095,6 +1095,28 @@
           }
         }
       },
+      "PagedList/1.17.0": {
+        "type": "package",
+        "compile": {
+          "lib/net40/PagedList.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net40/PagedList.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "PageList/1.2.3": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp3.1/PageList.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/PageList.dll": {}
+        }
+      },
       "Swashbuckle.AspNetCore/6.5.0": {
         "type": "package",
         "dependencies": {
@@ -3190,6 +3212,33 @@
         "packageIcon.png"
       ]
     },
+    "PagedList/1.17.0": {
+      "sha512": "Ou6F3WKXh49hOo0TxWM+SkIGuKllYPuPPvnSYOlQ1sTrtuEyuDUhYbSJd5Sdb06i/sWUJZTjiUecEs3Ht/Hx3g==",
+      "type": "package",
+      "path": "pagedlist/1.17.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/PagedList.dll",
+        "lib/net40/PagedList.xml",
+        "pagedlist.1.17.0.nupkg.sha512",
+        "pagedlist.nuspec"
+      ]
+    },
+    "PageList/1.2.3": {
+      "sha512": "EjIqMC1h1AJJWFUM6hWHvT55pxxJ2V1OUincT+RSZm8Erp8cOWtg7JvAiwzkXPY8x//mGKqVSklaTPncfYfMxg==",
+      "type": "package",
+      "path": "pagelist/1.2.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "icon.png",
+        "lib/netcoreapp3.1/PageList.dll",
+        "pagelist.1.2.3.nupkg.sha512",
+        "pagelist.nuspec"
+      ]
+    },
     "Swashbuckle.AspNetCore/6.5.0": {
       "sha512": "FK05XokgjgwlCI6wCT+D4/abtQkL1X1/B9Oas6uIwHFmYrIO9WUD5aLC9IzMs9GnHfUXOtXZ2S43gN1mhs5+aA==",
       "type": "package",
@@ -4171,6 +4220,8 @@
       "Microsoft.EntityFrameworkCore.Tools >= 6.0.11",
       "Microsoft.IdentityModel.Tokens >= 6.27.0",
       "Newtonsoft.Json >= 13.0.3",
+      "PageList >= 1.2.3",
+      "PagedList >= 1.17.0",
       "Swashbuckle.AspNetCore >= 6.5.0",
       "Swashbuckle.AspNetCore.Swagger >= 6.5.0",
       "System.IdentityModel.Tokens.Jwt >= 6.27.0"
@@ -4265,6 +4316,14 @@
             "target": "Package",
             "version": "[13.0.3, )"
           },
+          "PageList": {
+            "target": "Package",
+            "version": "[1.2.3, )"
+          },
+          "PagedList": {
+            "target": "Package",
+            "version": "[1.17.0, )"
+          },
           "Swashbuckle.AspNetCore": {
             "target": "Package",
             "version": "[6.5.0, )"
@@ -4300,5 +4359,17 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'PagedList 1.17.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "PagedList",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
 }

@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Domain.Model.Users
@@ -16,8 +17,9 @@ namespace Domain.Model.Users
         public string Name { get; private set; }
         [MaxLength(100)]
         public string Address { get; private set; }
-
+        [JsonIgnore]
         public virtual List<User> Users { get; private set; }
+        [JsonIgnore]
         public virtual List<Register> Confirm { get; private set; }
 
         public Hospital(string name,string address)

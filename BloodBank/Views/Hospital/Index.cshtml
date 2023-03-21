@@ -1,0 +1,259 @@
+﻿@{
+	ViewData["Title"] = "Hospital";
+}
+
+<div class="panel-heading">
+	<h3 class="panel-title"><a href="javascript:void(0);" class="toggle-sidebar"><span class="fa fa-angle-double-left" data-toggle="offcanvas" title="Maximize Panel"></span></a>@ViewData["Title"]</h3>
+</div>
+<div class="panel-body">
+	<div class="content-row">
+		<h2 class="content-row-title">@ViewData["Title"] Management</h2>
+		<div class="demo-container">
+			<div id="data-grid-demo">
+				<div id="gridContainer"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- jQuery library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<!-- Devexpress -->
+<link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/17.1.5/css/dx.common.css" />
+<link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/17.1.5/css/dx.light.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/devextreme/22.2.4/js/dx.all.js"></script>
+<script>
+	//	alert('show')
+	$(function () {
+		function getParameterByName(name, url) {
+			if (!url) url = window.location.href;
+			name = name.replace(/[\[\]]/g, '\\$&');
+			var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+				results = regex.exec(url);
+			if (!results) return null;
+			if (!results[2]) return '';
+			return decodeURIComponent(results[2].replace(/\+/g, ' '));
+		}
+		var url = window.location.href;
+		var status = getParameterByName('status', url);
+		window.history.pushState(null, null, "Hospital");
+		if (status == 1)
+			DevExpress.ui.notify('Thêm Hospital thành công', 'success', 2000);
+		jQuery.fn.load = function (callback) {
+			var el = $(this);
+			el.on('load', callback);
+			return el;
+		};
+		let getAllHospital;
+		const InitData = () => {
+			$.ajax({
+				type: 'get',
+				async: false,
+				url: '/api/Hospital',
+				success: function (data) {
+
+					getAllHospital = data;
+					console.log(data)
+				},
+				error: function (err) {
+					alert('Load dữ liệu Hospital lỗi.');
+				}
+			});
+			InitData();
+		}
+		const itemsShow = [
+			{
+				caption: "STT",
+				width: 40,
+				cellTemplate: function (cellElement, cellInfo) {
+					var index = dataGrid.pageIndex() * dataGrid.pageSize() + cellInfo.rowIndex + 1;
+					cellElement.text(index);
+				},
+				formItem: {
+					visible: false
+				}
+			},
+			{
+				dataField: "id",
+				visible: false
+			},
+			{
+				dataField: "name",
+				caption: "Name",
+				validationRules: [
+					{
+						type: "required",
+						message: "Name is required"
+					}
+				]
+			},
+			{
+				dataField: "address",
+				caption: "Address",
+				validationRules: [
+					{
+						type: "required",
+						message: "address is required"
+					}
+				]
+			},
+			{
+				type: "buttons",
+				width: 110,
+				buttons: ["edit", "delete"]
+			},
+		]
+
+		var datasource = [];
+		var dataGrid = $("#gridContainer").dxDataGrid({
+			dataSource: {
+				store: new DevExpress.data.CustomStore({
+					loadMode: "raw",
+					load: function () {
+						//console.log($.getJSON("/api/Hospital"))
+						return $.getJSON("/api/Hospital").then((rs) => {
+							return rs.data
+						})
+					},
+					update: function (key, values) {
+					}
+
+				})
+			},
+			keyExpr: "id",
+			showBorders: true,
+			paging: {
+				pageSize: 10
+			},
+			searchPanel: {
+				visible: true
+			},
+			pager: {
+				showPageSizeSelector: true,
+				allowedPageSizes: [10, 20],
+				showInfo: true
+			},  //Tạo phân trang
+			editing: {
+				allowDeleting: true,  //Hiển thị nút xóa
+				allowAdding: true,   // Hiển thị nút thêm
+				mode: "popup",
+				allowUpdating: true,
+				useIcons: true,
+				popup: {
+					title: "Quản lý Hospital ",
+					showTitle: true,
+					width: 700,
+					height: 500,
+					position: {
+						my: "top",
+						at: "top",
+						of: window
+					}
+				},
+				form: {
+					items: [{
+						itemType: "group",
+						colCount: 2,
+						colSpan: 2,
+						items: [
+							{
+								dataField: "id",
+								colSpan: 2,
+								visible: false,
+							},
+							{
+								dataField: "name",
+								colSpan: 2,
+							},
+							{
+								dataField: "address",
+								colSpan: 2,
+							},
+						]
+					}]
+				}
+			},
+			columns: itemsShow,
+			onRowRemoving: function (e) {
+				$.ajax({
+					type: 'DELETE',
+					async: false,
+					url: '/api/Hospital/' + e.data.id,
+					success: function (dulieu) {
+						DevExpress.ui.notify('Xóa Hospital thành công', 'success', 2000);
+						window.location = "Hospital?status=1";
+					},
+					error: function (err) {
+						e.cancel = true;
+						DevExpress.ui.notify('Xóa lỗi! Vui lòng nhấn F5 và tiến hành Xóa lại.', 'error', 2000);
+					}
+				});
+			},
+			onRowInserting: function (e) {
+				let formData = {
+					name: e.data.name,
+					address: e.data.address
+				};
+				$.ajax({
+					type: 'POST',
+					data: JSON.stringify(formData),
+					contentType: 'application/json',
+					async: false,
+					url: '/api/Hospital',
+					success: function (dulieu) {
+						window.location = "Hospital?status=1";
+					},
+					error: function (err) {
+						e.cancel = true;
+						DevExpress.ui.notify('Thêm Hospital không thành công', 'error', 2000);
+					}
+				});
+			},
+			onRowUpdating: function (e) {
+				const form = { ...e.oldData, ...e.newData }
+				let formData = {
+					name: form.name,
+					address: form.address
+				};
+				$.ajax({
+					type: 'put',
+					async: false,
+					url: '/api/Hospital/' + form.id,
+					//dataType: 'json',
+					data: JSON.stringify(formData),
+					contentType: 'application/json',
+					success: function (dulieu) {
+
+						DevExpress.ui.notify('Update Hospital thành công', 'success', 2000);
+						window.location = "Hospital?status=1";
+					},
+					error: function (err) {
+						e.cancel = true;
+						DevExpress.ui.notify('Lỗi. vui lòng thử lại', 'error', 2000);
+					}
+				});
+			}
+		}).dxDataGrid("instance");
+		//const GetDataSource = async () => {
+		//	var response = await fetch('/api/Hospital');
+		//	var data = await response.json();
+		//	datasource = data.data;
+		//	console.log(datasource)
+		//	dataGrid.refresh()
+		//		.done(function () {
+		//			alert('done')
+		//			// ...
+		//		})
+		//		.fail(function (error) {
+		//			// ...
+		//		});
+		//	return data.data;
+		//}
+		//GetDataSource();
+	});
+</script>
