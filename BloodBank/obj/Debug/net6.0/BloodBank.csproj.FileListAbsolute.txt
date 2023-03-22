@@ -89,5 +89,10 @@ C:\Users\Admin\source\repos\BloodBank\BloodBank\bin\Debug\net6.0\Newtonsoft.Json
 C:\Users\Admin\source\repos\BloodBank\BloodBank\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\Admin\source\repos\BloodBank\BloodBank\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
 C:\Users\Admin\source\repos\BloodBank\BloodBank\bin\Debug\net6.0\zxing.dll
-C:\Users\Admin\source\repos\BloodBank\BloodBank\bin\Debug\net6.0\PagedList.dll
 C:\Users\Admin\source\repos\BloodBank\BloodBank\bin\Debug\net6.0\PageList.dll
+C:\Users\Admin\source\repos\BloodBank\BloodBank\bin\Debug\net6.0\Aspose.BarCode.dll
+C:\Users\Admin\source\repos\BloodBank\BloodBank\bin\Debug\net6.0\QRCoder.dll
+C:\Users\Admin\source\repos\BloodBank\BloodBank\bin\Debug\net6.0\IronSoftware.Drawing.Common.dll
+C:\Users\Admin\source\repos\BloodBank\BloodBank\bin\Debug\net6.0\SixLabors.Fonts.dll
+C:\Users\Admin\source\repos\BloodBank\BloodBank\bin\Debug\net6.0\SixLabors.ImageSharp.dll
+C:\Users\Admin\source\repos\BloodBank\BloodBank\bin\Debug\net6.0\SixLabors.ImageSharp.Drawing.dll

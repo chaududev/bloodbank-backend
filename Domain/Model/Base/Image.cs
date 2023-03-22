@@ -16,7 +16,6 @@ namespace Domain.Model.Base
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; private set; }
-        [MaxLength(50)]
         public string FileName { get; private set; }
         [MaxLength(50)]
         public string ContentType { get; private set; }

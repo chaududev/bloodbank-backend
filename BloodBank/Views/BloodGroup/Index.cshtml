@@ -15,20 +15,14 @@
 		</div>
     </div>
 </div>
-<!-- jQuery library -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-
-<!-- Popper JS -->
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
 <!-- Devexpress -->
 <link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/17.1.5/css/dx.common.css" />
 <link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/17.1.5/css/dx.light.css" />
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/devextreme/22.2.4/js/dx.all.js"></script>
 <script>
-//	alert('show')
 	$(function () {
 		function getParameterByName(name, url) {
 			if (!url) url = window.location.href;
@@ -43,7 +37,7 @@
 		var status = getParameterByName('status', url);
 		window.history.pushState(null, null, "BloodGroup");
 		if (status == 1)
-			DevExpress.ui.notify('Thêm BloodGroup thành công', 'success', 2000);
+			DevExpress.ui.notify('Success', 'success', 2000);
 		jQuery.fn.load = function (callback) {
 			var el = $(this);
 			el.on('load', callback);
@@ -61,7 +55,7 @@
 					console.log(data)
 				},
 				error: function (err) {
-					alert('Load dữ liệu BloodGroup lỗi.');
+					alert('Load Failed');
 				}
 			});
 			InitData();
@@ -94,7 +88,7 @@
 			},
 			{
 				dataField: "description",
-				caption: "description",
+				caption: "Description",
 				validationRules: [
 					{
 						type: "required",
@@ -115,7 +109,6 @@
 				store: new DevExpress.data.CustomStore({
 					loadMode: "raw",
 					load: function () {
-						//console.log($.getJSON("/api/BloodGroup"))
 						return $.getJSON("/api/BloodGroup").then((rs)=>{
 							return rs.data
 						})
@@ -137,15 +130,15 @@
 				showPageSizeSelector: true,
 				allowedPageSizes: [10, 20],
 				showInfo: true
-			},  //Tạo phân trang
+			},  
 			editing: {
-				allowDeleting: true,  //Hiển thị nút xóa
-				allowAdding: true,   // Hiển thị nút thêm
+				allowDeleting: true,  
+				allowAdding: true, 
 				mode: "popup",
 				allowUpdating: true,
 				useIcons: true,
 				popup: {
-					title: "Quản lý BloodGroup ",
+					title: "BloodGroup ",
 					showTitle: true,
 					width: 700,
 					height: 500,
@@ -185,12 +178,12 @@
 					async: false,
 					url: '/api/BloodGroup/' + e.data.id,
 					success: function (dulieu) {
-						DevExpress.ui.notify('Xóa BloodGroup thành công', 'success', 2000);
+						DevExpress.ui.notify('Success', 'success', 2000);
 						window.location = "BloodGroup?status=1";
 					},
 					error: function (err) {
 						e.cancel = true;
-						DevExpress.ui.notify('Xóa lỗi! Vui lòng nhấn F5 và tiến hành Xóa lại.', 'error', 2000);
+						DevExpress.ui.notify('Failed', 'error', 2000);
 					}
 				});
 			},
@@ -210,7 +203,7 @@
 					},
 					error: function (err) {
 						e.cancel = true;
-						DevExpress.ui.notify('Thêm BloodGroup không thành công', 'error', 2000);
+						DevExpress.ui.notify('Failed', 'error', 2000);
 					}
 				});
 			},
@@ -224,36 +217,19 @@
 					type: 'put',
 					async: false,
 					url: '/api/BloodGroup/' + form.id,
-					//dataType: 'json',
 					data: JSON.stringify(formData),
 					contentType: 'application/json',
 					success: function (dulieu) {
 
-						DevExpress.ui.notify('Update BloodGroup thành công', 'success', 2000);
+						DevExpress.ui.notify('Success', 'success', 2000);
 						window.location = "BloodGroup?status=1";
 					},
 					error: function (err) {
 						e.cancel = true;
-						DevExpress.ui.notify('Lỗi. vui lòng thử lại', 'error', 2000);
+						DevExpress.ui.notify('Failed', 'error', 2000);
 					}
 				});
 			}
 		}).dxDataGrid("instance");
-		//const GetDataSource = async () => {
-		//	var response = await fetch('/api/BloodGroup');
-		//	var data = await response.json();
-		//	datasource = data.data;
-		//	console.log(datasource)
-		//	dataGrid.refresh()
-		//		.done(function () {
-		//			alert('done')
-		//			// ...
-		//		})
-		//		.fail(function (error) {
-		//			// ...
-		//		});
-		//	return data.data;
-		//}
-		//GetDataSource();
 	});
 </script>

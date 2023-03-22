@@ -11,11 +11,12 @@ namespace BloodBank.ViewModels
         public string Note { get; set; }
         [EnumDataType(typeof(Status), ErrorMessage = "Status must be between 0 and 5")]
         public Status Status { get; set; }
-        public int? BloodId { get; set; } 
+        [Required(ErrorMessage = "BloodId is required")]
+        public int BloodId { get; set; } 
         [Required(ErrorMessage = "User is required")]
         public string UserId { get; set; }
-        public DateTime? TimeSign { get; set; } = DateTime.MinValue;
-        public int? QR { get; set; }
-        public int? HospitalId { get; set; } 
+        public DateTime? TimeSign { get; set; } = DateTime.MaxValue;
+        [Required(ErrorMessage = "HospitalId is required")]
+        public int HospitalId { get; set; } 
     }
 }

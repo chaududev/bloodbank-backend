@@ -1,0 +1,475 @@
+﻿@{
+	ViewData["Title"] = "Register";
+}
+
+<div class="panel-heading">
+	<h3 class="panel-title"><a href="javascript:void(0);" class="toggle-sidebar"><span class="fa fa-angle-double-left" data-toggle="offcanvas" title="Maximize Panel"></span></a>@ViewData["Title"]</h3>
+</div>
+<div class="panel-body">
+	<div class="content-row">
+		<h2 class="content-row-title">@ViewData["Title"] Management</h2>
+		<div class="demo-container">
+			<div id="data-grid-demo">
+				<div id="gridContainer"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<!-- Devexpress -->
+<link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/17.1.5/css/dx.common.css" />
+<link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/17.1.5/css/dx.light.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/devextreme/22.2.4/js/dx.all.js"></script>
+<script>
+	$(function () {
+		function getParameterByName(name, url) {
+			if (!url) url = window.location.href;
+			name = name.replace(/[\[\]]/g, '\\$&');
+			var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+				results = regex.exec(url);
+			if (!results) return null;
+			if (!results[2]) return '';
+			return decodeURIComponent(results[2].replace(/\+/g, ' '));
+		}
+		var url = window.location.href;
+		var status = getParameterByName('status', url);
+		window.history.pushState(null, null, "Register");
+		if (status == 1)
+			DevExpress.ui.notify('Success', 'success', 2000);
+		jQuery.fn.load = function (callback) {
+			var el = $(this);
+			el.on('load', callback);
+			return el;
+		};
+		var bloodGroupDataSource = new DevExpress.data.DataSource({
+			load: function (loadOptions) {
+				var d = $.Deferred();
+				$.get('/api/bloodGroup')
+					.done(function (response) {
+						const dataSource = $.map(response.data, function (bloodGroup) {
+							return {
+								idBlood: bloodGroup.id,
+								nameBlood: bloodGroup.name
+							};
+						});
+						d.resolve(dataSource);
+					}).fail(function (error) {
+						console.log(error);
+						d.reject('Load Failed', error);
+					});
+				return d.promise();
+			},
+			byKey: function (key) {
+				var d = $.Deferred();
+				$.get('/api/bloodGroup/' + key)
+					.done(function (response) {
+						d.resolve(response.data);
+					})
+					.fail(function (error) {
+						console.log(error);
+						d.reject('Load Failed', error);
+					});
+				return d.promise();
+			},
+		});
+		var hospitalDataSource = new DevExpress.data.DataSource({
+			load: function (loadOptions) {
+				var d = $.Deferred();
+				$.get('/api/hospital')
+					.done(function (response) {
+						const dataHospital = $.map(response.data, function (hospital) {
+							return { idHospital: hospital.id, nameHospital: hospital.name };
+						});
+						d.resolve(dataHospital);
+					}).fail(function (error) {
+						console.log(error);
+						d.reject('Load Failed', error);
+					});
+				return d.promise();
+			},
+			byKey: function (key) {
+				var d = $.Deferred();
+				$.get('/api/hospital/' + key)
+					.done(function (response) {
+						d.resolve(response.data);
+					})
+					.fail(function (error) {
+						console.log(error);
+						d.reject('Load Failed', error);
+					});
+				return d.promise();
+			}
+		});
+		var userDataSource = new DevExpress.data.DataSource({
+			load: function (loadOptions) {
+				var d = $.Deferred();
+				$.get('/api/auth')
+				.done(function(response){
+					const dataSource = $.map(response.data,function(user){
+							return { idUser: user.id, userName: user.userName };
+					});
+					d.resolve(dataSource);
+				}).fail(function (error) {
+					console.log(error);
+					d.reject('Load Failed', error);
+				});
+				return d.promise();
+			},
+			byKey: function (key) {
+				var d = $.Deferred();
+				$.get('/api/auth/' + key)
+					.done(function (response) {
+						d.resolve(response.data);
+					})
+					.fail(function (error) {
+						console.log(error);
+					d.reject('Load Failed', error);
+					});
+				return d.promise();
+			}
+		});
+		let getAllRegister;
+		const InitData = () => {
+			$.ajax({
+				type: 'get',
+				async: false,
+				url: '/api/Register',
+				success: function (data) {
+					getAllRegister = data;
+					console.log(data)
+				},
+				error: function (err) {
+				alert('Load Failed');
+				}
+			});
+			InitData();
+		}
+		const itemsShow = [
+			{
+				caption: "STT",
+				width: 40,
+				cellTemplate: function (cellElement, cellInfo) {
+					var index = dataGrid.pageIndex() * dataGrid.pageSize() + cellInfo.rowIndex + 1;
+					cellElement.text(index);
+				},
+				formItem: {
+					visible: false
+				}
+			},
+			{
+				dataField: "id",
+				visible: false
+			},
+			{
+				dataField: "note",
+				caption: "Note",
+				validationRules: [
+					{
+						type: "required",
+						message: "Note is required"
+					}
+				]
+			},
+			{
+				dataField: "status",
+				caption: "Status",
+				filterOperations: ["="],
+				selectedFilterOperation: "=",
+				validationRules: [
+					{
+						type: "required",
+						message: "Status is required"
+					}
+				],
+				editorType: 'dxSelectBox',
+				editorOptions: {
+					dataSource: [
+						{ id: 0, name: 'None' },
+						{ id: 1, name: 'Register' },
+						{ id: 2, name: 'Accept' },
+						{ id: 3, name: 'Processing' },
+						{ id: 4, name: 'Finished' },
+						{ id: 5, name: 'Cancel' }
+					],
+					displayExpr: 'name',
+					valueExpr: 'id',
+				},
+				customizeText: function (cellInfo) {
+					var roleId = cellInfo.value;
+					var dataSources = this.editorOptions.dataSource;
+					var role = dataSources.filter(function (item) {
+						return item.id === roleId;
+					})[0];
+					return role ? role.name : '';
+				}
+			},
+			{
+				dataField: "bloodId",
+				caption: "Blood Id",
+				visible: false,
+				validationRules: [
+					{
+						type: "required",
+						message: "BloodId is required"
+					}
+				],
+				editorType: 'dxSelectBox',
+				editorOptions: {
+					dataSource: bloodGroupDataSource,
+					displayExpr: 'nameBlood',
+					valueExpr: 'idBlood',
+				},
+			},
+			{
+				dataField: "bloodGroup.name",
+				caption: "Blood",
+			},
+			{
+				dataField: "userId",
+				caption: "User Id",
+				visible: false,
+				validationRules: [
+					{
+						type: "required",
+						message: "UserId is required"
+					}
+				],
+				editorType: 'dxLookup',
+				editorOptions: {
+					dataSource:userDataSource,
+					displayExpr: 'userName',
+					valueExpr: 'idUser',
+					searchEnabled: true,
+					searchPlaceholder: "Search...",
+					popupWidth: "auto",
+					showPopupTitle: true,
+				},
+			},
+			{
+				dataField: "user.userName",
+				caption: "UserName",
+			},
+			{
+				dataField: "hospitalId",
+				caption: "Hospital Id",
+				visible: false,
+				validationRules: [
+					{
+						type: "required",
+						message: "Hospital is required"
+					}
+				],
+				editorType: 'dxSelectBox',
+				editorOptions: {
+					dataSource: hospitalDataSource,
+					displayExpr: 'nameHospital',
+					valueExpr: 'idHospital'
+				},
+			},
+			{
+				dataField: "hospital.name",
+				caption: "Hospital",
+			},
+			{
+				dataField: "timeSign",
+				caption: "Time Sign",
+				visible: true,
+				dataType: 'date',
+				format: 'dd/MM/yyyy',
+				editorOptions: {
+					type: 'date',
+					displayFormat: 'dd/MM/yyyy',
+					useMaskBehavior: true
+				}
+			},
+			{
+				dataField: "image.url",
+				caption: "QR",
+				cellTemplate: function(container, options) {
+					var img = $("<img>")
+						.attr("src", options.value)
+						.addClass("image-cell")
+						.css({ width: "100px", height: "100px" })
+						.appendTo(container);
+				}
+			},
+			{
+				type: "buttons",
+				width: 110,
+				buttons: ["edit", "delete"]
+			},
+		]
+
+		var datasource = [];
+		var dataGrid = $("#gridContainer").dxDataGrid({
+			filterRow: { visible: true },
+			dataSource: {
+				store: new DevExpress.data.CustomStore({
+					loadMode: "raw",
+					load: function () {
+						return $.getJSON("/api/Register").then((rs) => {
+							return rs.data
+						})
+					},
+					update: function (key, values) {
+					}
+
+				})
+			},
+			onInitialized: function (e) {
+				bloodGroupDataSource.load()
+						.done(function (data) {})
+						.fail(function (error) {});
+
+				hospitalDataSource.load()
+						.done(function (data) {})
+						.fail(function (error) {});
+				userDataSource.load()
+						.done(function (data) {})
+						.fail(function (error) {});
+			},
+			keyExpr: "id",
+			showBorders: true,
+			paging: {
+				pageSize: 10,
+			},
+			searchPanel: {
+				visible: false,
+			},
+			pager: {
+				showPageSizeSelector: true,
+				allowedPageSizes: [10, 20],
+				showInfo: true
+			},  
+			editing: {
+				allowDeleting: true, 
+				allowAdding: true,
+				mode: "popup",
+				allowUpdating: true,
+				useIcons: true,
+				popup: {
+					title: "Register ",
+					showTitle: true,
+					width: 700,
+					height: 500,
+					position: {
+						my: "top",
+						at: "top",
+						of: window
+					}
+				},
+				form: {
+					items: [{
+						itemType: "group",
+						colCount: 2,
+						colSpan: 2,
+						items: [
+							{
+								dataField: "id",
+								colSpan: 2,
+								visible: false,
+							},
+							{
+								dataField: "note",
+								colSpan: 2,
+							},
+							{
+								dataField: "status",
+								colSpan: 2,
+							},
+
+							{
+								dataField: "bloodId",
+								colSpan: 2,
+							},
+
+							{
+								dataField: "userId",
+								colSpan: 2,
+							},
+							{
+								dataField: "timeSign",
+								colSpan: 2,
+							},
+
+							{
+								dataField: "hospitalId",
+								colSpan: 2,
+							},
+
+						]
+					}]
+				}
+			},
+			columns: itemsShow,
+			onRowRemoving: function (e) {
+				$.ajax({
+					type: 'DELETE',
+					async: false,
+					url: '/api/Register/' + e.data.id,
+					success: function (dulieu) {
+						DevExpress.ui.notify('Success', 'success', 2000);
+						window.location = "Register?status=1";
+					},
+					error: function (err) {
+						e.cancel = true;
+						DevExpress.ui.notify('Failed', 'error', 2000);
+					}
+				});
+			},
+			onRowInserting: function (e) {
+				let formData = {
+					note: e.data.note,
+					status:  e.data.status,
+					bloodId:  e.data.bloodId,
+					userId:  e.data.userId,
+					timeSign:  e.data.timeSign,
+					hospitalId:  e.data.hospitalId
+				};
+				console.log(formData);
+				$.ajax({
+					type: 'POST',
+					data: JSON.stringify(formData),
+					contentType: 'application/json',
+					async: false,
+					url: '/api/Register',
+					success: function (dulieu) {
+						window.location = "Register?status=1";
+					},
+					error: function (err) {
+						e.cancel = true;
+						DevExpress.ui.notify('Failed', 'error', 2000);
+					}
+				});
+			},
+			onRowUpdating: function (e) {
+				const form = { ...e.oldData, ...e.newData }
+				let formData = {
+					note: form.note,
+					status:  form.status,
+					bloodId:  form.bloodId,
+					userId: form.userId,
+					timeSign: form.timeSign,
+					hospitalId:  form.hospitalId
+				};
+				console.log(formData);
+				$.ajax({
+					type: 'put',
+					async: false,
+					url: '/api/Register/' + form.id,
+					data: JSON.stringify(formData),
+					contentType: 'application/json',
+					success: function (dulieu) {
+						DevExpress.ui.notify('Success', 'success', 2000);
+						window.location = "Register?status=1";
+					},
+					error: function (err) {
+						e.cancel = true;
+						DevExpress.ui.notify('Failed', 'error', 2000);
+					}
+				});
+			}
+		}).dxDataGrid("instance");
+	});
+</script>

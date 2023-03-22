@@ -24,7 +24,7 @@ namespace BloodBank.ViewModels
         public Status Status { get; set; }
         [ForeignKey("Image")]
         public int ImageId { get; private set; }
-        public virtual Image? Image { get; private set; }
+        public virtual Domain.Model.Base.Image? Image { get; private set; }
         public DateTime CreatedAt { get; private set; }
         public DateTime UpdatedAt { get; private set; }
     }

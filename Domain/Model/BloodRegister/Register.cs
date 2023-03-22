@@ -42,17 +42,17 @@ namespace Domain.Model.BloodRegister
         public Register(string note, Status status, int bloodId, string userId, DateTime timeSign, int qR, int hospitalId)
         {
             Add();
-            Update(note, status, bloodId, userId, timeSign, qR, hospitalId);
+            UserId = userId.Trim();
+            QR = qR;
+            Update(note, status, bloodId,  timeSign, hospitalId);
         }
-        public void Update(string note, Status status, int bloodId, string userId, DateTime timeSign, int qR, int hospitalId)
+        public void Update(string note, Status status, int bloodId, DateTime timeSign, int hospitalId)
         {
             Update();
             Note = note.Trim();
             Status = status;
             BloodId = bloodId;
-            UserId = userId;
             TimeSign = timeSign;
-            QR = qR;
             HospitalId = hospitalId;
         }
     }

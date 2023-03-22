@@ -32,7 +32,7 @@ namespace BloodBank.ViewModels
         public DateTime? Birthday { get; set; }
         public string? Address { get; set; }
         public int? HospitalId { get; set; }
-		[EnumDataType(typeof(Role), ErrorMessage = "Role must be between 0 and 3")]
-		public Role Role { get; set; }
+        [EnumDataType(typeof(Role), ErrorMessage = "Role must be between 0 and 3")]
+        public Role? Role { get; set; } = ViewModels.Role.USER;
     }
 }

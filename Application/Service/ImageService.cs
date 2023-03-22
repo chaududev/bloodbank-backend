@@ -2,10 +2,11 @@
 using Domain.Model.Base;
 using Infrastructure.IRepository;
 using Microsoft.AspNetCore.Http;
-using System.Net.Http;
 using System;
-using ZXing;
-using ZXing.QrCode;
+using System.Drawing;
+using System.Linq;
+using QRCoder;
+using ZXing.QrCode.Internal;
 
 namespace Application.Service
 {
@@ -24,7 +25,7 @@ namespace Application.Service
             {
                 Directory.CreateDirectory(uploadPath);
             }
-            var fileName = $"Post-{DateTime.Now:yyyyMMddHHmmss}-{file.FileName}";
+            var fileName = $"Post-{DateTime.Now.ToString("ddmmyyyyHHMMss")}-{file.FileName}";
             var filePath = Path.Combine(uploadPath, fileName);
             using (var stream = new FileStream(filePath, FileMode.Create))
             {
@@ -42,31 +43,53 @@ namespace Application.Service
 
         public Image GenerateQRCode(string data)
         {
-            var options = new QrCodeEncodingOptions
+            QRCodeGenerator qrGenerator = new QRCodeGenerator();
+            QRCodeData qrCodeData = qrGenerator.CreateQrCode(data, QRCodeGenerator.ECCLevel.Q);
+            var qrCode = new PngByteQRCode(qrCodeData);
+            var qrCodeImage = qrCode.GetGraphic(20);
+            var fileName = $"Qrcode-{DateTime.Now.ToString("ddmmyyyyHHMMss")}.png";
+            bool writeFile = ByteArrayToFile(fileName, "qrcode", qrCodeImage);
+            if (writeFile)
             {
-                DisableECI = true,
-                CharacterSet = "UTF-8",
-                Width = 200,
-                Height = 200
-            };
-            var writer = new BarcodeWriterSvg();
-            writer.Format = BarcodeFormat.QR_CODE;
-            writer.Options = options;
+                Image Image = new Image(fileName, "image/png", $"/uploads/qrcode/{fileName}");
+                repository.Add(Image);
+                return Image;
 
-            var svgResult = writer.Write(data);
-            // Create directory if it doesn't exist
-            var uploadPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads", "qr");
-            if (!Directory.Exists(uploadPath))
-            {
-                Directory.CreateDirectory(uploadPath);
             }
-            var fileName = $"QR-{DateTime.Now:yyyyMMddHHmmss}-{Guid.NewGuid()}.svg";
-            var contentType = "image/svg+xml";
-            var filePath = Path.Combine(uploadPath, fileName);
-            File.WriteAllText(filePath, svgResult.ToString());
-            var url = $"/uploads/qr/{fileName}";
-            Image Image = new Image(fileName, contentType, url);
-            return Image;
+            else
+            {
+                return null;
+            }
+
+           
+        }
+        public bool ByteArrayToFile(string fileName,string path, byte[] byteArray)
+        {
+            try
+            {
+              
+                var uploadPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot","uploads", path);
+                CreateIfMissing(uploadPath);
+                using (var fs = new FileStream(uploadPath+"/"+ fileName, FileMode.Create, FileAccess.Write))
+                {
+                    fs.Write(byteArray, 0, byteArray.Length);
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception caught in process: {0}", ex);
+                return false;
+            }
+        }
+
+        private void CreateIfMissing(string uploadPath)
+        {
+           
+          
+            bool folderExists = Directory.Exists(uploadPath);
+            if (!folderExists)
+                Directory.CreateDirectory(uploadPath);
         }
     }
 }

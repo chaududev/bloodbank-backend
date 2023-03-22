@@ -313,6 +313,10 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\image\\ban.jpg",
+      "PackagePath": "staticwebassets\\uploads\\image\\ban.jpg"
+    },
+    {
       "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\image\\banner.jpg",
       "PackagePath": "staticwebassets\\uploads\\image\\banner.jpg"
     },
@@ -429,24 +433,88 @@
       "PackagePath": "staticwebassets\\uploads\\posts\\Post-20230320164553-anh-1-9607.jpg"
     },
     {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-21232023220303-lisa_blackpink_la_ngoi_sao_co_luong_fan_quoc_te_hung_hau_nhat_han_quoc_112605.jpg",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-21232023220303-lisa_blackpink_la_ngoi_sao_co_luong_fan_quoc_te_hung_hau_nhat_han_quoc_112605.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-21232023220337-anh-1-9607.jpg",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-21232023220337-anh-1-9607.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-21242023220320-lisa_blackpink_la_ngoi_sao_co_luong_fan_quoc_te_hung_hau_nhat_han_quoc_112605.jpg",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-21242023220320-lisa_blackpink_la_ngoi_sao_co_luong_fan_quoc_te_hung_hau_nhat_han_quoc_112605.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-21242023220345-tieu-su-ca-si-lisa-blackpink-3.jpeg",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-21242023220345-tieu-su-ca-si-lisa-blackpink-3.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-21262023220319-lisa_blackpink_la_ngoi_sao_co_luong_fan_quoc_te_hung_hau_nhat_han_quoc_112605.jpg",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-21262023220319-lisa_blackpink_la_ngoi_sao_co_luong_fan_quoc_te_hung_hau_nhat_han_quoc_112605.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-21262023220332-banner.jpg",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-21262023220332-banner.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-21262023220341-lisa_blackpink_la_ngoi_sao_co_luong_fan_quoc_te_hung_hau_nhat_han_quoc_112605.jpg",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-21262023220341-lisa_blackpink_la_ngoi_sao_co_luong_fan_quoc_te_hung_hau_nhat_han_quoc_112605.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-21272023220331-lisa_blackpink_la_ngoi_sao_co_luong_fan_quoc_te_hung_hau_nhat_han_quoc_112605.jpg",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-21272023220331-lisa_blackpink_la_ngoi_sao_co_luong_fan_quoc_te_hung_hau_nhat_han_quoc_112605.jpg"
+    },
+    {
       "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\anh-20230316114759tieu-su-ca-si-lisa-blackpink-3.jpeg",
       "PackagePath": "staticwebassets\\uploads\\posts\\anh-20230316114759tieu-su-ca-si-lisa-blackpink-3.jpeg"
     },
     {
-      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\qr\\QR-20230316120142-0c20e3d5-9734-431e-8dd1-f190294d8f56.svg",
-      "PackagePath": "staticwebassets\\uploads\\qr\\QR-20230316120142-0c20e3d5-9734-431e-8dd1-f190294d8f56.svg"
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\qrcode\\Qrcode-21232023220322.png",
+      "PackagePath": "staticwebassets\\uploads\\qrcode\\Qrcode-21232023220322.png"
     },
     {
-      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\qr\\QR-chauhoangbichdu-eb3ef594-5f43-473b-8d7b-c0b03a7adde5.svg",
-      "PackagePath": "staticwebassets\\uploads\\qr\\QR-chauhoangbichdu-eb3ef594-5f43-473b-8d7b-c0b03a7adde5.svg"
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\qrcode\\Qrcode-22032023090334.png",
+      "PackagePath": "staticwebassets\\uploads\\qrcode\\Qrcode-22032023090334.png"
     },
     {
-      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\qr\\QR-chauhoangbichduahihihihdsafhsafskfhsfherwhrsdjsdkzdmzcnehjrwkjrkwejrknmssd-44914eb8-a1a6-40b9-849b-a3fc81e991fe.svg",
-      "PackagePath": "staticwebassets\\uploads\\qr\\QR-chauhoangbichduahihihihdsafhsafskfhsfherwhrsdjsdkzdmzcnehjrwkjrkwejrknmssd-44914eb8-a1a6-40b9-849b-a3fc81e991fe.svg"
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\qrcode\\Qrcode-22052023090359.png",
+      "PackagePath": "staticwebassets\\uploads\\qrcode\\Qrcode-22052023090359.png"
     },
     {
-      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\qr\\QR-data-89295717-3678-44d5-91d0-9c16244e5082.svg",
-      "PackagePath": "staticwebassets\\uploads\\qr\\QR-data-89295717-3678-44d5-91d0-9c16244e5082.svg"
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\qrcode\\Qrcode-22152023090312.png",
+      "PackagePath": "staticwebassets\\uploads\\qrcode\\Qrcode-22152023090312.png"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\qrcode\\Qrcode-22162023090326.png",
+      "PackagePath": "staticwebassets\\uploads\\qrcode\\Qrcode-22162023090326.png"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\qrcode\\Qrcode-22452023110351.png",
+      "PackagePath": "staticwebassets\\uploads\\qrcode\\Qrcode-22452023110351.png"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\qrcode\\Qrcode-22462023080326.png",
+      "PackagePath": "staticwebassets\\uploads\\qrcode\\Qrcode-22462023080326.png"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\qrcode\\Qrcode-22472023080340.png",
+      "PackagePath": "staticwebassets\\uploads\\qrcode\\Qrcode-22472023080340.png"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\qrcode\\Qrcode-22472023100303.png",
+      "PackagePath": "staticwebassets\\uploads\\qrcode\\Qrcode-22472023100303.png"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\qrcode\\Qrcode-22552023080351.png",
+      "PackagePath": "staticwebassets\\uploads\\qrcode\\Qrcode-22552023080351.png"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\qrcode\\Qrcode-22562023080345.png",
+      "PackagePath": "staticwebassets\\uploads\\qrcode\\Qrcode-22562023080345.png"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\qrcode\\Qrcode-22592023080345.png",
+      "PackagePath": "staticwebassets\\uploads\\qrcode\\Qrcode-22592023080345.png"
     },
     {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.BloodBank.Microsoft.AspNetCore.StaticWebAssets.props",

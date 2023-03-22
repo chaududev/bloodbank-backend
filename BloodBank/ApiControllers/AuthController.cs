@@ -16,7 +16,6 @@ using System.Security.Claims;
 using System.Text;
 using System.Web;
 using PageList;
-using PagedList;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using System.Data;
 

@@ -7,7 +7,13 @@
 </div>
 <div class="panel-body">
     <div class="content-row">
-        <h2 class="content-row-title">@ViewData["Title"]       Recent</h2>
+        <h2 class="content-row-title">@ViewData["Title"]</h2>
+        <div class ="col-md-12">
+            <div>
+                <img src="~/uploads/image/ban.jpg" height="400px" width="100%" />
+            </div>
+        </div>
+        <h2 class="content-row-title">Recent</h2>
         <h3 class="content-row-title">Event</h3>
         <div class="row" id="row">
            
@@ -18,11 +24,7 @@
     </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-
-<!-- Popper JS -->
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<!-- Latest compiled JavaScript -->
-<!-- Devexpress -->
 <script>
      const main = async () => {
         var url = '/api/event';

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "yQ6E48+MZOHIQwLH6rbRb7+VNzQ+w31yhoROGPKPBZNa2fkB3ce1814vcOIHyrHQHVwfytUXlYE7pQfJGx80Aw==",
+  "dgSpecHash": "DZUorzT1cpl1mUGr0qcSfw7qlwi7BYxzUIZVI7/JoIAU68KVhkyz4LG3SEE4M3dNmfjPy2aGVuWWKngUjgsJeQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Admin\\source\\repos\\BloodBank\\Application\\Application.csproj",
   "expectedPackageFiles": [
@@ -36,6 +36,7 @@
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\qrcoder\\1.4.3\\qrcoder.1.4.3.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\system.collections.immutable\\6.0.0\\system.collections.immutable.6.0.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\system.configuration.configurationmanager\\4.7.0\\system.configuration.configurationmanager.4.7.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0\\system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",

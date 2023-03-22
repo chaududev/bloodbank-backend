@@ -17,13 +17,13 @@ namespace BloodBank.ViewModels
         public virtual BloodGroup BloodGroup { get; private set; }
         [Required(ErrorMessage = "User is required")]
         public string UserId { get;  set; }
-        //public virtual User? User { get; private set; }
+        public virtual User? User { get; private set; }
         public DateTime CreatedAt { get; private set; }
         public DateTime UpdatedAt { get; private set; }
         public DateTime TimeSign { get;  set; }
         public int QR { get;  set; }
         public virtual Image? Image { get; private set; }
         public int HospitalId { get;  set; }
-        //public virtual HospitalViewModel? Hospital { get; set; } 
+        public virtual Hospital? Hospital { get; set; } 
     }
 }

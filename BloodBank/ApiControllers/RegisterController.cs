@@ -2,6 +2,7 @@
 using Application.Service;
 using BloodBank.Mapper;
 using BloodBank.ViewModels;
+using Domain.Model.Base;
 using Domain.Model.BloodRegister;
 using Domain.Model.Posts;
 using Microsoft.AspNetCore.Mvc;
@@ -85,8 +86,14 @@ namespace BloodBank.ApiControllers
                 {
                     try
                     {
-                        RegisterService.Add(Register.Note, Register.Status, Register.BloodId, Register.UserId, Register.TimeSign, Register.QR, Register.HospitalId);
-                        return Ok();
+                        string data = $"{Register.UserId}-{DateTime.Now}";
+                        Image QR = ImageService.GenerateQRCode(data);
+                        if (QR != null)
+                        {
+                            RegisterService.Add(Register.Note, Register.Status, Register.BloodId, Register.UserId, Register.TimeSign??DateTime.MaxValue, QR.Id, Register.HospitalId);
+                            return Ok();
+                        }
+                        return BadRequest("Faild create QR");
                     }
                     catch (Exception e)
                     {
@@ -107,7 +114,7 @@ namespace BloodBank.ApiControllers
             {
                 if (ModelState.IsValid)
                 {
-                    RegisterService.Update(id, Register.Note, Register.Status, Register.BloodId, Register.UserId, Register.TimeSign, Register.QR, Register.HospitalId);
+                    RegisterService.Update(id, Register.Note, Register.Status, Register.BloodId, Register.TimeSign??DateTime.MaxValue, Register.HospitalId);
                     return Ok();
                 }
                 return UnprocessableEntity(ModelState);

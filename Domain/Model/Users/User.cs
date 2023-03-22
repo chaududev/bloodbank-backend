@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace Domain.Model.Users
 {
@@ -13,6 +14,7 @@ namespace Domain.Model.Users
         public DateTime? Birthday{ get; private set; }
         [MaxLength(100)]
         public string? Address { get; private set; } = "Unknown";
+        [JsonIgnore]
         public virtual List<Register> Register { get; private set; }
         public int? HospitalId { get; private set; }
         [ForeignKey("HospitalId")]
