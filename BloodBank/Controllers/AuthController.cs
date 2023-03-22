@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Globalization;
 using System.Net.Http;
+using ZXing;
 
 namespace BloodBank.Controllers
 {
@@ -64,6 +65,9 @@ namespace BloodBank.Controllers
         public async Task<IActionResult> RegisterAsync(RegisterViewModel model)
         {
             var user = new User(model.UserName, model.FullName, model.Email, model.Birthday, model.Address);
+            model.HospitalId = 1;
+            model.Role = Role.USER;
+            user.SetHospital(model.HospitalId); 
             var userCurrent = await _userManager.FindByNameAsync(model.UserName);
             if (!ModelState.IsValid)
             {
@@ -73,7 +77,6 @@ namespace BloodBank.Controllers
                     ViewData["Message"] = error.ErrorMessage;
                 }
             }
-
             else if (userCurrent != null)
             {
                 ViewData["Message"] = "Username is exist !";
@@ -81,14 +84,18 @@ namespace BloodBank.Controllers
             else 
             {
                 var createResponse = await _userManager.CreateAsync(user, model.Password);
-                if (createResponse.Succeeded)
+                if (!createResponse.Succeeded)
                 {
-                    var role = await _roleManager.FindByNameAsync("USER");
+                    ViewData["Message"] = "Register Failed!";
+                }
+                else
+                {
+                    var role = await _roleManager.FindByNameAsync(model.Role.ToString());
                     if (role == null)
                     {
                         role = new IdentityRole()
                         {
-                            Name = "USER",
+                            Name = model.Role.ToString(),
                         };
 
                         var responseRole = await _roleManager.CreateAsync(role);
@@ -103,7 +110,6 @@ namespace BloodBank.Controllers
                         ViewData["Message"] = "Register Failed ! Please check and try again !";
                     }
                 }
-                else ViewData["Message"] = "Register Failed ! Please check and try again !";
             }
             return View();
         }

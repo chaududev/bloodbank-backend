@@ -2,8 +2,10 @@
 using BloodBank.Mapper;
 using BloodBank.ViewModels;
 using Domain.Model.Posts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Data;
 
 namespace BloodBank.ApiControllers
 {
@@ -57,6 +59,7 @@ namespace BloodBank.ApiControllers
             }
         }
         [HttpPost]
+        [Authorize(Policy = "Roles")]
         public async Task<IActionResult> Insert([FromForm] string jsonString, IFormFile file)
         {
             if (file == null || file.Length == 0)
@@ -93,6 +96,7 @@ namespace BloodBank.ApiControllers
             }
         }
         [HttpPut("{id}")]
+        [Authorize(Policy = "Roles")]
         public async Task<IActionResult> Update(int id, [FromForm] string jsonString, IFormFile? file)
         {
             var idImage = 0;
@@ -134,6 +138,7 @@ namespace BloodBank.ApiControllers
             }
         }
         [HttpDelete("{id}")]
+        [Authorize(Roles ="ADMIN")]
         public IActionResult Delete(int id)
         {
             try

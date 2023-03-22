@@ -25,7 +25,6 @@ namespace BloodBank.ViewModels
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
-
         public string ConfirmPassword { get; set; }
         [EmailAddress(ErrorMessage = "You have to enter a valid email address")]
         public string Email { get; set; }

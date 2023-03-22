@@ -5,6 +5,7 @@ using BloodBank.ViewModels;
 using Domain.Model.Base;
 using Domain.Model.BloodRegister;
 using Domain.Model.Posts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -25,6 +26,7 @@ namespace BloodBank.ApiControllers
         }
 
         [HttpGet]
+        [Authorize(Policy = "Roles")]
         public IActionResult Get(string? key, int? pageSize, int? page)
         {
             try
@@ -43,6 +45,7 @@ namespace BloodBank.ApiControllers
             }
         }
         [HttpGet("user")]
+        [Authorize(Policy = "AllRoles")]
         public IActionResult GetUser(string userName, int? pageSize, int? page)
         {
             try
@@ -61,6 +64,7 @@ namespace BloodBank.ApiControllers
             }
         }
         [HttpGet("{id}")]
+        [Authorize(Policy = "AllRoles")]
         public IActionResult GetId(int id)
         {
             try
@@ -78,6 +82,7 @@ namespace BloodBank.ApiControllers
             }
         }
         [HttpPost]
+        [Authorize(Policy = "AllRoles")]
         public IActionResult Insert(RegisterBlood2ViewModel Register)
         {
             try
@@ -108,6 +113,7 @@ namespace BloodBank.ApiControllers
             }
         }
         [HttpPut("{id}")]
+        [Authorize(Policy = "Roles")]
         public IActionResult Update(int id, RegisterBlood2ViewModel Register)
         {
             try
@@ -125,6 +131,7 @@ namespace BloodBank.ApiControllers
             }
         }
         [HttpDelete("{id}")]
+        [Authorize(Roles = "ADMIN")]
         public IActionResult Delete(int id)
         {
             try

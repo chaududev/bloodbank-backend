@@ -2,7 +2,9 @@
 using BloodBank.Mapper;
 using BloodBank.ViewModels;
 using Domain.Model.BloodRegister;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace BloodBank.ApiControllers
 {
@@ -54,6 +56,7 @@ namespace BloodBank.ApiControllers
             }
         }
         [HttpPost]
+        [Authorize(Roles = "ADMIN")]
         public IActionResult Insert(BloodGroupViewModel BloodGroup)
         {
             try
@@ -71,6 +74,7 @@ namespace BloodBank.ApiControllers
             }
         }
         [HttpPut("{id}")]
+        [Authorize(Roles = "ADMIN")]
         public IActionResult Update(int id, BloodGroupViewModel BloodGroup)
         {
             try
@@ -88,6 +92,7 @@ namespace BloodBank.ApiControllers
             }
         }
         [HttpDelete("{id}")]
+        [Authorize(Roles = "ADMIN")]
         public IActionResult Delete(int id)
         {
             try

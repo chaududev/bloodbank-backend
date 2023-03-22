@@ -61,6 +61,7 @@ namespace BlogBank.ApiControllers
             }
         }
         [HttpPost]
+        [Authorize(Roles = "ADMIN")]
         public async Task<IActionResult> Insert([FromForm] string jsonString, IFormFile file)
         {
                 if (file == null || file.Length == 0)
@@ -97,6 +98,7 @@ namespace BlogBank.ApiControllers
                 }
         }
         [HttpPut("{id}")]
+        [Authorize(Roles = "ADMIN")]
         public async Task<IActionResult> Update(int id, [FromForm] string jsonString, IFormFile? file)
         {
             var idImage = 0;
@@ -138,6 +140,7 @@ namespace BlogBank.ApiControllers
             }
         }
         [HttpDelete("{id}")]
+        [Authorize(Roles = "ADMIN")]
         public IActionResult Delete(int id)
         {
             try

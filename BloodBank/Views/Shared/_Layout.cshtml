@@ -54,11 +54,7 @@
                     </div>
              </div>
          </div>
-        <footer class="border-top footer text-muted">
-            <div class="container">
-                &copy; 2023 - BloodBank - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-            </div>
-        </footer>
+      
     }
     else
     {
@@ -66,6 +62,11 @@
              @RenderBody()            
         </div>
      }
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2023 - BloodBank - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

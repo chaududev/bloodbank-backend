@@ -47,7 +47,7 @@
             html += `
                    <div class="col-sm-6 col-md-3">
                     <div class="thumbnail">
-                                <img class="img-rounded" src="${data[i].image.url}">
+                                    <img class="img-rounded" src="${data[i].image.url}" style="height:100px;"">
                         <div class="caption text-center">
                                     <h3>${data[i].eventName}</h3>
                                         <p>${data[i].description}</p>
@@ -70,7 +70,7 @@
             html += `
                    <div class="col-sm-6 col-md-3">
                     <div class="thumbnail">
-                                <img class="img-rounded" src="${data[i].image.url}" style="height:200px;">
+                                <img class="img-rounded" src="${data[i].image.url}" style="height:150px;">
                         <div class="caption text-center">
                                         <h3>${data[i].title}</h3>
                                         <p>${data[i].description}</p>
@@ -87,3 +87,25 @@
     main()
     main2()
 </script>
+<style>
+    h3{
+        display: -webkit-box;
+        height: 1.6rem;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: normal;
+        -webkit-line-clamp: 1;
+        line-height: 1.6rem;
+    }
+    p {
+        display: -webkit-box;
+        height: 3.2rem;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: normal;
+        -webkit-line-clamp: 2;
+        line-height: 1.6rem;
+    }
+</style>

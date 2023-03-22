@@ -58,6 +58,7 @@ namespace BloodBank.ApiControllers
             }
         }
         [HttpPost]
+        [Authorize(Roles = "ADMIN")]
         public IActionResult Insert(HospitalViewModel Hospital)
         {
             try
@@ -75,6 +76,7 @@ namespace BloodBank.ApiControllers
             }
         }
         [HttpPut("{id}")]
+        [Authorize(Roles = "ADMIN")]
         public IActionResult Update(int id, HospitalViewModel Hospital)
         {
             try
@@ -92,6 +94,7 @@ namespace BloodBank.ApiControllers
             }
         }
         [HttpDelete("{id}")]
+        [Authorize(Roles = "ADMIN")]
         public IActionResult Delete(int id)
         {
             try

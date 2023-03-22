@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "bP9+gwI7uxvNYO9j4j535dJSN1LyQF9ncAim2VeLc8c=",
+  "Hash": "+PMxtQuMP9haIaN35NizPk1GmdasYKfRfQBpCyc5Lik=",
   "Source": "BloodBank",
   "BasePath": "_content/BloodBank",
   "Mode": "Default",
@@ -3041,6 +3041,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\posts\\Post-21272023220331-lisa_blackpink_la_ngoi_sao_co_luong_fan_quoc_te_hung_hau_nhat_han_quoc_112605.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-22292023150356-Capture.JPG",
+      "SourceId": "BloodBank",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\",
+      "BasePath": "_content/BloodBank",
+      "RelativePath": "uploads/posts/Post-22292023150356-Capture.JPG",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\posts\\Post-22292023150356-Capture.JPG"
     },
     {
       "Identity": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\qrcode\\Qrcode-21232023220322.png",

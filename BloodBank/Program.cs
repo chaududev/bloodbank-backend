@@ -56,7 +56,17 @@ builder.Services.Configure<IISServerOptions>(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+})
+              .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
+              {
+                  options.LoginPath = "/Auth";
+                  options.LogoutPath = "/Auth/logout";
+                  options.AccessDeniedPath = "/";
+              });
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {
@@ -71,7 +81,17 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
     };
 });
-
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("Roles", policy =>
+    {
+        policy.RequireRole("HOSPITAL","STAFF","ADMIN");
+    });
+    options.AddPolicy("AllRoles", policy =>
+    {
+        policy.RequireRole("USER","HOSPITAL", "STAFF", "ADMIN");
+    });
+});
 builder.Services.AddTransient(typeof(IBaseRepository<>), typeof(BaseRepository<>));
 builder.Services.AddTransient<IBloodGroupService, BloodGroupService>();
 builder.Services.AddTransient<IImageService, ImageService>();
