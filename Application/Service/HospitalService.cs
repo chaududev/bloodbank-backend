@@ -34,19 +34,23 @@ namespace Application.Service
             {
                 throw new Exception($"The entity with ID {id} was not found.");
             }
+            if (id == 1)
+            {
+                throw new Exception($"This value must not be deleted!");
+            }
             repository.Delete(entity);
         }
 
         public Hospital GetById(int id)
         {
-            Expression<Func<Hospital, object>>[] includeProperties = { p => p.Users };
+            Expression<Func<Hospital, object>>[] includeProperties = null;
             return repository.GetById(includeProperties, id);
         }
 
         public (IEnumerable<Hospital> data, int total) GetList(string? key, int? pageSize, int? page)
         {
             Expression<Func<Hospital, bool>> filter = null;
-            Expression<Func<Hospital, object>>[] includeProperties = { p => p.Users };
+            Expression<Func<Hospital, object>>[] includeProperties = null;
             if (key != null)
                 filter = e => e.Name.ToUpper().Contains(key.ToUpper());
             return repository.Get(includeProperties, filter, null, pageSize ?? int.MaxValue, page ?? 1);

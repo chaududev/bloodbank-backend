@@ -37,8 +37,7 @@ namespace Infrastructure.Migrations
 
                     b.Property<string>("FileName")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Url")
                         .IsRequired()
@@ -244,6 +243,24 @@ namespace Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Hospitals");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Address = "None",
+                            CreatedAt = new DateTime(2023, 3, 22, 17, 41, 4, 926, DateTimeKind.Local).AddTicks(8291),
+                            Name = "None",
+                            UpdatedAt = new DateTime(2023, 3, 22, 17, 41, 4, 926, DateTimeKind.Local).AddTicks(8310)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Address = "06 Ngô Quyền, Huế",
+                            CreatedAt = new DateTime(2023, 3, 22, 17, 41, 4, 926, DateTimeKind.Local).AddTicks(8317),
+                            Name = "Bệnh viện Quốc tế",
+                            UpdatedAt = new DateTime(2023, 3, 22, 17, 41, 4, 926, DateTimeKind.Local).AddTicks(8317)
+                        });
                 });
 
             modelBuilder.Entity("Domain.Model.Users.User", b =>
@@ -255,10 +272,11 @@ namespace Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Address")
+                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<DateTime?>("Birthday")
+                    b.Property<DateTime>("Birthday")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ConcurrencyStamp")
@@ -326,6 +344,28 @@ namespace Infrastructure.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "23ba1d27-0638-48ce-a968-d03d6dee5d41",
+                            AccessFailedCount = 0,
+                            Address = "Hue",
+                            Birthday = new DateTime(2001, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ConcurrencyStamp = "e26d8cb5-e3ce-4e0c-9588-ffd39ee998b1",
+                            Email = "chaudu301@gmail.com",
+                            EmailConfirmed = true,
+                            FullName = "Chau Du",
+                            HospitalId = 1,
+                            LockoutEnabled = true,
+                            NormalizedEmail = "CHAUDU301@GMAIL.COM",
+                            NormalizedUserName = "ADMIN",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPx6OH/EiepTn7ZjXLsAxjvV4Q3TFsdCund6VK6kWRtcyl7HrVi9jWmZ8bmTPvBaDg==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "AKMZLDVQDMJAX4AKBITZL5OOVZB6SHPN",
+                            TwoFactorEnabled = false,
+                            UserName = "admin"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -353,6 +393,15 @@ namespace Infrastructure.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "0d4492c3-c15e-4986-bbd6-d6157c06dbe1",
+                            ConcurrencyStamp = "8f1f3472-f937-4d60-853f-6393ba0eb62e",
+                            Name = "ADMIN",
+                            NormalizedName = "ADMIN"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -440,6 +489,13 @@ namespace Infrastructure.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "23ba1d27-0638-48ce-a968-d03d6dee5d41",
+                            RoleId = "0d4492c3-c15e-4986-bbd6-d6157c06dbe1"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>

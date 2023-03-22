@@ -16,7 +16,7 @@ namespace Domain.Model.Users
         public string Address { get; private set; } = "Unknown";
         [JsonIgnore]
         public virtual List<Register> Register { get; private set; }
-        public int HospitalId { get; private set; }
+        public int? HospitalId { get; private set; }
         [ForeignKey("HospitalId")]
         public virtual Hospital? Hospital { get; private set; }
         public User()
@@ -43,7 +43,7 @@ namespace Domain.Model.Users
         }
         public void SetHospital(int hospitalId)
         {
-            HospitalId= hospitalId;
+            HospitalId = hospitalId;
         }
     }
 }

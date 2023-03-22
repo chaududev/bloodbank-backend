@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Infrastructure.Migrations
 {
-    public partial class db_blood_v16 : Migration
+    public partial class dsdsdsdsdss : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -61,7 +61,7 @@ namespace Infrastructure.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FileName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    FileName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ContentType = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Url = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
@@ -97,8 +97,8 @@ namespace Infrastructure.Migrations
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     FullName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Birthday = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Address = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    Birthday = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     HospitalId = table.Column<int>(type: "int", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -305,6 +305,31 @@ namespace Infrastructure.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[] { "0d4492c3-c15e-4986-bbd6-d6157c06dbe1", "8f1f3472-f937-4d60-853f-6393ba0eb62e", "ADMIN", "ADMIN" });
+
+            migrationBuilder.InsertData(
+                table: "Hospitals",
+                columns: new[] { "Id", "Address", "CreatedAt", "Name", "UpdatedAt" },
+                values: new object[] { 1, "None", new DateTime(2023, 3, 22, 17, 41, 4, 926, DateTimeKind.Local).AddTicks(8291), "None", new DateTime(2023, 3, 22, 17, 41, 4, 926, DateTimeKind.Local).AddTicks(8310) });
+
+            migrationBuilder.InsertData(
+                table: "Hospitals",
+                columns: new[] { "Id", "Address", "CreatedAt", "Name", "UpdatedAt" },
+                values: new object[] { 2, "06 Ngô Quyền, Huế", new DateTime(2023, 3, 22, 17, 41, 4, 926, DateTimeKind.Local).AddTicks(8317), "Bệnh viện Quốc tế", new DateTime(2023, 3, 22, 17, 41, 4, 926, DateTimeKind.Local).AddTicks(8317) });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "Address", "Birthday", "ConcurrencyStamp", "Email", "EmailConfirmed", "FullName", "HospitalId", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[] { "23ba1d27-0638-48ce-a968-d03d6dee5d41", 0, "Hue", new DateTime(2001, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "e26d8cb5-e3ce-4e0c-9588-ffd39ee998b1", "chaudu301@gmail.com", true, "Chau Du", 1, true, null, "CHAUDU301@GMAIL.COM", "ADMIN", "AQAAAAEAACcQAAAAEPx6OH/EiepTn7ZjXLsAxjvV4Q3TFsdCund6VK6kWRtcyl7HrVi9jWmZ8bmTPvBaDg==", null, false, "AKMZLDVQDMJAX4AKBITZL5OOVZB6SHPN", false, "admin" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "RoleId", "UserId" },
+                values: new object[] { "0d4492c3-c15e-4986-bbd6-d6157c06dbe1", "23ba1d27-0638-48ce-a968-d03d6dee5d41" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

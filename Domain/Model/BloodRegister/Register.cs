@@ -30,6 +30,7 @@ namespace Domain.Model.BloodRegister
         public string UserId { get; private set; }
         [ForeignKey("UserId")]
         public virtual User User { get; private set; }
+        //xacnhan
         public DateTime TimeSign { get; private set; }
         [ForeignKey("Image")]
         public int QR { get; private set; }
@@ -37,6 +38,7 @@ namespace Domain.Model.BloodRegister
         public int HospitalId { get; private set; }
         [ForeignKey("HospitalId")]
         public virtual Hospital Hospital { get; private set; }
+
 
         public Register(string note, Status status, int bloodId, string userId, DateTime timeSign, int qR, int hospitalId)
         {
