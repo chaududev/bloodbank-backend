@@ -50,15 +50,5 @@ namespace Application.Service
                 signingCredentials: signIn) ;
             return new JWToken(new JwtSecurityTokenHandler().WriteToken(token), expiresIn);
         }
-
-		public (IEnumerable<User> data, int total) GetList(string? key, int? pageSize, int? page)
-		{
-			Expression<Func<User, bool>> filter = null;
-			if (key != null)
-				filter = e => e.UserName.ToUpper().Contains(key.ToUpper());
-			Expression<Func<User, object>>[] includeProperties = { p => p.Hospital };
-			Expression<Func<User, object>> sort = null;
-			return repository.Get(includeProperties, filter, sort, pageSize ?? int.MaxValue, page ?? 1);
-		}
 	}
 }

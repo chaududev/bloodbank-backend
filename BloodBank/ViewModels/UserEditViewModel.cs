@@ -21,10 +21,10 @@ namespace BloodBank.ViewModels
 		public string? ConfirmPassword { get; set; }
 		[EmailAddress(ErrorMessage = "You have to enter a valid email address")]
 		public string Email { get; set; }
-		public DateTime? Birthday { get; set; }
-		public string? Address { get; set; }
-		public int? HospitalId { get; set; }
+		public DateTime? Birthday { get; set; } =DateTime.MinValue;
+		public string? Address { get; set; } = "Unknown";
+		public int? HospitalId { get; set; } = 1;
 		[EnumDataType(typeof(Role), ErrorMessage = "Role must be between 0 and 3")]
-		public Role Role { get; set; }
-	}
+		public Role Role { get; set; } = ViewModels.Role.USER;
+    }
 }

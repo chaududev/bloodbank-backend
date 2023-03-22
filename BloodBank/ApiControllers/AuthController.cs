@@ -80,8 +80,8 @@ namespace BloodBank.ApiControllers
         [Authorize(Roles = "ADMIN")]
         public async Task<IActionResult> Register([FromBody] RegisterViewModel model)
         {
-            var user = new User(model.UserName, model.FullName, model.Email, model.Birthday, model.Address);
-            if (model.HospitalId != null) { user.SetHospital(model.HospitalId); }
+            var user = new User(model.UserName, model.FullName, model.Email, model.Birthday??DateTime.MinValue, model.Address??"Unknown");
+            if (model.HospitalId != null) { user.SetHospital(model.HospitalId??1); }
             User userFind = await _userManager.FindByNameAsync(model.UserName);
             if (userFind != null)
             {
@@ -126,8 +126,8 @@ namespace BloodBank.ApiControllers
             {
                 return BadRequest("User not exist");
             }
-            userFind.Update(model.UserName, model.FullName, model.Email, model.Birthday, model.Address);
-            if (model.HospitalId != null) { userFind.SetHospital(model.HospitalId); }
+            userFind.Update(model.UserName, model.FullName, model.Email, model.Birthday??DateTime.MinValue, model.Address);
+            if (model.HospitalId != null) { userFind.SetHospital(model.HospitalId??1); }
             if (model.Password != null)
             {
                 var newPasswordHash = _userManager.PasswordHasher.HashPassword(userFind, model.Password);
@@ -186,7 +186,6 @@ namespace BloodBank.ApiControllers
                     users = users.Where(e => e.HospitalId == hospitalId).ToList();
                 }
                 var total = users.Count();
-                //users =users.Skip((page??1 - 1) * pageSize??int.MaxValue).Take(pageSize??int.MaxValue);
                 var count = users.Count();
                 var result = new List<UserViewModel>();
                 foreach (var user in users)

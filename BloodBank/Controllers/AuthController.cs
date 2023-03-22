@@ -64,10 +64,10 @@ namespace BloodBank.Controllers
         [HttpPost]
         public async Task<IActionResult> RegisterAsync(RegisterViewModel model)
         {
-            var user = new User(model.UserName, model.FullName, model.Email, model.Birthday, model.Address);
+            var user = new User(model.UserName, model.FullName, model.Email, model.Birthday??DateTime.MinValue, model.Address??"Unknown");
             model.HospitalId = 1;
             model.Role = Role.USER;
-            user.SetHospital(model.HospitalId); 
+            user.SetHospital(model.HospitalId ?? 1); 
             var userCurrent = await _userManager.FindByNameAsync(model.UserName);
             if (!ModelState.IsValid)
             {

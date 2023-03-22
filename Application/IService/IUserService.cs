@@ -13,6 +13,5 @@ namespace Application.IService
     {
         JWToken GenerateJwtToken(User user,string roleName);
 
-		(IEnumerable<User> data, int total) GetList(string? role, int? pageSize, int? page);
 	}
 }

@@ -11,37 +11,37 @@ namespace Domain.Model.Users
         [MaxLength(50)]
         [Required(ErrorMessage = "FullName is required")]
         public string FullName { get; private set; }
-        public DateTime? Birthday{ get; private set; }
+        public DateTime Birthday{ get; private set; }
         [MaxLength(100)]
-        public string? Address { get; private set; } = "Unknown";
+        public string Address { get; private set; } = "Unknown";
         [JsonIgnore]
         public virtual List<Register> Register { get; private set; }
-        public int? HospitalId { get; private set; }
+        public int HospitalId { get; private set; }
         [ForeignKey("HospitalId")]
         public virtual Hospital? Hospital { get; private set; }
         public User()
         {
         }
-        public User(string userName, string fullName, string? email, DateTime? birthday, string? address)
+        public User(string userName, string fullName, string email, DateTime birthday, string address)
         {
-            Update(userName,fullName, email??"Unknown@abc.com", birthday??DateTime.MinValue, address??"Unknown");
+            Update(userName,fullName, email??"Unknown@abc.com", birthday, address??"Unknown");
             EmailConfirmed = true;
             Register = new List<Register>();
         }
-        public void Update(string userName,string fullName, string? email,DateTime? birthday, string? address)
+        public void Update(string userName,string fullName, string email,DateTime birthday, string address)
         {
             FullName = fullName.Trim();
             UserName = userName.Trim();
-            Email = email.Trim() ?? "Unknown@abc.com";
-            Birthday = birthday??DateTime.MinValue;
-            Address = address.Trim() ?? "Unknown";
+            Email = email.Trim();
+            Birthday = birthday;
+            Address = address.Trim();
 
         }
         public void Set(string fullName)
         {
             FullName = fullName.Trim();
         }
-        public void SetHospital(int? hospitalId)
+        public void SetHospital(int hospitalId)
         {
             HospitalId= hospitalId;
         }

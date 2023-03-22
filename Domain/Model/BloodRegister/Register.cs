@@ -30,7 +30,6 @@ namespace Domain.Model.BloodRegister
         public string UserId { get; private set; }
         [ForeignKey("UserId")]
         public virtual User User { get; private set; }
-        //xacnhan
         public DateTime TimeSign { get; private set; }
         [ForeignKey("Image")]
         public int QR { get; private set; }
