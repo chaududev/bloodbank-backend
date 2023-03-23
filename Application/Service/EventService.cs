@@ -1,4 +1,5 @@
 ﻿using Application.IService;
+using Domain.Model.Base;
 using Domain.Model.BloodRegister;
 using Domain.Model.Posts;
 using Infrastructure.IRepository;
@@ -19,9 +20,7 @@ namespace Application.Service
         {
             this.repository = repository;
         }
-
-
-        public void Add(string eventName, string description, string content, DateTime startTime, DateTime endTime, Domain.Model.Posts.Status status, int imageId)
+        public void Add(string eventName, string description, string content, DateTime startTime, DateTime endTime, EventStatus status, int imageId)
         {
             Event Entity = new Event(eventName, description, content, startTime, endTime, status, imageId);
             repository.Add(Entity);
@@ -40,7 +39,7 @@ namespace Application.Service
         public Event GetById(int id)
         {
             Expression<Func<Event, object>>[] includeProperties = { p => p.Image };
-            return repository.GetById(includeProperties, id);
+            return repository.GetById(id, includeProperties);
         }
 
         public (IEnumerable<Event> data, int total) GetList(string? key, int? pageSize, int? page)
@@ -52,7 +51,7 @@ namespace Application.Service
             Expression<Func<Event, object>> sort = null;
             return repository.Get(includeProperties, filter, sort, pageSize ?? int.MaxValue, page ?? 1);
         }
-        public void Update(int id, string eventName, string description, string content, DateTime startTime, DateTime endTime, Domain.Model.Posts.Status status, int imageId)
+        public void Update(int id, string eventName, string description, string content, DateTime startTime, DateTime endTime, EventStatus status, int imageId)
         {
             Event entity = this.GetById(id);
             if (entity == null)

@@ -1,4 +1,5 @@
-﻿using Domain.Model.Posts;
+﻿using Domain.Model.Base;
+using Domain.Model.Posts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,10 +12,8 @@ namespace Application.IService
     {
         (IEnumerable<Event> data, int total) GetList(string? key, int? pageSize, int? page);
         Event GetById(int id);
-        void Add(string eventName, string description, string content, DateTime startTime, DateTime endTime, Status status, int imageId);
-
-
-        void Update(int id, string eventName, string description, string content, DateTime startTime, DateTime endTime, Status status, int imageId);
+        void Add(string eventName, string description, string content, DateTime startTime, DateTime endTime, EventStatus status, int imageId);
+        void Update(int id, string eventName, string description, string content, DateTime startTime, DateTime endTime, EventStatus status, int imageId);
 
         void Delete(int id);
     }

@@ -44,7 +44,7 @@ namespace Application.Service
         public Hospital GetById(int id)
         {
             Expression<Func<Hospital, object>>[] includeProperties = null;
-            return repository.GetById(includeProperties, id);
+            return repository.GetById(id, includeProperties);
         }
 
         public (IEnumerable<Hospital> data, int total) GetList(string? key, int? pageSize, int? page)

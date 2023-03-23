@@ -47,7 +47,7 @@ namespace Infrastructure.Data
                 new { Id = 1, Title = "Lợi ích việc hiến máu", Description = "Chúng ta nên chia sẻ và cho đi", Content = "Hiến máu chủ yếu là hiến hồng cầu. Máu gồm có huyết tương chiếm 55% thể tích máu và các tế bào máu chiếm 45% còn lại.", ImageId = 2, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now }
                 );
             modelBuilder.Entity<Event>().HasData(
-                   new { Id = 1, EventName = "Hiến máu nhân đạo", Description = "Sinh viên các trường hiến máu", Content = "Yêu cầu trên 42kg, sức khỏe tốt", StartTime = new DateTime(2023, 3, 1), EndTime = new DateTime(2023, 3, 30), Status = Domain.Model.Posts.Status.Ongoing, ImageId = 1, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now }
+                   new { Id = 1, EventName = "Hiến máu nhân đạo", Description = "Sinh viên các trường hiến máu", Content = "Yêu cầu trên 42kg, sức khỏe tốt", StartTime = new DateTime(2023, 3, 1), EndTime = new DateTime(2023, 3, 30), Status = EventStatus.Ongoing, ImageId = 1, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now }
               );
             modelBuilder.Entity<BloodGroup>().HasData(
                 new { Id = 1, Name = "A", Description = "Nhóm máu A", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now },

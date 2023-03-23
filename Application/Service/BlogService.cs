@@ -40,7 +40,7 @@ namespace Application.Service
         public Blog GetById(int id)
         {
             Expression<Func<Blog, object>>[] includeProperties = {p => p.Image};
-            return repository.GetById(includeProperties, id);
+            return repository.GetById(id, includeProperties);
         }
 
         public (IEnumerable<Blog> data, int total) GetList(string? key, int? pageSize, int? page)

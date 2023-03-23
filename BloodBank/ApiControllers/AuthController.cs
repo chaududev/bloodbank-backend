@@ -1,6 +1,8 @@
 ﻿using Application.IService;
 using BloodBank.Mapper;
 using BloodBank.ViewModels;
+using BloodBank.ViewModels.Base;
+using BloodBank.ViewModels.Users;
 using Domain.Model.Base;
 using Domain.Model.Users;
 using Microsoft.AspNetCore.Authorization;
@@ -33,6 +35,10 @@ namespace BloodBank.ApiControllers
         [Route("login")]
         public async Task<IActionResult> Login([FromBody] LoginViewModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return UnprocessableEntity(ModelState);
+            }
             User user = await _userManager.FindByNameAsync(model.Username);
 
             if (user == null)
@@ -72,23 +78,20 @@ namespace BloodBank.ApiControllers
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-
             return Ok();
         }
 
         [HttpPost]
         [Authorize(Roles = "ADMIN")]
-        public async Task<IActionResult> Register([FromBody] RegisterViewModel model)
+        public async Task<IActionResult> Register([FromBody] UserRegisterViewModel model)
         {
-            var user = new User(model.UserName, model.FullName, model.Email, model.Birthday??DateTime.MinValue, model.Address??"Unknown");
-            if (model.HospitalId != null) { user.SetHospital(model.HospitalId??1); }
+            var user = new User(model.UserName, model.FullName, model.Email, model.Birthday,model.HospitalId??1, model.Address??"Unknown");
             User userFind = await _userManager.FindByNameAsync(model.UserName);
             if (userFind != null)
             {
                 return BadRequest("Username exist");
             }
             var result = await _userManager.CreateAsync(user, model.Password);
-
             if (!result.Succeeded)
             {
                 return BadRequest(result.Errors);
@@ -126,15 +129,13 @@ namespace BloodBank.ApiControllers
             {
                 return BadRequest("User not exist");
             }
-            userFind.Update(model.UserName, model.FullName, model.Email, model.Birthday??DateTime.MinValue, model.Address);
-            if (model.HospitalId != null) { userFind.SetHospital(model.HospitalId??1); }
+            userFind.Update(model.UserName, model.FullName, model.Email, model.Birthday,model.HospitalId??1, model.Address??"Unknown");
             if (model.Password != null)
             {
                 var newPasswordHash = _userManager.PasswordHasher.HashPassword(userFind, model.Password);
                 userFind.PasswordHash = newPasswordHash;
             }
             var rs = await _userManager.UpdateAsync(userFind);
-
             if (!rs.Succeeded)
             {
                 return BadRequest(rs.Errors);
@@ -179,14 +180,13 @@ namespace BloodBank.ApiControllers
                 IEnumerable<User> users = await _userManager.Users.Include(e => e.Hospital).ToListAsync();
                 if (role != null)
                 {
-                    users = (IEnumerable<User>)await _userManager.GetUsersInRoleAsync(role);
+                    users = await _userManager.GetUsersInRoleAsync(role);
                 }
                 if (hospitalId != null)
                 {
                     users = users.Where(e => e.HospitalId == hospitalId).ToList();
                 }
                 var total = users.Count();
-                var count = users.Count();
                 var result = new List<UserViewModel>();
                 foreach (var user in users)
                 {
@@ -197,10 +197,9 @@ namespace BloodBank.ApiControllers
                     result.Add(userWithRoles);
                 }
                 IEnumerable<UserViewModel> data = result;
-                return Ok(new PagingResponse()
+                return Ok(new PagingResponse<UserViewModel>()
                 {
-                    Count = count,
-                    TotalCount = total,
+                    Total = total,
                     Data = data
                 });
             }
@@ -214,67 +213,16 @@ namespace BloodBank.ApiControllers
         public async Task<IActionResult> Delele(string id)
         {
             User user = await _userManager.FindByIdAsync(id);
-
             if (user == null)
             {
                 return BadRequest("Username doesn't exist");
             }
-            else
+            var response = await _userManager.DeleteAsync(user);
+            if (response.Succeeded)
             {
-                var response = await _userManager.DeleteAsync(user);
-                if (response.Succeeded)
-                {
-                    return Ok();
-                }
-                else
-                {
-                    return BadRequest("Failed");
-                }
+                return Ok();
             }
+            return BadRequest("Failed");
         }
-        [HttpPost("ChangeRole")]
-        [Authorize(Roles = "ADMIN")]
-        public async Task<IActionResult> ChangeRole(string id, string role)
-        {
-            User user = await _userManager.FindByIdAsync(id);
-            role = role.ToUpper();
-            if (user == null)
-            {
-                return BadRequest("Username doesn't exist");
-            }
-            if (String.CompareOrdinal(role, "ADMIN") != 0 && String.CompareOrdinal(role, "USER") != 0 && String.CompareOrdinal(role, "STAFF") != 0 && String.CompareOrdinal(role, "HOSPITAL") != 0)
-            {
-                return BadRequest("Role invalid");
-            }
-            else
-            {
-                var roles = await _userManager.GetRolesAsync(user);
-                var result = await _userManager.RemoveFromRolesAsync(user, roles);
-                if (result.Succeeded)
-                {
-                    var roleName = await _roleManager.FindByNameAsync(role);
-                    if (roleName == null)
-                    {
-                        roleName = new IdentityRole()
-                        {
-                            Name = role,
-                        };
-
-                        var responseRole = await _roleManager.CreateAsync(roleName);
-                    }
-                    var responseAddRoleToUser = await _userManager.AddToRoleAsync(user, roleName.Name);
-                    if (responseAddRoleToUser.Succeeded)
-                    {
-                        return Ok();
-                    }
-                    else
-                    {
-                        return BadRequest("Failed");
-                    }
-                }
-                return BadRequest("Failed");
-            }
-        }
-
     }
 }

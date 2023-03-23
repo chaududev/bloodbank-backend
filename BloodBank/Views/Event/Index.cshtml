@@ -153,22 +153,17 @@
             loadData();
             $("#post-form").submit(function (event) {
                 event.preventDefault();
-                let data = {
-                    eventName: $("#name").val(),
-                    description: $("#description").val(),
-                    content: $("#content").val(),
-                    startTime: new Date($("#startdate").val()).toJSON(),
-                    endTime: new Date($("#endate").val()).toJSON(),
-                    status: new Number($("#status").val()),
-                };
-                let jsonString = JSON.stringify(data);
-                console.log(jsonString);
                 var formData = new FormData();
-                formData.append("jsonString", jsonString);
+                formData.append("EventName", $("#name").val());
+                formData.append("Description", $("#description").val());
+                formData.append("Content", $("#content").val());
+                formData.append("StartTime", new Date($("#startdate").val()).toJSON());
+                formData.append("EndTime", new Date($("#endate").val()).toJSON());
+                formData.append("Status", new Number($("#status").val()).toString());
                 formData.append("file", $("#image")[0].files[0]);
                 var id = $("#event-id").val();
-                console.log(id);
-                if (id == null || id=="") {
+                if (id == null || id=="") 
+                {
                     $.ajax({
                         url: "/api/event",
                         type: "POST",
@@ -184,7 +179,8 @@
                         }
                     });
                 }
-                else {
+                else 
+                {
                     $.ajax({
                         url: "/api/event/" + id,
                         type: "PUT",

@@ -32,7 +32,7 @@ namespace Application.Service
 
         public BloodGroup GetById(int id)
         {
-            return repository.GetById(null, id);
+            return repository.GetById(id, null);
         }
 
         public (IEnumerable<BloodGroup> data, int total) GetList(string? key, int? pageSize, int? page)

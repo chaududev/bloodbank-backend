@@ -20,16 +20,10 @@ namespace Application.Service
     public class UserService : IUserService
     {
         readonly IConfiguration Configuration;
-		readonly IBaseRepository<User> repository;
-
-
-		public UserService(IConfiguration configuration, IBaseRepository<User> repository)
+		public UserService(IConfiguration configuration)
         {
             this.Configuration = configuration;
-			this.repository = repository;
 		}
-
-
 		public JWToken GenerateJwtToken(User user,string roleName)
         {
 

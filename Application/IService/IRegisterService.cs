@@ -1,8 +1,5 @@
-﻿using Domain.Model.BloodRegister;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Domain.Model.Base;
+using Domain.Model.BloodRegister;
 
 namespace Application.IService
 {

@@ -1,13 +1,11 @@
 ﻿using Application.IService;
-using Application.Service;
 using BloodBank.Mapper;
-using BloodBank.ViewModels;
+using BloodBank.ViewModels.Base;
+using BloodBank.ViewModels.Registers;
 using Domain.Model.Base;
 using Domain.Model.BloodRegister;
-using Domain.Model.Posts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 
 namespace BloodBank.ApiControllers
 {
@@ -17,12 +15,12 @@ namespace BloodBank.ApiControllers
     {
         readonly IRegisterService RegisterService;
         readonly IImageService ImageService;
-        readonly MappingService<Register, RegisterBloodViewModel> mapper;
+        readonly MappingService<Register, RegisterViewModel> mapper;
         public RegisterController(IRegisterService RegisterService, IImageService ImageService)
         {
             this.RegisterService = RegisterService;
             this.ImageService = ImageService;
-            this.mapper = new MappingService<Register, RegisterBloodViewModel>();
+            this.mapper = new MappingService<Register, RegisterViewModel>();
         }
 
         [HttpGet]
@@ -32,10 +30,9 @@ namespace BloodBank.ApiControllers
             try
             {
                 var rs = RegisterService.GetList(key, pageSize, page);
-                return Ok(new PagingResponse()
+                return Ok(new PagingResponse<RegisterViewModel>()
                 {
-                    Count = rs.data.Count(),
-                    TotalCount = rs.total,
+                    Total = rs.total,
                     Data = mapper.Map(rs.data)
                 });
             }
@@ -51,10 +48,9 @@ namespace BloodBank.ApiControllers
             try
             {
                 var rs = RegisterService.GetListByUser(userName, pageSize, page);
-                return Ok(new PagingResponse()
+                return Ok(new PagingResponse<RegisterViewModel>()
                 {
-                    Count = rs.data.Count(),
-                    TotalCount = rs.total,
+                    Total = rs.total,
                     Data = mapper.Map(rs.data)
                 });
             }
@@ -83,27 +79,20 @@ namespace BloodBank.ApiControllers
         }
         [HttpPost]
         [Authorize(Policy = "AllRoles")]
-        public IActionResult Insert(RegisterBlood2ViewModel Register)
+        public IActionResult Insert(RegisterAddViewModel Register)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    try
+                    string data = $"{Register.UserId}-{DateTime.Now}";
+                    Image QR = ImageService.GenerateQRCode(data);
+                    if (QR != null)
                     {
-                        string data = $"{Register.UserId}-{DateTime.Now}";
-                        Image QR = ImageService.GenerateQRCode(data);
-                        if (QR != null)
-                        {
-                            RegisterService.Add(Register.Note, Register.Status, Register.BloodId, Register.UserId, Register.TimeSign??DateTime.MaxValue, QR.Id, Register.HospitalId);
-                            return Ok();
-                        }
-                        return BadRequest("Faild create QR");
+                        RegisterService.Add(Register.Note, Register.Status, Register.BloodId, Register.UserId, Register.TimeSign ?? DateTime.MaxValue, QR.Id, Register.HospitalId);
+                        return Ok();
                     }
-                    catch (Exception e)
-                    {
-                        return BadRequest(e.Message);
-                    }
+                    return BadRequest("Faild create QR");
                 }
                 return UnprocessableEntity(ModelState);
             }
@@ -114,7 +103,7 @@ namespace BloodBank.ApiControllers
         }
         [HttpPut("{id}")]
         [Authorize(Policy = "Roles")]
-        public IActionResult Update(int id, RegisterBlood2ViewModel Register)
+        public IActionResult Update(int id, RegisterUpdateViewModel Register)
         {
             try
             {

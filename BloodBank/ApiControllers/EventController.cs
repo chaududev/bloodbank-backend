@@ -1,11 +1,11 @@
 ﻿using Application.IService;
 using BloodBank.Mapper;
 using BloodBank.ViewModels;
+using BloodBank.ViewModels.Base;
+using BloodBank.ViewModels.Events;
 using Domain.Model.Posts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using System.Data;
 
 namespace BloodBank.ApiControllers
 {
@@ -29,10 +29,9 @@ namespace BloodBank.ApiControllers
             try
             {
                 var rs = EventService.GetList(key, pageSize, page);
-                return Ok(new PagingResponse()
+                return Ok(new PagingResponse<EventViewModel>()
                 {
-                    Count = rs.data.Count(),
-                    TotalCount = rs.total,
+                    Total = rs.total,
                     Data = mapper.Map(rs.data)
                 });
             }
@@ -60,35 +59,21 @@ namespace BloodBank.ApiControllers
         }
         [HttpPost]
         [Authorize(Policy = "Roles")]
-        public async Task<IActionResult> Insert([FromForm] string jsonString, IFormFile file)
+        public async Task<IActionResult> Insert([FromForm] EventAddViewModel entity, IFormFile file)
         {
             if (file == null || file.Length == 0)
             {
                 return BadRequest("No image uploaded");
             }
-            if (jsonString == null)
-            {
-                return BadRequest("No jsonString uploaded");
-            }
             try
             {
-                EventViewModel Event = JsonConvert.DeserializeObject<EventViewModel>(jsonString);
-                if (!TryValidateModel(Event))
-                {
-                    var errors = ModelState.Values.SelectMany(v => v.Errors);
-                }
-                var productImage = await ImageService.ConvertImageToProductImageAsync(file);
                 if (ModelState.IsValid)
                 {
-                    EventService.Add(Event.EventName,Event.Description,Event.Content,Event.StartTime,Event.EndTime,Event.Status, productImage.Id);
+                    var productImage = await ImageService.ConvertImageToProductImageAsync(file);
+                    EventService.Add(entity.EventName, entity.Description, entity.Content,entity.StartTime,entity.EndTime,entity.Status, productImage.Id);
                     return Ok();
                 }
                 return UnprocessableEntity(ModelState);
-
-            }
-            catch (JsonException ex)
-            {
-                return BadRequest(ex.Message);
             }
             catch (Exception e)
             {
@@ -97,40 +82,26 @@ namespace BloodBank.ApiControllers
         }
         [HttpPut("{id}")]
         [Authorize(Policy = "Roles")]
-        public async Task<IActionResult> Update(int id, [FromForm] string jsonString, IFormFile? file)
+        public async Task<IActionResult> Update(int id, [FromForm] EventAddViewModel entity, IFormFile? file)
         {
-            var idImage = 0;
-            if (file == null || file.Length == 0)
-            {
-                idImage = EventService.GetById(id).ImageId;
-            }
-            else
-            {
-                var productImage = await ImageService.ConvertImageToProductImageAsync(file);
-                idImage = productImage.Id;
-            }
-            if (jsonString == null)
-            {
-                return BadRequest("No jsonString uploaded");
-            }
             try
             {
-                EventViewModel Event = JsonConvert.DeserializeObject<EventViewModel>(jsonString);
-                if (!TryValidateModel(Event))
-                {
-                    var errors = ModelState.Values.SelectMany(v => v.Errors);
-                }
                 if (ModelState.IsValid)
                 {
-                    EventService.Update(id, Event.EventName, Event.Description, Event.Content, Event.StartTime, Event.EndTime, Event.Status, idImage);
+                    int imageId;
+                    if (file == null || file.Length == 0)
+                    {
+                        imageId = EventService.GetById(id).ImageId;
+                    }
+                    else
+                    {
+                        var productImage = await ImageService.ConvertImageToProductImageAsync(file);
+                        imageId = productImage.Id;
+                    }
+                    EventService.Update(id, entity.EventName, entity.Description, entity.Content, entity.StartTime, entity.EndTime, entity.Status, imageId);
                     return Ok();
                 }
                 return UnprocessableEntity(ModelState);
-
-            }
-            catch (JsonException ex)
-            {
-                return BadRequest(ex.Message);
             }
             catch (Exception e)
             {

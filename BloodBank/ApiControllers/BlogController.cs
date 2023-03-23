@@ -1,13 +1,10 @@
 ﻿using Application.IService;
 using BloodBank.Mapper;
-using BloodBank.ViewModels;
+using BloodBank.ViewModels.Base;
+using BloodBank.ViewModels.Blogs;
 using Domain.Model.Posts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.OpenApi.Writers;
-using Newtonsoft.Json;
-using System;
-using System.Data;
 
 namespace BlogBank.ApiControllers
 {
@@ -31,10 +28,9 @@ namespace BlogBank.ApiControllers
             try
             {
                 var rs = BlogService.GetList(key, pageSize, page);
-                return Ok(new PagingResponse()
+                return Ok(new PagingResponse<BlogViewModel>()
                 {
-                    Count = rs.data.Count(),
-                    TotalCount = rs.total,
+                    Total = rs.total,
                     Data = mapper.Map(rs.data)
                 });
             }
@@ -62,77 +58,49 @@ namespace BlogBank.ApiControllers
         }
         [HttpPost]
         [Authorize(Roles = "ADMIN")]
-        public async Task<IActionResult> Insert([FromForm] string jsonString, IFormFile file)
+        public async Task<IActionResult> Insert([FromForm] BlogAddViewModel entity, IFormFile file)
         {
-                if (file == null || file.Length == 0)
-                {
-                    return BadRequest("No image uploaded");
-                }
-                if (jsonString == null)
-                {
-                    return BadRequest("No jsonString uploaded");
-                }
-                try
-                {
-                        BlogViewModel blog = JsonConvert.DeserializeObject<BlogViewModel>(jsonString);
-                        if (!TryValidateModel(blog))
-                        {
-                            var errors = ModelState.Values.SelectMany(v => v.Errors);
-                        }
-                        var productImage = await ImageService.ConvertImageToProductImageAsync(file);
-                        if (ModelState.IsValid)
-                        {
-                            BlogService.Add(blog.Title,blog.Description,blog.Content, productImage.Id);
-                            return Ok();
-                        }
-                        return UnprocessableEntity(ModelState);
-
-                     }
-                catch (JsonException ex)
-                {
-                        return BadRequest(ex.Message);
-                }
-                catch (Exception e)
-                {
-                            return BadRequest(e.Message);
-                }
-        }
-        [HttpPut("{id}")]
-        [Authorize(Roles = "ADMIN")]
-        public async Task<IActionResult> Update(int id, [FromForm] string jsonString, IFormFile? file)
-        {
-            var idImage = 0;
             if (file == null || file.Length == 0)
             {
-                idImage= BlogService.GetById(id).ImageId;
-            }
-            else
-            {
-                var productImage = await ImageService.ConvertImageToProductImageAsync(file);
-                idImage=productImage.Id;
-            }
-            if (jsonString == null)
-            {
-                return BadRequest("No jsonString uploaded");
+                return BadRequest("No image uploaded");
             }
             try
             {
-                BlogViewModel blog = JsonConvert.DeserializeObject<BlogViewModel>(jsonString);
-                if (!TryValidateModel(blog))
-                {
-                    var errors = ModelState.Values.SelectMany(v => v.Errors);
-                }
                 if (ModelState.IsValid)
                 {
-                    BlogService.Update(id,blog.Title, blog.Description, blog.Content, idImage);
+                    var productImage = await ImageService.ConvertImageToProductImageAsync(file);
+                    BlogService.Add(entity.Title, entity.Description, entity.Content, productImage.Id);
                     return Ok();
                 }
                 return UnprocessableEntity(ModelState);
-
             }
-            catch (JsonException ex)
+            catch (Exception e)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(e.Message);
+            }
+        }
+        [HttpPut("{id}")]
+        [Authorize(Roles = "ADMIN")]
+        public async Task<IActionResult> Update(int id, [FromForm] BlogAddViewModel entity, IFormFile? file)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    int imageId;
+                    if (file == null || file.Length == 0)
+                    {
+                        imageId = BlogService.GetById(id).ImageId;
+                    }
+                    else
+                    {
+                        var productImage = await ImageService.ConvertImageToProductImageAsync(file);
+                        imageId = productImage.Id;
+                    }
+                    BlogService.Update(id, entity.Title, entity.Description, entity.Content, imageId);
+                    return Ok();
+                }
+                return UnprocessableEntity(ModelState);
             }
             catch (Exception e)
             {

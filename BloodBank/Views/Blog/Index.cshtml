@@ -124,17 +124,14 @@
         loadData();
         $("#post-form").submit(function (event) {
             event.preventDefault();
-            let data = {
-                    title: $("#title").val(),
-                    description: $("#description").val(),
-                    content : $("#content").val(),
-            };
-            let jsonString = JSON.stringify(data);
             var formData = new FormData();
-            formData.append("jsonString",jsonString);
+            formData.append("Title", $("#title").val());
+            formData.append("Description",$("#description").val());
+            formData.append("Content", $("#content").val());
             formData.append("file", $("#image")[0].files[0]);
             var id=$("#post-id").val();
-            if (id == null || id == "") {
+            if (id == null || id == "") 
+            {
                 $.ajax({
                     url: "/api/blog",
                     type: "POST",
@@ -150,8 +147,9 @@
                     }
                 });
             }
-            else {
-                    $.ajax({
+            else 
+            {
+                 $.ajax({
                         url: "/api/blog/"+id,
                         type: "PUT",
                         data: formData,
@@ -164,7 +162,7 @@
                         error: function (jqXHR, textStatus, errorThrown) {
                             alert("Error updating: " + errorThrown);
                         }
-                    });
+                    });   
             }
         });
 
@@ -180,7 +178,7 @@
                 $('#image-preview').attr('src',data.image.url);
                 $('#myModal').modal('show');
          });
-            $(document).on("click", "#add-button", function () {
+         $(document).on("click", "#add-button", function () {
                 event.preventDefault();
                 jQuery.noConflict();
                 $("#post-id").val(null);

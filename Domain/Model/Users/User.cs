@@ -22,28 +22,21 @@ namespace Domain.Model.Users
         public User()
         {
         }
-        public User(string userName, string fullName, string email, DateTime birthday, string address)
+        public User(string userName, string fullName, string email, DateTime birthday, int? hospitalId, string address)
         {
-            Update(userName,fullName, email??"Unknown@abc.com", birthday, address??"Unknown");
+            Update(userName,fullName, email??"Unknown@abc.com", birthday,hospitalId, address??"Unknown");
             EmailConfirmed = true;
             Register = new List<Register>();
         }
-        public void Update(string userName,string fullName, string email,DateTime birthday, string address)
+        public void Update(string userName,string fullName, string email,DateTime birthday, int? hospitalId, string address)
         {
             FullName = fullName.Trim();
             UserName = userName.Trim();
             Email = email.Trim();
             Birthday = birthday;
+            HospitalId = hospitalId ?? 1;
             Address = address.Trim();
 
-        }
-        public void Set(string fullName)
-        {
-            FullName = fullName.Trim();
-        }
-        public void SetHospital(int hospitalId)
-        {
-            HospitalId = hospitalId;
         }
     }
 }

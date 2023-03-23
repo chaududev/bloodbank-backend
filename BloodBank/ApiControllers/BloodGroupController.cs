@@ -1,10 +1,10 @@
 ﻿using Application.IService;
 using BloodBank.Mapper;
-using BloodBank.ViewModels;
+using BloodBank.ViewModels.Base;
+using BloodBank.ViewModels.BloodGroups;
 using Domain.Model.BloodRegister;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Data;
 
 namespace BloodBank.ApiControllers
 {
@@ -26,10 +26,9 @@ namespace BloodBank.ApiControllers
             try
             {
                 var rs = BloodGroupService.GetList(key, pageSize, page);
-                return Ok(new PagingResponse()
+                return Ok(new PagingResponse<BloodGroupViewModel>()
                 {
-                    Count = rs.data.Count(),
-                    TotalCount = rs.total,
+                    Total = rs.total,
                     Data = mapper.Map(rs.data)
                 });
             }
@@ -57,7 +56,7 @@ namespace BloodBank.ApiControllers
         }
         [HttpPost]
         [Authorize(Roles = "ADMIN")]
-        public IActionResult Insert(BloodGroupViewModel BloodGroup)
+        public IActionResult Insert(BloodGroupAddViewModel BloodGroup)
         {
             try
             {
@@ -75,7 +74,7 @@ namespace BloodBank.ApiControllers
         }
         [HttpPut("{id}")]
         [Authorize(Roles = "ADMIN")]
-        public IActionResult Update(int id, BloodGroupViewModel BloodGroup)
+        public IActionResult Update(int id, BloodGroupAddViewModel BloodGroup)
         {
             try
             {

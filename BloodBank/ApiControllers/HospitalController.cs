@@ -1,12 +1,11 @@
 ﻿using Application.IService;
 using BloodBank.Mapper;
 using BloodBank.ViewModels;
-using Domain.Model.BloodRegister;
+using BloodBank.ViewModels.Base;
+using BloodBank.ViewModels.Hospitals;
 using Domain.Model.Users;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Data;
 
 namespace BloodBank.ApiControllers
 {
@@ -28,10 +27,9 @@ namespace BloodBank.ApiControllers
             try
             {
                 var rs = HospitalService.GetList(key, pageSize, page);
-                return Ok(new PagingResponse()
+                return Ok(new PagingResponse<HospitalViewModel>()
                 {
-                    Count = rs.data.Count(),
-                    TotalCount = rs.total,
+                    Total = rs.total,
                     Data = mapper.Map(rs.data)
                 });
             }
@@ -59,7 +57,7 @@ namespace BloodBank.ApiControllers
         }
         [HttpPost]
         [Authorize(Roles = "ADMIN")]
-        public IActionResult Insert(HospitalViewModel Hospital)
+        public IActionResult Insert(HospitalAddViewModel Hospital)
         {
             try
             {
@@ -77,7 +75,7 @@ namespace BloodBank.ApiControllers
         }
         [HttpPut("{id}")]
         [Authorize(Roles = "ADMIN")]
-        public IActionResult Update(int id, HospitalViewModel Hospital)
+        public IActionResult Update(int id, HospitalAddViewModel Hospital)
         {
             try
             {

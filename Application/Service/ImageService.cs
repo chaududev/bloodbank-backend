@@ -58,10 +58,8 @@ namespace Application.Service
             }
             else
             {
-                return null;
+                throw new Exception($"Failed to generate qr");
             }
-
-           
         }
         public bool ByteArrayToFile(string fileName,string path, byte[] byteArray)
         {
@@ -85,8 +83,6 @@ namespace Application.Service
 
         private void CreateIfMissing(string uploadPath)
         {
-           
-          
             bool folderExists = Directory.Exists(uploadPath);
             if (!folderExists)
                 Directory.CreateDirectory(uploadPath);

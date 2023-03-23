@@ -50,7 +50,7 @@ namespace Infrastructure.Repository
             
         }
 
-        public T GetById(Expression<Func<T, object>>[]? includeProperties, int id)
+        public T GetById(int id, Expression<Func<T, object>>[]? includeProperties)
         {
                 IQueryable<T> rs = db.Set<T>();
                 if (includeProperties != null)
@@ -62,7 +62,6 @@ namespace Infrastructure.Repository
                 }
                 T entity = rs.FirstOrDefault(x => EF.Property<int>(x, "Id") == id);
                 return entity;
-            
         }
 
         public void Update(T entity)

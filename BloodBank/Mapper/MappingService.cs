@@ -1,4 +1,12 @@
 ﻿using AutoMapper;
+using BloodBank.ViewModels.BloodGroups;
+using BloodBank.ViewModels.Hospitals;
+using BloodBank.ViewModels.Images;
+using BloodBank.ViewModels.Users;
+using Domain.Model.Base;
+using Domain.Model.BloodRegister;
+using Domain.Model.Users;
+
 namespace BloodBank.Mapper
 {
     public class MappingService<TSource, TDestination> : Profile
@@ -10,6 +18,10 @@ namespace BloodBank.Mapper
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<TSource, TDestination>();
+                cfg.CreateMap<Image, ImageViewModel>();
+                cfg.CreateMap<BloodGroup, BloodGroupViewModel>();
+                cfg.CreateMap<User, UserViewModel>();
+                cfg.CreateMap<Hospital, HospitalViewModel>();
             });
 
             _mapper = config.CreateMapper();

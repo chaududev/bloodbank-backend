@@ -10,17 +10,9 @@ using Domain.Model.Users;
 
 namespace Domain.Model.BloodRegister
 {
-    public enum Status
-    {
-        None,
-        Register,
-        Accept,
-        Processing,
-        Finished,
-        Cancel
-    }
     public class Register : BaseModel
     {
+        [MaxLength(20)]
         public string Note { get; private set; }
         public Status Status { get; private set; }
         [ForeignKey("BloodGroup")]
@@ -30,7 +22,6 @@ namespace Domain.Model.BloodRegister
         public string UserId { get; private set; }
         [ForeignKey("UserId")]
         public virtual User User { get; private set; }
-        //xacnhan
         public DateTime TimeSign { get; private set; }
         [ForeignKey("Image")]
         public int QR { get; private set; }

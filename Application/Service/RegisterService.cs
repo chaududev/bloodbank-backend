@@ -1,4 +1,5 @@
 ﻿using Application.IService;
+using Domain.Model.Base;
 using Domain.Model.BloodRegister;
 using Infrastructure.IRepository;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
@@ -46,7 +47,7 @@ namespace Application.Service
                     p => p.User,
                     p => p.Hospital
                 };
-            return repository.GetById(includeProperties, id);
+            return repository.GetById(id,includeProperties);
         }
 
         public (IEnumerable<Register> data, int total) GetList(string? key, int? pageSize, int? page)
