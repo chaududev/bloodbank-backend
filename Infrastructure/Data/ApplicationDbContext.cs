@@ -26,7 +26,12 @@ namespace Infrastructure.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole { Id = "0d4492c3-c15e-4986-bbd6-d6157c06dbe1", Name = "ADMIN", NormalizedName = "ADMIN".ToUpper() });
+            modelBuilder.Entity<IdentityRole>().HasData(
+                new IdentityRole { Id = "0d4492c3-c15e-4986-bbd6-d6157c06dbe1", Name = "ADMIN", NormalizedName = "ADMIN".ToUpper() },
+                new IdentityRole { Id = "3c84e231-ddb0-4794-8c48-3dbf4ed01d1c", Name = "USER", NormalizedName = "USER".ToUpper() },
+                new IdentityRole { Id = "4f077375-71ce-4b2c-88cc-96d3fc60ecf5", Name = "STAFF", NormalizedName = "STAFF".ToUpper() },
+                new IdentityRole { Id = "9fd9a17b-59d2-4e0d-996a-00014aba94d8", Name = "HOSPITAL", NormalizedName = "HOSPITAL".ToUpper() }
+              );
             //a hasher to hash the password before seeding the user to the db
             var hasher = new PasswordHasher<IdentityUser>();
 

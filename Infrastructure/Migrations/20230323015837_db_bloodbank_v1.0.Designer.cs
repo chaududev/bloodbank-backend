@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230323014509_db_blood_v1.0")]
-    partial class db_blood_v10
+    [Migration("20230323015837_db_bloodbank_v1.0")]
+    partial class db_bloodbank_v10
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -98,18 +98,18 @@ namespace Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2023, 3, 23, 8, 45, 8, 856, DateTimeKind.Local).AddTicks(380),
+                            CreatedAt = new DateTime(2023, 3, 23, 8, 58, 36, 510, DateTimeKind.Local).AddTicks(8988),
                             Description = "Nhóm máu A",
                             Name = "A",
-                            UpdatedAt = new DateTime(2023, 3, 23, 8, 45, 8, 856, DateTimeKind.Local).AddTicks(381)
+                            UpdatedAt = new DateTime(2023, 3, 23, 8, 58, 36, 510, DateTimeKind.Local).AddTicks(8989)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2023, 3, 23, 8, 45, 8, 856, DateTimeKind.Local).AddTicks(383),
+                            CreatedAt = new DateTime(2023, 3, 23, 8, 58, 36, 510, DateTimeKind.Local).AddTicks(8990),
                             Description = "Nhóm máu B",
                             Name = "B",
-                            UpdatedAt = new DateTime(2023, 3, 23, 8, 45, 8, 856, DateTimeKind.Local).AddTicks(383)
+                            UpdatedAt = new DateTime(2023, 3, 23, 8, 58, 36, 510, DateTimeKind.Local).AddTicks(8990)
                         });
                 });
 
@@ -208,11 +208,11 @@ namespace Infrastructure.Migrations
                         {
                             Id = 1,
                             Content = "Hiến máu chủ yếu là hiến hồng cầu. Máu gồm có huyết tương chiếm 55% thể tích máu và các tế bào máu chiếm 45% còn lại.",
-                            CreatedAt = new DateTime(2023, 3, 23, 8, 45, 8, 856, DateTimeKind.Local).AddTicks(323),
+                            CreatedAt = new DateTime(2023, 3, 23, 8, 58, 36, 510, DateTimeKind.Local).AddTicks(8956),
                             Description = "Chúng ta nên chia sẻ và cho đi",
                             ImageId = 2,
                             Title = "Lợi ích việc hiến máu",
-                            UpdatedAt = new DateTime(2023, 3, 23, 8, 45, 8, 856, DateTimeKind.Local).AddTicks(324)
+                            UpdatedAt = new DateTime(2023, 3, 23, 8, 58, 36, 510, DateTimeKind.Local).AddTicks(8957)
                         });
                 });
 
@@ -268,14 +268,14 @@ namespace Infrastructure.Migrations
                         {
                             Id = 1,
                             Content = "Yêu cầu trên 42kg, sức khỏe tốt",
-                            CreatedAt = new DateTime(2023, 3, 23, 8, 45, 8, 856, DateTimeKind.Local).AddTicks(355),
+                            CreatedAt = new DateTime(2023, 3, 23, 8, 58, 36, 510, DateTimeKind.Local).AddTicks(8976),
                             Description = "Sinh viên các trường hiến máu",
                             EndTime = new DateTime(2023, 3, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EventName = "Hiến máu nhân đạo",
                             ImageId = 1,
                             StartTime = new DateTime(2023, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
-                            UpdatedAt = new DateTime(2023, 3, 23, 8, 45, 8, 856, DateTimeKind.Local).AddTicks(356)
+                            UpdatedAt = new DateTime(2023, 3, 23, 8, 58, 36, 510, DateTimeKind.Local).AddTicks(8976)
                         });
                 });
 
@@ -312,17 +312,17 @@ namespace Infrastructure.Migrations
                         {
                             Id = 1,
                             Address = "None",
-                            CreatedAt = new DateTime(2023, 3, 23, 8, 45, 8, 856, DateTimeKind.Local).AddTicks(243),
+                            CreatedAt = new DateTime(2023, 3, 23, 8, 58, 36, 510, DateTimeKind.Local).AddTicks(8907),
                             Name = "None",
-                            UpdatedAt = new DateTime(2023, 3, 23, 8, 45, 8, 856, DateTimeKind.Local).AddTicks(260)
+                            UpdatedAt = new DateTime(2023, 3, 23, 8, 58, 36, 510, DateTimeKind.Local).AddTicks(8916)
                         },
                         new
                         {
                             Id = 2,
                             Address = "06 Ngô Quyền, Huế",
-                            CreatedAt = new DateTime(2023, 3, 23, 8, 45, 8, 856, DateTimeKind.Local).AddTicks(265),
+                            CreatedAt = new DateTime(2023, 3, 23, 8, 58, 36, 510, DateTimeKind.Local).AddTicks(8919),
                             Name = "Bệnh viện Quốc tế",
-                            UpdatedAt = new DateTime(2023, 3, 23, 8, 45, 8, 856, DateTimeKind.Local).AddTicks(266)
+                            UpdatedAt = new DateTime(2023, 3, 23, 8, 58, 36, 510, DateTimeKind.Local).AddTicks(8920)
                         });
                 });
 
@@ -423,7 +423,7 @@ namespace Infrastructure.Migrations
                             LockoutEnabled = true,
                             NormalizedEmail = "CHAUDU301@GMAIL.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEAS6soUwesm3Ma6zQmcQ/vXIxt7ZcEpkemGf3AVGwGyUmLPXSwN164zG42dnh0Rzmg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDejDq817wYluVASX67TTreEpJZ85kvyIqIsjfRdBx+VrNdkKzH3b8/Egnt5awkLew==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "AKMZLDVQDMJAX4AKBITZL5OOVZB6SHPN",
                             TwoFactorEnabled = false,
@@ -461,9 +461,30 @@ namespace Infrastructure.Migrations
                         new
                         {
                             Id = "0d4492c3-c15e-4986-bbd6-d6157c06dbe1",
-                            ConcurrencyStamp = "338903c8-9f31-4fa7-825d-437d9feeea51",
+                            ConcurrencyStamp = "188942fb-c162-4b26-8641-a00e3eea9684",
                             Name = "ADMIN",
                             NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = "3c84e231-ddb0-4794-8c48-3dbf4ed01d1c",
+                            ConcurrencyStamp = "dafffef1-3f3b-47f2-9153-dead0865fc6c",
+                            Name = "USER",
+                            NormalizedName = "USER"
+                        },
+                        new
+                        {
+                            Id = "4f077375-71ce-4b2c-88cc-96d3fc60ecf5",
+                            ConcurrencyStamp = "b61526c0-a80a-49ca-86d5-20c8da7c5d2f",
+                            Name = "STAFF",
+                            NormalizedName = "STAFF"
+                        },
+                        new
+                        {
+                            Id = "9fd9a17b-59d2-4e0d-996a-00014aba94d8",
+                            ConcurrencyStamp = "2034fbcc-717a-461d-bff5-dd5e74bee286",
+                            Name = "HOSPITAL",
+                            NormalizedName = "HOSPITAL"
                         });
                 });
 
