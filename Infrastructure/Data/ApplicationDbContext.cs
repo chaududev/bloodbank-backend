@@ -4,11 +4,6 @@ using Domain.Model.Users;
 using Domain.Model.Base;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 
 namespace Infrastructure.Data
@@ -39,8 +34,20 @@ namespace Infrastructure.Data
               new {Id=1,Name= "None",Address="None",CreatedAt=DateTime.Now,UpdatedAt=DateTime.Now },
               new { Id = 2, Name = "Bệnh viện Quốc tế", Address = "06 Ngô Quyền, Huế", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now }
              );
-            //Seeding the User to AspNetUsers table
-            
+            modelBuilder.Entity<Image>().HasData(
+                new { Id = 1, FileName = "banner.jpg", ContentType = "image/jpeg", Url = "/uploads/posts/Post-21262023220332-banner.jpg" },
+                new { Id = 2, FileName = "tieu-su-ca-si-lisa-blackpink-3.jpeg", ContentType = "image/jpeg", Url = "/uploads/posts/Post-21242023220345-tieu-su-ca-si-lisa-blackpink-3.jpeg" }
+                );
+            modelBuilder.Entity<Blog>().HasData(
+                new { Id = 1, Title = "Lợi ích việc hiến máu", Description = "Chúng ta nên chia sẻ và cho đi", Content = "Hiến máu chủ yếu là hiến hồng cầu. Máu gồm có huyết tương chiếm 55% thể tích máu và các tế bào máu chiếm 45% còn lại.", ImageId = 2, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now }
+                );
+            modelBuilder.Entity<Event>().HasData(
+                   new { Id = 1, EventName = "Hiến máu nhân đạo", Description = "Sinh viên các trường hiến máu", Content = "Yêu cầu trên 42kg, sức khỏe tốt", StartTime = new DateTime(2023, 3, 1), EndTime = new DateTime(2023, 3, 30), Status = Domain.Model.Posts.Status.Ongoing, ImageId = 1, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now }
+              );
+            modelBuilder.Entity<BloodGroup>().HasData(
+                new { Id = 1, Name = "A", Description = "Nhóm máu A", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now },
+                new { Id = 2, Name = "B", Description = "Nhóm máu B", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now }
+                );
             modelBuilder.Entity<User>().HasData(
                 new 
                 {
@@ -63,9 +70,6 @@ namespace Infrastructure.Data
                     AccessFailedCount = 0
                 }
             );
-            
-
-            //Seeding the relation between our user and role to AspNetUserRoles table
             modelBuilder.Entity<IdentityUserRole<string>>().HasData(
                 new IdentityUserRole<string>
                 {
