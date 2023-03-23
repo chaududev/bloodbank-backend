@@ -21,9 +21,9 @@ namespace Application.Service
             this.repository = repository;
         }
 
-        public void Add(string name, string address)
+        public void Add(string name, string address, string lat, string longdata)
         {
-            Hospital entity = new Hospital(name, address);
+            Hospital entity = new Hospital(name, address,lat,longdata);
             repository.Add(entity);
         }
 
@@ -56,14 +56,14 @@ namespace Application.Service
             return repository.Get(includeProperties, filter, null, pageSize ?? int.MaxValue, page ?? 1);
         }
 
-        public void Update(int id, string name, string address)
+        public void Update(int id, string name, string address, string lat, string longdata)
         {
             Hospital entity = this.GetById(id);
             if (entity == null)
             {
                 throw new Exception($"The entity with ID {id} was not found.");
             }
-            entity.Update(name, address);
+            entity.Update(name, address,lat,longdata);
             repository.Update(entity);
         }
     }

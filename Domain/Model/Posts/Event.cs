@@ -10,6 +10,8 @@ namespace Domain.Model.Posts
         public string EventName { get; private set; }
         [MaxLength(100)]
         public string Description { get; private set; }
+        [Column(TypeName = "ntext")]
+        [MaxLength]
         public string Content { get; private set; }
         public DateTime StartTime { get; private set; }
         public DateTime EndTime { get; private set; }

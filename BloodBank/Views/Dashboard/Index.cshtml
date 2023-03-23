@@ -30,13 +30,13 @@
         var url = '/api/event';
         var reponse = await fetch(url);
         var data = await reponse.json();
-        renderSlide0(data.data,data.totalCount);
+        renderSlide0(data.data,data.total);
     }
     const main2 = async () => {
         var url = '/api/blog';
         var reponse = await fetch(url);
         var data = await reponse.json();
-        renderSlide1(data.data, data.totalCount);
+        renderSlide1(data.data, data.total);
     }
     const renderSlide0 = (data,count) => {
         var domSlide = document.querySelector("#row");

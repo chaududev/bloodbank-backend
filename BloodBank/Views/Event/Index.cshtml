@@ -24,9 +24,7 @@
                         <th>ID</th>
                         <th>Name</th>
                         <th>Description</th>
-                        <th>Content</th>
-                        <th>Start Time</th>
-                        <th>End Time</th>
+                        <th>Time</th>
                         <th>Status</th>
                         <th>Image</th>
 
@@ -49,7 +47,7 @@
 
                         <!-- Modal Header -->
                         <div class="modal-header">
-                            <h4 class="modal-title"> event</h4>
+                            <h4 class="modal-title">Event</h4>
                             <button type="button" class="btn-close" data-dismiss="modal"></button>
                         </div>
 
@@ -134,9 +132,7 @@
                                 "<td>" + data[i].id + "</td>" +
                                 "<td>" + data[i].eventName + "</td>" +
                                 "<td>" + data[i].description + "</td>" +
-                                "<td>" + data[i].content + "</td>" +
-                                "<td>" + moment(data[i].startTime).format('DD-MM-YYYY') + "</td>" +
-                                 "<td>" + moment(data[i].endTime).format('DD-MM-YYYY') + "</td>" +
+                                "<td>" + moment(data[i].startTime).format('DD-MM-YYYY') + " - "+ moment(data[i].endTime).format('DD-MM-YYYY') + "</td>" +
                                 "<td>" + (data[i].status == 0 ? "None" : data[i].status == 1 ? "Upcoming" : data[i].status == 2 ? "Ongoing" :data[i].status == 3?"Finished":"Canceled") + "</td>" +
                                 "<td><img src='" + data[i].image.url + "' height='100'></td>" +
                                 "<td><button class='edit-button' data-data='" + JSON.stringify(data[i]) + "'>Edit</button></td>" +

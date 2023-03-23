@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230323015837_db_bloodbank_v1.0")]
-    partial class db_bloodbank_v10
+    [Migration("20230323091933_db_blood_v1.5")]
+    partial class db_blood_v15
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -98,18 +98,18 @@ namespace Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2023, 3, 23, 8, 58, 36, 510, DateTimeKind.Local).AddTicks(8988),
+                            CreatedAt = new DateTime(2023, 3, 23, 16, 19, 32, 884, DateTimeKind.Local).AddTicks(1788),
                             Description = "Nhóm máu A",
                             Name = "A",
-                            UpdatedAt = new DateTime(2023, 3, 23, 8, 58, 36, 510, DateTimeKind.Local).AddTicks(8989)
+                            UpdatedAt = new DateTime(2023, 3, 23, 16, 19, 32, 884, DateTimeKind.Local).AddTicks(1789)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2023, 3, 23, 8, 58, 36, 510, DateTimeKind.Local).AddTicks(8990),
+                            CreatedAt = new DateTime(2023, 3, 23, 16, 19, 32, 884, DateTimeKind.Local).AddTicks(1791),
                             Description = "Nhóm máu B",
                             Name = "B",
-                            UpdatedAt = new DateTime(2023, 3, 23, 8, 58, 36, 510, DateTimeKind.Local).AddTicks(8990)
+                            UpdatedAt = new DateTime(2023, 3, 23, 16, 19, 32, 884, DateTimeKind.Local).AddTicks(1791)
                         });
                 });
 
@@ -132,7 +132,8 @@ namespace Infrastructure.Migrations
 
                     b.Property<string>("Note")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<int>("QR")
                         .HasColumnType("int");
@@ -175,7 +176,7 @@ namespace Infrastructure.Migrations
 
                     b.Property<string>("Content")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("ntext");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -208,11 +209,11 @@ namespace Infrastructure.Migrations
                         {
                             Id = 1,
                             Content = "Hiến máu chủ yếu là hiến hồng cầu. Máu gồm có huyết tương chiếm 55% thể tích máu và các tế bào máu chiếm 45% còn lại.",
-                            CreatedAt = new DateTime(2023, 3, 23, 8, 58, 36, 510, DateTimeKind.Local).AddTicks(8956),
+                            CreatedAt = new DateTime(2023, 3, 23, 16, 19, 32, 884, DateTimeKind.Local).AddTicks(1718),
                             Description = "Chúng ta nên chia sẻ và cho đi",
                             ImageId = 2,
                             Title = "Lợi ích việc hiến máu",
-                            UpdatedAt = new DateTime(2023, 3, 23, 8, 58, 36, 510, DateTimeKind.Local).AddTicks(8957)
+                            UpdatedAt = new DateTime(2023, 3, 23, 16, 19, 32, 884, DateTimeKind.Local).AddTicks(1719)
                         });
                 });
 
@@ -226,7 +227,7 @@ namespace Infrastructure.Migrations
 
                     b.Property<string>("Content")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("ntext");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -268,14 +269,14 @@ namespace Infrastructure.Migrations
                         {
                             Id = 1,
                             Content = "Yêu cầu trên 42kg, sức khỏe tốt",
-                            CreatedAt = new DateTime(2023, 3, 23, 8, 58, 36, 510, DateTimeKind.Local).AddTicks(8976),
+                            CreatedAt = new DateTime(2023, 3, 23, 16, 19, 32, 884, DateTimeKind.Local).AddTicks(1753),
                             Description = "Sinh viên các trường hiến máu",
                             EndTime = new DateTime(2023, 3, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EventName = "Hiến máu nhân đạo",
                             ImageId = 1,
                             StartTime = new DateTime(2023, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
-                            UpdatedAt = new DateTime(2023, 3, 23, 8, 58, 36, 510, DateTimeKind.Local).AddTicks(8976)
+                            UpdatedAt = new DateTime(2023, 3, 23, 16, 19, 32, 884, DateTimeKind.Local).AddTicks(1754)
                         });
                 });
 
@@ -289,11 +290,21 @@ namespace Infrastructure.Migrations
 
                     b.Property<string>("Address")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Lat")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Long")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -312,17 +323,21 @@ namespace Infrastructure.Migrations
                         {
                             Id = 1,
                             Address = "None",
-                            CreatedAt = new DateTime(2023, 3, 23, 8, 58, 36, 510, DateTimeKind.Local).AddTicks(8907),
+                            CreatedAt = new DateTime(2023, 3, 23, 16, 19, 32, 884, DateTimeKind.Local).AddTicks(1624),
+                            Lat = "0",
+                            Long = "0",
                             Name = "None",
-                            UpdatedAt = new DateTime(2023, 3, 23, 8, 58, 36, 510, DateTimeKind.Local).AddTicks(8916)
+                            UpdatedAt = new DateTime(2023, 3, 23, 16, 19, 32, 884, DateTimeKind.Local).AddTicks(1638)
                         },
                         new
                         {
                             Id = 2,
-                            Address = "06 Ngô Quyền, Huế",
-                            CreatedAt = new DateTime(2023, 3, 23, 8, 58, 36, 510, DateTimeKind.Local).AddTicks(8919),
-                            Name = "Bệnh viện Quốc tế",
-                            UpdatedAt = new DateTime(2023, 3, 23, 8, 58, 36, 510, DateTimeKind.Local).AddTicks(8920)
+                            Address = "16 Lê Lợi, Vĩnh Ninh, Thành phố Huế, Thừa Thiên Huế, Việt Nam",
+                            CreatedAt = new DateTime(2023, 3, 23, 16, 19, 32, 884, DateTimeKind.Local).AddTicks(1642),
+                            Lat = "16.462613301814663",
+                            Long = "107.58851619580426",
+                            Name = "Bệnh viện Trung Ương Huế",
+                            UpdatedAt = new DateTime(2023, 3, 23, 16, 19, 32, 884, DateTimeKind.Local).AddTicks(1643)
                         });
                 });
 
@@ -423,7 +438,7 @@ namespace Infrastructure.Migrations
                             LockoutEnabled = true,
                             NormalizedEmail = "CHAUDU301@GMAIL.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEDejDq817wYluVASX67TTreEpJZ85kvyIqIsjfRdBx+VrNdkKzH3b8/Egnt5awkLew==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOoiBHDadnqkKnI9xmK+DjWr7I67Ev78guNMGg9eaD+vyiYAIzqmnkmP2ShVDRjm1Q==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "AKMZLDVQDMJAX4AKBITZL5OOVZB6SHPN",
                             TwoFactorEnabled = false,
@@ -461,28 +476,28 @@ namespace Infrastructure.Migrations
                         new
                         {
                             Id = "0d4492c3-c15e-4986-bbd6-d6157c06dbe1",
-                            ConcurrencyStamp = "188942fb-c162-4b26-8641-a00e3eea9684",
+                            ConcurrencyStamp = "a91ac2ed-65a3-4ceb-96ed-623809eadbd2",
                             Name = "ADMIN",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = "3c84e231-ddb0-4794-8c48-3dbf4ed01d1c",
-                            ConcurrencyStamp = "dafffef1-3f3b-47f2-9153-dead0865fc6c",
+                            ConcurrencyStamp = "b57fba14-f7bc-419c-9b6d-f620be97ea79",
                             Name = "USER",
                             NormalizedName = "USER"
                         },
                         new
                         {
                             Id = "4f077375-71ce-4b2c-88cc-96d3fc60ecf5",
-                            ConcurrencyStamp = "b61526c0-a80a-49ca-86d5-20c8da7c5d2f",
+                            ConcurrencyStamp = "2680d354-8b01-44cb-bbb9-4fff599f1d73",
                             Name = "STAFF",
                             NormalizedName = "STAFF"
                         },
                         new
                         {
                             Id = "9fd9a17b-59d2-4e0d-996a-00014aba94d8",
-                            ConcurrencyStamp = "2034fbcc-717a-461d-bff5-dd5e74bee286",
+                            ConcurrencyStamp = "c3fb0251-936e-4cf0-8dc2-89228676ebb5",
                             Name = "HOSPITAL",
                             NormalizedName = "HOSPITAL"
                         });

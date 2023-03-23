@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "fVUunMzOoSs4lhl5wHJ/jiKNBMO1/YkmwaBfRTV+m3Q=",
+  "Hash": "eWTujy2rO3titU3oMn7I+cPPKXNXLiEeM1lNxI8Y8no=",
   "Source": "BloodBank",
   "BasePath": "_content/BloodBank",
   "Mode": "Default",
@@ -3111,6 +3111,23 @@
       "OriginalItemSpec": "wwwroot\\uploads\\posts\\Post-23142023100320-photo-3.jpg"
     },
     {
+      "Identity": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-23202023150316-ban.jpg",
+      "SourceId": "BloodBank",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\",
+      "BasePath": "_content/BloodBank",
+      "RelativePath": "uploads/posts/Post-23202023150316-ban.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\posts\\Post-23202023150316-ban.jpg"
+    },
+    {
       "Identity": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\qrcode\\Qrcode-21232023220322.png",
       "SourceId": "BloodBank",
       "SourceType": "Discovered",
@@ -3313,6 +3330,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\qrcode\\Qrcode-22592023080345.png"
+    },
+    {
+      "Identity": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\qrcode\\Qrcode-23312023150316.png",
+      "SourceId": "BloodBank",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\",
+      "BasePath": "_content/BloodBank",
+      "RelativePath": "uploads/qrcode/Qrcode-23312023150316.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\qrcode\\Qrcode-23312023150316.png"
     }
   ]
 }

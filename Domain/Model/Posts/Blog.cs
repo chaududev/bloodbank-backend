@@ -17,6 +17,8 @@ namespace Domain.Model.Posts
         [MaxLength(100)]
 
         public string Description { get; private set; }
+        [Column(TypeName = "ntext")]
+        [MaxLength]
         public string Content { get; private set; }
         [ForeignKey("Image")]
         public int ImageId { get; private set; }

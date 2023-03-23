@@ -36,8 +36,8 @@ namespace Infrastructure.Data
             var hasher = new PasswordHasher<IdentityUser>();
 
             modelBuilder.Entity<Hospital>().HasData(
-              new {Id=1,Name= "None",Address="None",CreatedAt=DateTime.Now,UpdatedAt=DateTime.Now },
-              new { Id = 2, Name = "Bệnh viện Quốc tế", Address = "06 Ngô Quyền, Huế", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now }
+              new {Id=1,Name= "None",Address="None",Lat = "0",Long ="0",CreatedAt=DateTime.Now,UpdatedAt=DateTime.Now },
+              new { Id = 2, Name = "Bệnh viện Trung Ương Huế", Address = "16 Lê Lợi, Vĩnh Ninh, Thành phố Huế, Thừa Thiên Huế, Việt Nam",Lat= "16.462613301814663", Long = "107.58851619580426", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now }
              );
             modelBuilder.Entity<Image>().HasData(
                 new { Id = 1, FileName = "banner.jpg", ContentType = "image/jpeg", Url = "/uploads/posts/Post-21262023220332-banner.jpg" },

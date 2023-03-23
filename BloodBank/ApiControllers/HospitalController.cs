@@ -63,7 +63,7 @@ namespace BloodBank.ApiControllers
             {
                 if (ModelState.IsValid)
                 {
-                    HospitalService.Add(Hospital.Name, Hospital.Address);
+                    HospitalService.Add(Hospital.Name, Hospital.Address, Hospital.Lat??"0",Hospital.Long??"0");
                     return Ok();
                 }
                 return UnprocessableEntity(ModelState);
@@ -81,7 +81,7 @@ namespace BloodBank.ApiControllers
             {
                 if (ModelState.IsValid)
                 {
-                    HospitalService.Update(id, Hospital.Name, Hospital.Address);
+                    HospitalService.Update(id, Hospital.Name, Hospital.Address,Hospital.Lat ?? "0", Hospital.Long ?? "0");
                     return Ok();
                 }
                 return UnprocessableEntity(ModelState);

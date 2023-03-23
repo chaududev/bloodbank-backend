@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Infrastructure.Migrations
 {
-    public partial class db_bloodbank_v10 : Migration
+    public partial class db_blood_v15 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -46,7 +46,9 @@ namespace Infrastructure.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Address = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
+                    Lat = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Long = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -133,7 +135,7 @@ namespace Infrastructure.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Content = table.Column<string>(type: "ntext", nullable: false),
                     ImageId = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
@@ -157,7 +159,7 @@ namespace Infrastructure.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     EventName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Content = table.Column<string>(type: "ntext", nullable: false),
                     StartTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EndTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
@@ -267,7 +269,7 @@ namespace Infrastructure.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Note = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Note = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
                     BloodId = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: false),
@@ -311,10 +313,10 @@ namespace Infrastructure.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "0d4492c3-c15e-4986-bbd6-d6157c06dbe1", "188942fb-c162-4b26-8641-a00e3eea9684", "ADMIN", "ADMIN" },
-                    { "3c84e231-ddb0-4794-8c48-3dbf4ed01d1c", "dafffef1-3f3b-47f2-9153-dead0865fc6c", "USER", "USER" },
-                    { "4f077375-71ce-4b2c-88cc-96d3fc60ecf5", "b61526c0-a80a-49ca-86d5-20c8da7c5d2f", "STAFF", "STAFF" },
-                    { "9fd9a17b-59d2-4e0d-996a-00014aba94d8", "2034fbcc-717a-461d-bff5-dd5e74bee286", "HOSPITAL", "HOSPITAL" }
+                    { "0d4492c3-c15e-4986-bbd6-d6157c06dbe1", "a91ac2ed-65a3-4ceb-96ed-623809eadbd2", "ADMIN", "ADMIN" },
+                    { "3c84e231-ddb0-4794-8c48-3dbf4ed01d1c", "b57fba14-f7bc-419c-9b6d-f620be97ea79", "USER", "USER" },
+                    { "4f077375-71ce-4b2c-88cc-96d3fc60ecf5", "2680d354-8b01-44cb-bbb9-4fff599f1d73", "STAFF", "STAFF" },
+                    { "9fd9a17b-59d2-4e0d-996a-00014aba94d8", "c3fb0251-936e-4cf0-8dc2-89228676ebb5", "HOSPITAL", "HOSPITAL" }
                 });
 
             migrationBuilder.InsertData(
@@ -322,17 +324,17 @@ namespace Infrastructure.Migrations
                 columns: new[] { "Id", "CreatedAt", "Description", "Name", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 3, 23, 8, 58, 36, 510, DateTimeKind.Local).AddTicks(8988), "Nhóm máu A", "A", new DateTime(2023, 3, 23, 8, 58, 36, 510, DateTimeKind.Local).AddTicks(8989) },
-                    { 2, new DateTime(2023, 3, 23, 8, 58, 36, 510, DateTimeKind.Local).AddTicks(8990), "Nhóm máu B", "B", new DateTime(2023, 3, 23, 8, 58, 36, 510, DateTimeKind.Local).AddTicks(8990) }
+                    { 1, new DateTime(2023, 3, 23, 16, 19, 32, 884, DateTimeKind.Local).AddTicks(1788), "Nhóm máu A", "A", new DateTime(2023, 3, 23, 16, 19, 32, 884, DateTimeKind.Local).AddTicks(1789) },
+                    { 2, new DateTime(2023, 3, 23, 16, 19, 32, 884, DateTimeKind.Local).AddTicks(1791), "Nhóm máu B", "B", new DateTime(2023, 3, 23, 16, 19, 32, 884, DateTimeKind.Local).AddTicks(1791) }
                 });
 
             migrationBuilder.InsertData(
                 table: "Hospitals",
-                columns: new[] { "Id", "Address", "CreatedAt", "Name", "UpdatedAt" },
+                columns: new[] { "Id", "Address", "CreatedAt", "Lat", "Long", "Name", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, "None", new DateTime(2023, 3, 23, 8, 58, 36, 510, DateTimeKind.Local).AddTicks(8907), "None", new DateTime(2023, 3, 23, 8, 58, 36, 510, DateTimeKind.Local).AddTicks(8916) },
-                    { 2, "06 Ngô Quyền, Huế", new DateTime(2023, 3, 23, 8, 58, 36, 510, DateTimeKind.Local).AddTicks(8919), "Bệnh viện Quốc tế", new DateTime(2023, 3, 23, 8, 58, 36, 510, DateTimeKind.Local).AddTicks(8920) }
+                    { 1, "None", new DateTime(2023, 3, 23, 16, 19, 32, 884, DateTimeKind.Local).AddTicks(1624), "0", "0", "None", new DateTime(2023, 3, 23, 16, 19, 32, 884, DateTimeKind.Local).AddTicks(1638) },
+                    { 2, "16 Lê Lợi, Vĩnh Ninh, Thành phố Huế, Thừa Thiên Huế, Việt Nam", new DateTime(2023, 3, 23, 16, 19, 32, 884, DateTimeKind.Local).AddTicks(1642), "16.462613301814663", "107.58851619580426", "Bệnh viện Trung Ương Huế", new DateTime(2023, 3, 23, 16, 19, 32, 884, DateTimeKind.Local).AddTicks(1643) }
                 });
 
             migrationBuilder.InsertData(
@@ -347,17 +349,17 @@ namespace Infrastructure.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "Address", "Birthday", "ConcurrencyStamp", "Email", "EmailConfirmed", "FullName", "HospitalId", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "23ba1d27-0638-48ce-a968-d03d6dee5d41", 0, "Hue", new DateTime(2001, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "e26d8cb5-e3ce-4e0c-9588-ffd39ee998b1", "chaudu301@gmail.com", true, "Chau Du", 1, true, null, "CHAUDU301@GMAIL.COM", "ADMIN", "AQAAAAEAACcQAAAAEDejDq817wYluVASX67TTreEpJZ85kvyIqIsjfRdBx+VrNdkKzH3b8/Egnt5awkLew==", null, false, "AKMZLDVQDMJAX4AKBITZL5OOVZB6SHPN", false, "admin" });
+                values: new object[] { "23ba1d27-0638-48ce-a968-d03d6dee5d41", 0, "Hue", new DateTime(2001, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "e26d8cb5-e3ce-4e0c-9588-ffd39ee998b1", "chaudu301@gmail.com", true, "Chau Du", 1, true, null, "CHAUDU301@GMAIL.COM", "ADMIN", "AQAAAAEAACcQAAAAEOoiBHDadnqkKnI9xmK+DjWr7I67Ev78guNMGg9eaD+vyiYAIzqmnkmP2ShVDRjm1Q==", null, false, "AKMZLDVQDMJAX4AKBITZL5OOVZB6SHPN", false, "admin" });
 
             migrationBuilder.InsertData(
                 table: "Blogs",
                 columns: new[] { "Id", "Content", "CreatedAt", "Description", "ImageId", "Title", "UpdatedAt" },
-                values: new object[] { 1, "Hiến máu chủ yếu là hiến hồng cầu. Máu gồm có huyết tương chiếm 55% thể tích máu và các tế bào máu chiếm 45% còn lại.", new DateTime(2023, 3, 23, 8, 58, 36, 510, DateTimeKind.Local).AddTicks(8956), "Chúng ta nên chia sẻ và cho đi", 2, "Lợi ích việc hiến máu", new DateTime(2023, 3, 23, 8, 58, 36, 510, DateTimeKind.Local).AddTicks(8957) });
+                values: new object[] { 1, "Hiến máu chủ yếu là hiến hồng cầu. Máu gồm có huyết tương chiếm 55% thể tích máu và các tế bào máu chiếm 45% còn lại.", new DateTime(2023, 3, 23, 16, 19, 32, 884, DateTimeKind.Local).AddTicks(1718), "Chúng ta nên chia sẻ và cho đi", 2, "Lợi ích việc hiến máu", new DateTime(2023, 3, 23, 16, 19, 32, 884, DateTimeKind.Local).AddTicks(1719) });
 
             migrationBuilder.InsertData(
                 table: "Events",
                 columns: new[] { "Id", "Content", "CreatedAt", "Description", "EndTime", "EventName", "ImageId", "StartTime", "Status", "UpdatedAt" },
-                values: new object[] { 1, "Yêu cầu trên 42kg, sức khỏe tốt", new DateTime(2023, 3, 23, 8, 58, 36, 510, DateTimeKind.Local).AddTicks(8976), "Sinh viên các trường hiến máu", new DateTime(2023, 3, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), "Hiến máu nhân đạo", 1, new DateTime(2023, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, new DateTime(2023, 3, 23, 8, 58, 36, 510, DateTimeKind.Local).AddTicks(8976) });
+                values: new object[] { 1, "Yêu cầu trên 42kg, sức khỏe tốt", new DateTime(2023, 3, 23, 16, 19, 32, 884, DateTimeKind.Local).AddTicks(1753), "Sinh viên các trường hiến máu", new DateTime(2023, 3, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), "Hiến máu nhân đạo", 1, new DateTime(2023, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, new DateTime(2023, 3, 23, 16, 19, 32, 884, DateTimeKind.Local).AddTicks(1754) });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
