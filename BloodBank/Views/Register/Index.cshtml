@@ -164,12 +164,19 @@
 			{
 				dataField: "note",
 				caption: "Note",
-				validationRules: [
-					{
-						type: "required",
-						message: "Note is required"
-					}
-				]
+				visible: false,
+			},
+			{
+				dataField: "user.userName",
+				caption: "UserName",
+			},
+			{
+				dataField: "bloodGroup.name",
+				caption: "Blood",
+			},
+			{
+				dataField: "hospital.name",
+				caption: "Hospital",
 			},
 			{
 				dataField: "status",
@@ -221,10 +228,7 @@
 					valueExpr: 'idBlood',
 				},
 			},
-			{
-				dataField: "bloodGroup.name",
-				caption: "Blood",
-			},
+			
 			{
 				dataField: "userId",
 				caption: "User Id",
@@ -246,10 +250,7 @@
 					showPopupTitle: true,
 				},
 			},
-			{
-				dataField: "user.userName",
-				caption: "UserName",
-			},
+			
 			{
 				dataField: "hospitalId",
 				caption: "Hospital Id",
@@ -267,10 +268,7 @@
 					valueExpr: 'idHospital'
 				},
 			},
-			{
-				dataField: "hospital.name",
-				caption: "Hospital",
-			},
+			
 			{
 				dataField: "timeSign",
 				caption: "Time Sign",
@@ -292,7 +290,13 @@
 						.addClass("image-cell")
 						.css({ width: "100px", height: "100px" })
 						.appendTo(container);
-				}
+				},
+				allowFiltering: false
+			},
+			{
+				dataField: "ml",
+				caption: "Capacity (ml) ",
+				visible: false,
 			},
 			{
 				type: "buttons",
@@ -303,7 +307,10 @@
 
 		var datasource = [];
 		var dataGrid = $("#gridContainer").dxDataGrid({
-			filterRow: { visible: true },
+			filterRow: 
+			{
+				visible: true
+			},
 			dataSource: {
 				store: new DevExpress.data.CustomStore({
 					loadMode: "raw",
@@ -371,30 +378,31 @@
 								visible: false,
 							},
 							{
-								dataField: "note",
+								dataField: "userId",
 								colSpan: 2,
 							},
-							{
-								dataField: "status",
-								colSpan: 2,
-							},
-
 							{
 								dataField: "bloodId",
 								colSpan: 2,
 							},
-
 							{
-								dataField: "userId",
+								dataField: "hospitalId",
 								colSpan: 2,
 							},
 							{
 								dataField: "timeSign",
 								colSpan: 2,
 							},
-
 							{
-								dataField: "hospitalId",
+								dataField: "status",
+								colSpan: 2,
+							},
+							{
+								dataField: "note",
+								colSpan: 2,
+							},
+							{
+								dataField: "ml",
 								colSpan: 2,
 							},
 
@@ -425,7 +433,8 @@
 					bloodId:  e.data.bloodId,
 					userId:  e.data.userId,
 					timeSign:  e.data.timeSign,
-					hospitalId:  e.data.hospitalId
+					hospitalId:  e.data.hospitalId,
+					ml: e.data.ml
 				};
 				console.log(formData);
 				$.ajax({
@@ -451,7 +460,8 @@
 					bloodId:  form.bloodId,
 					userId: form.userId,
 					timeSign: form.timeSign,
-					hospitalId:  form.hospitalId
+					hospitalId:  form.hospitalId,
+					ml: form.ml
 				};
 				console.log(formData);
 				$.ajax({

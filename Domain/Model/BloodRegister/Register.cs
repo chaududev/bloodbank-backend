@@ -29,16 +29,16 @@ namespace Domain.Model.BloodRegister
         public int HospitalId { get; private set; }
         [ForeignKey("HospitalId")]
         public virtual Hospital Hospital { get; private set; }
+        public int Ml { get; private set; }
 
-
-        public Register(string note, Status status, int bloodId, string userId, DateTime timeSign, int qR, int hospitalId)
+        public Register(string note, Status status, int bloodId, string userId, DateTime timeSign, int qR, int hospitalId, int ml)
         {
             Add();
             UserId = userId.Trim();
             QR = qR;
-            Update(note, status, bloodId,  timeSign, hospitalId);
+            Update(note, status, bloodId,  timeSign, hospitalId,ml);
         }
-        public void Update(string note, Status status, int bloodId, DateTime timeSign, int hospitalId)
+        public void Update(string note, Status status, int bloodId, DateTime timeSign, int hospitalId,int ml)
         {
             Update();
             Note = note.Trim();
@@ -46,6 +46,7 @@ namespace Domain.Model.BloodRegister
             BloodId = bloodId;
             TimeSign = timeSign;
             HospitalId = hospitalId;
+            Ml = ml>0?ml:0;
         }
     }
 }

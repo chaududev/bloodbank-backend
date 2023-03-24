@@ -96,3 +96,6 @@ C:\Users\Admin\source\repos\BloodBank\BloodBank\bin\Debug\net6.0\IronSoftware.Dr
 C:\Users\Admin\source\repos\BloodBank\BloodBank\bin\Debug\net6.0\SixLabors.Fonts.dll
 C:\Users\Admin\source\repos\BloodBank\BloodBank\bin\Debug\net6.0\SixLabors.ImageSharp.dll
 C:\Users\Admin\source\repos\BloodBank\BloodBank\bin\Debug\net6.0\SixLabors.ImageSharp.Drawing.dll
+C:\Users\Admin\source\repos\BloodBank\BloodBank\bin\Debug\net6.0\MailKit.dll
+C:\Users\Admin\source\repos\BloodBank\BloodBank\bin\Debug\net6.0\MimeKit.dll
+C:\Users\Admin\source\repos\BloodBank\BloodBank\bin\Debug\net6.0\BouncyCastle.Crypto.dll

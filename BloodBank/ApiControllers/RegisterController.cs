@@ -89,7 +89,7 @@ namespace BloodBank.ApiControllers
                     Image QR = ImageService.GenerateQRCode(data);
                     if (QR != null)
                     {
-                        RegisterService.Add(Register.Note, Register.Status, Register.BloodId, Register.UserId, Register.TimeSign ?? DateTime.MaxValue, QR.Id, Register.HospitalId);
+                        RegisterService.Add(Register.Note ?? "None", Register.Status, Register.BloodId, Register.UserId, Register.TimeSign ?? DateTime.MaxValue, QR.Id, Register.HospitalId,Register.Ml??0);
                         return Ok();
                     }
                     return BadRequest("Faild create QR");
@@ -109,7 +109,7 @@ namespace BloodBank.ApiControllers
             {
                 if (ModelState.IsValid)
                 {
-                    RegisterService.Update(id, Register.Note, Register.Status, Register.BloodId, Register.TimeSign??DateTime.MaxValue, Register.HospitalId);
+                    RegisterService.Update(id, Register.Note??"None", Register.Status, Register.BloodId, Register.TimeSign??DateTime.MaxValue, Register.HospitalId,Register.Ml??0);
                     return Ok();
                 }
                 return UnprocessableEntity(ModelState);

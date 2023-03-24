@@ -8,7 +8,7 @@
 <div class="panel-body">
     <div class="content-row">
         <h2 class="content-row-title">@ViewData["Title"]</h2>
-        <div class ="col-md-12">
+        <div class="col-md-12">
             <div>
                 <img src="~/uploads/image/ban.jpg" height="400px" width="100%" />
             </div>
@@ -16,15 +16,19 @@
         <h2 class="content-row-title">Recent</h2>
         <h3 class="content-row-title">Event</h3>
         <div class="row" id="row">
-           
         </div>
         <h3 class="content-row-title">Blog</h3>
         <div class="row" id="row2">
         </div>
     </div>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+	<!-- Devexpress -->
+	<link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/17.1.5/css/dx.common.css" />
+	<link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/17.1.5/css/dx.light.css" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/devextreme/22.2.4/js/dx.all.js"></script>
 <script>
      const main = async () => {
         var url = '/api/event';

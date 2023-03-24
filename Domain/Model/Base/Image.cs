@@ -25,6 +25,8 @@ namespace Domain.Model.Base
         [JsonIgnore]
         public virtual Blog Blog { get; private set; }
         [JsonIgnore]
+        public virtual Charity Charity { get; private set; }
+        [JsonIgnore]
         public virtual Register Register { get; private set; }
         public Image()
         {

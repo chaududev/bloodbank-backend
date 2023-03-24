@@ -8,25 +8,26 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>@ViewData["Title"] - BloodBank</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site2.min.css">
     <script type="text/javascript" src="~/js/site.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-   
+  
 </head>
+
 <body>
     <header>
-        <nav role="navigation" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3 navbar-custom">
+        <nav role="navigation" class="navbar-custom">
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
                     <button data-target="#bs-content-row-navbar-collapse-5" data-toggle="collapse" class="navbar-toggle" type="button">
-                        <span class="sr-only">Toggle navigation</span>
+                        <span class="sr-only">Menu</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>s
+
                     </button>
-                    <a href="#" class="navbar-brand">Blood Bank - Admin</a>
+                    <a href="/home" class="navbar-brand">BloodBank</a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -34,8 +35,30 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li class="active"><a href="/home">Home</a></li>
                         <li class="active"><a href="/home/privacy">Privacy</a></li>
-                        <!-- <li class="disabled"><a href="#">Link</a></li> -->
-                        <partial name="_LoginPartial" />
+                        <li class="active"><a href="/swagger">Documentation</a></li>
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            <li class="dropdown">
+                                <a data-toggle="dropdown" class="dropdown-toggle" href="#">@User.Identity.Name.Substring(0, 1).ToUpper()@User.Identity.Name.Substring(1)<b class="caret"></b> </a>
+                                <ul role="menu" class="dropdown-menu">
+                                    <li class="dropdown-header">Setting</li>
+                                    <li class="disabled"><a href="#">Profile</a></li>
+                                    <li class="divider"></li>
+                                    <li class="disabled"><a href="#">Change Password</a></li>
+                                    <li class="divider"></li>
+                                    <li class="active"><a href="/Auth/logout">Signout</a></li>
+                                </ul>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="/Auth/Register">Register</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="/Auth">Login</a>
+                            </li>
+                        }
                     </ul>
 
                 </div><!-- /.navbar-collapse -->
@@ -45,24 +68,24 @@
     @if (SignInManager.IsSignedIn(User))
     {
         <div class="container-fluid">
-             <div class="row row-offcanvas row-offcanvas-left">
-                    <partial name="_NavigationPartial" />
-                    <div class="col-xs-12 col-sm-9 content">
-                        <div role="main" class="panel panel-default">
-                            @RenderBody()
-                        </div>
+            <div class="row row-offcanvas row-offcanvas-left">
+                <partial name="_NavigationPartial" />
+                <div class="col-xs-12 col-sm-9 content">
+                    <div role="main" class="panel panel-default">
+                        @RenderBody()
                     </div>
-             </div>
-         </div>
-      
+                </div>
+            </div>
+        </div>
+
     }
     else
     {
         <div role="main">
-             @RenderBody()            
+            @RenderBody()
         </div>
-     }
-    <footer class="border-top footer text-muted">
+    }
+    <footer class="border-top footer text-muted" style="margin-top:80px;">
         <div class="container">
             &copy; 2023 - BloodBank - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>

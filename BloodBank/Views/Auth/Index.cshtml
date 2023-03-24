@@ -1,59 +1,54 @@
-﻿
-@model LoginViewModel
-@{
-    Layout = "/Views/Shared/_Layout.cshtml";
-    ViewData["Title"] = "Sign in";
-}
-<div class="container">
-    <form class="form-signin" role="form" method="post" action="/Auth/Login">
-        <h3 class="form-signin-heading text-dark text-center">@ViewData["Title"]</h3>
-        <div class="form-group">
-            <div class="input-group">
-                <div class="input-group-addon">
-                    <i class="glyphicon glyphicon-user"></i>
+﻿@model LoginViewModel
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="~/css/login.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+</head>
+<body>
+    <div class="content-wrapper">
+        <div class="content">
+            <div class="signup-wrapper shadow-box">
+                <div class="company-details ">
+                    <div class="shadow"></div>
+                    <div class="wrapper-1">
+                        <h1 class="title">blood bank co.</h1>
+                        <div class="slogan">Donate blood, donate life!</div>
+                    </div>
+
                 </div>
-                <input type="text" name="username" id="username" class="form-control" placeholder="Username" required />
+                <div class="signup-form">
+                    <div class="wrapper-2">
+                        <div class="form-title">Sign in today!</div>
+                        <div class="form">
+                            <form role="form" method="post" action="/Auth/Login">
+                                <p class="content-item">
+                                    <label>
+                                        username 
+                                        <input type="text" class="form-control" name="username" id="username" required>
+                                    </label>
+                                </p>
+
+                                <p class="content-item">
+
+                                    <label>
+                                        password
+                                        <input type="password" class="form-control" name="password" id="password" required>
+                                    </label>
+                                </p>
+                                <p class="text-danger text-center">@ViewBag.Message</p>
+                                <button type="submit" class="signup">Sign in</button>
+                                <a href="/auth/register" class="login">Create an account ?</a>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
         </div>
+    </div>
+</body>
 
-        <div class="form-group">
-            <div class="input-group">
-                <div class="input-group-addon">
-                    <i class=" glyphicon glyphicon-lock "></i>
-                </div>
-                <input type="password" name="password" id="password" class="form-control" placeholder="Password" required /> 
-                 <div class="input-group-addon">
-                    <i class="far fa-eye end-box" id="see-password"></i>
-                </div>
-            </div>
-        </div>
-        <p class="text-dark text-center">@ViewBag.Message</p>
-        <button class="btn btn-dark btn-lg btn-block" type="submit">Sign in</button>
-    </form>
-
-</div>
-
-<script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
-<link rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-@section Scripts {
-    <script>
-        $(document).ready(function () {
-            let showPass = false;
-            $('#see-password').on("click", function (event) {
-                showPass = !showPass;
-                if (showPass == true) {
-                    $('#password').prop('type', 'text');
-                    $('#see-password').toggleClass('fa-eye');
-                    $('#see-password').toggleClass('fa-eye-slash');
-                }
-                if (showPass == false) {
-                    $('#password').prop('type', 'password');
-                    $('#see-password').toggleClass('fa-eye-slash');
-                    $('#see-password').toggleClass('fa-eye');
-                }
-
-            });
-        });
-    </script>
-}

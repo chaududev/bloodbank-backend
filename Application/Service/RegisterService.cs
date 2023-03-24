@@ -22,9 +22,9 @@ namespace Application.Service
             this.repository = repository;
         }
 
-        public void Add(string note, Status status, int bloodId, string userId, DateTime timeSign, int qR, int hospitalId)
+        public void Add(string note, Status status, int bloodId, string userId, DateTime timeSign, int qR, int hospitalId, int ml)
         {
-            Register entity = new Register(note, status, bloodId, userId, timeSign, qR, hospitalId);
+            Register entity = new Register(note, status, bloodId, userId, timeSign, qR, hospitalId,ml);
             repository.Add(entity);
         }
 
@@ -80,14 +80,14 @@ namespace Application.Service
             return repository.Get(includeProperties, filter, sort, pageSize ?? int.MaxValue, page ?? 1);
         }
 
-        public void Update(int id, string note, Status status, int bloodId, DateTime timeSign, int hospitalId)
+        public void Update(int id, string note, Status status, int bloodId, DateTime timeSign, int hospitalId, int ml)
         {
             Register entity = this.GetById(id);
             if (entity == null)
             {
                 throw new Exception($"The entity with ID {id} was not found.");
             }
-            entity.Update(note, status, bloodId, timeSign, hospitalId);
+            entity.Update(note, status, bloodId, timeSign, hospitalId, ml);
             repository.Update(entity);
         }
     }

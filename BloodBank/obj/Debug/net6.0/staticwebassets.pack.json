@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\BloodBank.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\css\\login.css",
+      "PackagePath": "staticwebassets\\css\\login.css"
+    },
+    {
       "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
@@ -313,12 +317,32 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\charity\\Post-20230320142324-photo-2.jpg",
+      "PackagePath": "staticwebassets\\uploads\\charity\\Post-20230320142324-photo-2.jpg"
+    },
+    {
       "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\image\\ban.jpg",
       "PackagePath": "staticwebassets\\uploads\\image\\ban.jpg"
     },
     {
       "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\image\\banner.jpg",
       "PackagePath": "staticwebassets\\uploads\\image\\banner.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\image\\icon.png",
+      "PackagePath": "staticwebassets\\uploads\\image\\icon.png"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\image\\icon2.png",
+      "PackagePath": "staticwebassets\\uploads\\image\\icon2.png"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\image\\login.jpg",
+      "PackagePath": "staticwebassets\\uploads\\image\\login.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\image\\myqr.jpg",
+      "PackagePath": "staticwebassets\\uploads\\image\\myqr.jpg"
     },
     {
       "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\image\\photo-1.jpg",
@@ -485,6 +509,50 @@
       "PackagePath": "staticwebassets\\uploads\\posts\\Post-23202023150316-ban.jpg"
     },
     {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-24102023150303-967119.png",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-24102023150303-967119.png"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-24102023150325-banner.jpg",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-24102023150325-banner.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-24102023150343-Capture.JPG",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-24102023150343-Capture.JPG"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-24102023150352-Capture.JPG",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-24102023150352-Capture.JPG"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-24102023150359-Capture.JPG",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-24102023150359-Capture.JPG"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-24132023170327-anh-1-9607.jpg",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-24132023170327-anh-1-9607.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-24212023140354-967119.png",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-24212023140354-967119.png"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-24242023170345-ban.jpg",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-24242023170345-ban.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-24262023140318-icon.png",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-24262023140318-icon.png"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-24272023170304-967119.png",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-24272023170304-967119.png"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-24312023170316-DuChau-MFA-Done.JPG",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-24312023170316-DuChau-MFA-Done.JPG"
+    },
+    {
       "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\anh-20230316114759tieu-su-ca-si-lisa-blackpink-3.jpeg",
       "PackagePath": "staticwebassets\\uploads\\posts\\anh-20230316114759tieu-su-ca-si-lisa-blackpink-3.jpeg"
     },
@@ -537,8 +605,28 @@
       "PackagePath": "staticwebassets\\uploads\\qrcode\\Qrcode-22592023080345.png"
     },
     {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\qrcode\\Qrcode-23172023200310.png",
+      "PackagePath": "staticwebassets\\uploads\\qrcode\\Qrcode-23172023200310.png"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\qrcode\\Qrcode-23202023200346.png",
+      "PackagePath": "staticwebassets\\uploads\\qrcode\\Qrcode-23202023200346.png"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\qrcode\\Qrcode-23222023200332.png",
+      "PackagePath": "staticwebassets\\uploads\\qrcode\\Qrcode-23222023200332.png"
+    },
+    {
       "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\qrcode\\Qrcode-23312023150316.png",
       "PackagePath": "staticwebassets\\uploads\\qrcode\\Qrcode-23312023150316.png"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\qrcode\\Qrcode-24002023160338.png",
+      "PackagePath": "staticwebassets\\uploads\\qrcode\\Qrcode-24002023160338.png"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\qrcode\\Qrcode-24182023160306.png",
+      "PackagePath": "staticwebassets\\uploads\\qrcode\\Qrcode-24182023160306.png"
     },
     {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.BloodBank.Microsoft.AspNetCore.StaticWebAssets.props",

@@ -26,6 +26,7 @@ namespace BloodBank.Controllers
         }
         public IActionResult Index()
         {
+            if (_signInManager.IsSignedIn(User)) return Redirect("/");
             ViewBag.Message = TempData["Message"];
             return View();
         }
@@ -71,6 +72,7 @@ namespace BloodBank.Controllers
         [HttpGet]
         public IActionResult Register()
         {
+            if (_signInManager.IsSignedIn(User)) return Redirect("/");
             return View();
         }
 
