@@ -1,210 +1,402 @@
 ﻿@{
-    ViewData["Title"] = "Charity";
+	ViewData["Title"] = "Charity";
 }
 
 <div class="panel-heading">
-    <h3 class="panel-title"><a href="javascript:void(0);" class="toggle-sidebar"><span class="fa fa-angle-double-left" data-toggle="offcanvas" title="Maximize Panel"></span></a>@ViewData["Title"]</h3>
+	<h3 class="panel-title"><a href="javascript:void(0);" class="toggle-sidebar"><span class="fa fa-angle-double-left" data-toggle="offcanvas" title="Maximize Panel"></span></a>@ViewData["Title"]</h3>
 </div>
 <div class="panel-body">
-    <div class="content-row">
-        <h2 class="content-row-title">Charity Management</h2>
-        <div class="page-breadcrumb bg-white">
-            <div class="row align-items-center">
-                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <button type="button" class="btn btn-primary" id="add-button">
-                        Add
-                    </button>
-                </div>
-            </div>
-        </div>
-        <table class="table" id="tablecharity">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Situation</th>
-                    <th>Image</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody id="bodycharity">
-            </tbody>
-        </table>
-        <div class="row mt-4 content-center">
-            <div class="col-md-6">
-                <ul class="pagination" id="page_container">
-                </ul>
-            </div>
-        </div>
-        <div class="modal" id="myModal">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
+	<div class="content-row">
+		<h2 class="content-row-title">@ViewData["Title"] Management</h2>
+		<div class="demo-container">
+			<div id="data-grid-demo">
+				<div id="gridContainer">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
-                    <!-- Modal Header -->
-                    <div class="modal-header">
-                        <h4 class="modal-title"> Charity</h4>
-                        <button type="button" class="btn-close" data-dismiss="modal"></button>
-                    </div>
-
-                    <!-- Modal body -->
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <form id="post-form" enctype="multipart/form-data">
-                                <input type="hidden" id="post-id" name="id">
-                                <div class="form-group">
-                                    <label for="name">Name</label>
-                                    <input type="text" class="form-control" id="name" name="name" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="situation">Situation</label>
-                                    <textarea class="form-control" id="situation" name="situation" required></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label for="content">Content</label>
-                                    <textarea class="form-control" id="content" name="content" required></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label for="money">Money</label>
-                                    <input type="number" id="money" name="money">
-                                </div>
-                                <div class="form-group">
-                                    <label for="image">Image</label>
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="image" name="image">
-                                    </div>
-                                    <img id="image-preview" src="" height="100" style="display: none;">
-                                </div>
-                                <button type="submit" id="submit-button" class="btn btn-primary">Save</button>
-                            </form>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- jQuery library -->
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-
-    <!-- Popper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" />
+<script>
+	$(function () {
+		function getParameterByName(name, url) {
+			if (!url) url = window.location.href;
+			name = name.replace(/[\[\]]/g, '\\$&');
+			var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+				results = regex.exec(url);
+			if (!results) return null;
+			if (!results[2]) return '';
+			return decodeURIComponent(results[2].replace(/\+/g, ' '));
+		}
+		var url = window.location.href;
+		var status = getParameterByName('status', url);
+		window.history.pushState(null, null, "Charity");
+		if (status == 1)
+			DevExpress.ui.notify('Success', 'success', 2000);
+		jQuery.fn.load = function (callback) {
+			var el = $(this);
+			el.on('load', callback);
+			return el;
+		};
 
 
-    <script src="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css"></script>
-    <script>
-        $(document).ready(function () {
-            // Function to load data from the API and display it in the table
-            function loadData() {
-                $.ajax({
-                    url: "/api/charity",
-                    type: "GET",
-                    success: function (response) {
-                        var data = response.data;
-                        var tableBody = $("#bodycharity");
-                        tableBody.empty();
-                        for (var i = 0; i < data.length; i++) {
-                            var row = "<tr>" +
-                                "<td>" + data[i].id + "</td>" +
-                                "<td>" + data[i].name + "</td>" +
-                                "<td>" + data[i].situation + "</td>" +
-                                "<td><img src='" + data[i].image.url + "' height='100'></td>" +
-                                "<td><button class='edit-button' data-data='" + JSON.stringify(data[i]) + "'>Edit</button></td>" +
-                                "<td><button class='delete-button' data-id='" + data[i].id + "' > Delete </button></td>" +
-                                "</tr>";
-                            tableBody.append(row);
-                        }
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-                        alert("Error loading data from the API: " + errorThrown);
-                    }
-                });
-            }
-            loadData();
-            $("#post-form").submit(function (event) {
-                event.preventDefault();
-                var formData = new FormData();
-                formData.append("Name", $("#name").val());
-                formData.append("Situation", $("#situation").val());
-                formData.append("Content", $("#content").val());
-                formData.append("Money", $("#money").val()??0);
-                formData.append("file", $("#image")[0].files[0]);
-                var id = $("#post-id").val();
-                if (id == null || id == "") {
-                    $.ajax({
-                        url: "/api/charity",
-                        type: "POST",
-                        data: formData,
-                        processData: false,
-                        contentType: false,
-                        success: function (response) {
-                            alert("Successfully!");
-                            loadData();
-                        },
-                        error: function (jqXHR, textStatus, errorThrown) {
-                            alert("Error creating : " + errorThrown);
-                        }
-                    });
-                }
-                else {
-                    $.ajax({
-                        url: "/api/charity/" + id,
-                        type: "PUT",
-                        data: formData,
-                        processData: false,
-                        contentType: false,
-                        success: function (response) {
-                            alert("Successfully!");
-                            loadData();
-                        },
-                        error: function (jqXHR, textStatus, errorThrown) {
-                            alert("Error updating: " + errorThrown);
-                        }
-                    });
-                }
-            });
+		var datasource = [];
+		var dataGrid = $("#gridContainer").dxDataGrid({
+			dataSource: {
+				store: new DevExpress.data.CustomStore({
+					loadMode: "raw",
+					load: function () {
+						return $.getJSON("/api/Charity").then((rs) => {
+							return rs.data
+						})
+					},
+					update: function (key, values) {
+						return $.getJSON("/api/Charity/" + key).then((rs) => {
+							return rs.data
+						})
+					}
 
-            // Function to handle the edit button click
-            $(document).on("click", ".edit-button", function () {
-                event.preventDefault();
-                jQuery.noConflict();
-                var data = $(this).data("data");
-                $("#post-id").val(data.id);
-                $("#name").val(data.name);
-                $("#situation").val(data.situation);
-                $("#content").val(data.content);
-                $("#money").val(data.money);
-                $('#image-preview').attr('src', data.image.url);
-                $('#myModal').modal('show');
-            });
-            $(document).on("click", "#add-button", function () {
-                event.preventDefault();
-                jQuery.noConflict();
-                $("#post-id").val(null);
-                $('#post-form')[0].reset();
-                $('#myModal').modal('show');
-            });
+				})
+			},
+			keyExpr: "id",
+			showBorders: true,
+			paging: {
+				pageSize: 10
+			},
+			searchPanel: {
+				visible: true
+			},
+			pager: {
+				showPageSizeSelector: true,
+				allowedPageSizes: [10, 20],
+				showInfo: true
+			},
+			editing: {
+				allowDeleting: true,
+				allowAdding: true,
+				mode: "popup",
+				allowUpdating: true,
+				useIcons: true,
+				popup: {
+					title: "Charity ",
+					showTitle: true,
+					width: 700,
+					height: 500,
+					position: {
+						my: "top",
+						at: "top",
+						of: window
+					}
+				},
+				form: {
+					items: [{
+						itemType: "group",
+						colCount: 2,
+						colSpan: 2,
+						items: [
+							{
+								dataField: "name",
+								label: { text: 'Name' },
+								colSpan: 2,
+								validationRules: [
+									{
+										type: "required",
+										message: "Name is required"
+									},
+								],
+							},
+							{
+								dataField: "situation",
+								label: { text: 'Situation' },
+								colSpan: 2,
+								validationRules: [
+									{
+										type: "required",
+										message: "Situation is required"
+									}
+								],
+								editorType: "dxTextArea",
+								editorOptions: {
+									template: function (data, container) {
+										$("<textarea>")
+											.attr("name", "situation")
+											.appendTo(container);
+									}
+								}
+							},
+							{
+								dataField: "content",
+								colSpan: 2,
+								label: {
+									text: "Content"
+								},
+								editorType: "dxHtmlEditor",
+								editorOptions: {
+									toolbar: {
+										items: [
+											"undo",
+											"redo",
+											"separator",
+											{
+												name: "size",
+												acceptedValues: ["8pt", "10pt", "12pt", "14pt", "18pt", "24pt", "36pt"]
+											},
+											{
+												name: "font",
+												acceptedValues: ["Arial", "Courier New", "Georgia", "Impact", "Lucida Console", "Tahoma", "Times New Roman", "Verdana"]
+											},
+											"separator",
+											"bold",
+											"italic",
+											"underline",
+											"strike",
+											"separator",
+											"alignLeft",
+											"alignCenter",
+											"alignRight",
+											"alignJustify",
+											"separator",
+											"orderedList",
+											"bulletList",
+											"separator",
+											"color",
+											"background",
+											"separator",
+											"link",
+											"image",
+											"separator",
+											"clear",
+											"codeBlock"
+										]
+									},
+									height: "300px",
+									width: "100%"
 
-            // Function to handle the delete button click
-            $(document).on("click", ".delete-button", function () {
-                var id = $(this).data("id");
-                if (confirm("Are you sure you want to delete this post?")) {
-                    $.ajax({
-                        url: "/api/charity/" + id,
-                        type: "DELETE",
-                        success: function (response) {
-                            alert("Delete Successfully!");
-                            loadData();
-                        },
-                        error: function (jqXHR, textStatus, errorThrown) {
-                            alert("Error deleting : " + errorThrown);
-                        }
-                    });
-                }
-            });
+								},
 
-        });
-    </script>
+								validationRules: [
+									{
+										type: "required",
+										message: "Content is required"
+									}
+								]
+							},
+							{
+								dataField: "file",
+								colSpan: 2,
+								label: {
+									text: 'Image',
+									visible: false
+								},
+
+								template: function (data, itemElement) {
+									itemElement.append("<div>")
+										.attr('id', 'myUpload')
+										.dxFileUploader({
+											multiple: false, // cho phép chọn nhiều file
+											name: "myFile",
+											accept: "image/*",
+											selectButtonText: "Chọn file",
+											onValueChanged: function (e) { //Khi có ảnh được chọns
+												var dataGrid = $("#gridContainer").dxDataGrid("instance");
+												options.setValue(e.value);
+												console.log(this)
+
+											},
+											onFilesUploaded: function (e) { // Khi ảnh được upload
+											},
+											value: [],
+											uploadMode: "FormButtons",
+										});
+								}
+							},
+							{
+								dataField: "money",
+								colSpan: 2,
+							}
+						]
+					}
+					]
+				}
+			},
+			columns: [
+				{
+					caption: "#",
+					width: 40,
+					cellTemplate: function (cellElement, cellInfo) {
+						var index = dataGrid.pageIndex() * dataGrid.pageSize() + cellInfo.rowIndex + 1;
+						cellElement.text(index);
+					},
+					formItem: {
+						visible: false
+					}
+				},
+				{
+					dataField: "id",
+					visible: false
+				},
+				{
+					dataField: "image",
+					caption: "Image",
+					visible: false,
+					template: function (data, itemElement) {
+						itemElement.append("<div>")
+							.attr('id', 'myUpload')
+							.dxFileUploader({
+								multiple: false,
+								name: "myFile",
+								accept: "image/*",
+								// Các thuộc tính và sự kiện khác có thể được thêm vào ở đây
+								uploadMode: 'useForm',
+								onValueChanged: function (e) {
+									var files = e.value;
+									if (files.length > 0) {
+										var file = files[0];
+										var reader = new FileReader();
+										reader.readAsDataURL(file);
+										reader.onload = function () {
+											data.image = {
+												id: null,
+												fileName: file.name,
+												contentType: file.type,
+												url: reader.result
+											};
+										};
+									}
+								}
+							});
+					},
+
+				},
+				{
+					dataField: "name",
+					caption: "Name",
+					validationRules: [
+						{
+							type: "required",
+							message: "Name is required"
+						}
+					]
+				},
+				{
+					dataField: "situation",
+					caption: "Situation",
+					validationRules: [
+						{
+							type: "required",
+							message: "situation is required"
+						}
+					]
+				},
+				{
+					dataField: "content",
+					caption: "Content",
+					visible: false,
+					validationRules: [
+						{
+							type: "required",
+							message: "Content is required"
+						}
+					]
+				},
+				{
+					dataField: "money",
+					caption: "Money",
+					visible: false,
+					dataType: "number"
+				},
+				{
+					dataField: "image.url",
+					caption: "Image",
+					cellTemplate: function (container, options) {
+						var img = $("<img>")
+							.attr("src", options.value)
+							.addClass("image-cell")
+							.css({ width: "100px", height: "100px" })
+							.appendTo(container);
+					},
+					allowFiltering: false
+				},
+				{
+					type: "buttons",
+					width: 110,
+					buttons: ["edit", "delete"]
+				},
+			],
+			onCellPrepared: function (e) {
+				if (e.rowType == "header")
+					e.cellElement.css("text-align", "center");
+				if (e.rowType == "data")
+					e.cellElement.css("text-align", "center");
+			},
+			onFocusedRowChanged: (e) => {
+				console.log(e);
+			},
+			onRowRemoving: function (e) {
+				$.ajax({
+					type: 'DELETE',
+					async: false,
+					url: '/api/Charity/' + e.data.id,
+					success: function (dulieu) {
+						DevExpress.ui.notify('Success', 'success', 2000);
+						window.location = "Charity?status=1";
+					},
+					error: function (err) {
+						e.cancel = true;
+						DevExpress.ui.notify('Failed', 'error', 2000);
+					}
+				});
+			},
+			onRowInserting: function (e) {
+				var file = $("#myUpload").dxFileUploader("instance").option("value")[0];
+				var formData = new FormData();
+				formData.append("Name", e.data.name);
+				formData.append("Situation", e.data.situation);
+				formData.append("Content", e.data.content);
+				formData.append("Money", e.data.money);
+				formData.append("file", file);
+
+				console.log(formData);
+
+				$.ajax({
+					url: "/api/Charity",
+					type: "POST",
+					data: formData,
+					processData: false,
+					contentType: false,
+					success: function (dulieu) {
+						window.location = "Charity?status=1";
+					},
+					error: function (err) {
+						e.cancel = true;
+						DevExpress.ui.notify('Failed', 'error', 2000);
+					}
+				});
+			},
+			onRowUpdating: function (e) {
+				var file = $("#myUpload").dxFileUploader("instance").option("value")[0];
+				const form = { ...e.oldData, ...e.newData }
+				var formData = new FormData();
+				formData.append("Name", form.name);
+				formData.append("Situation", form.situation);
+				formData.append("Content", form.content);
+				formData.append("Money", form.money);
+				formData.append("file", file);
+				$.ajax({
+					url: "/api/Charity/" + form.id,
+					type: "PUT",
+					data: formData,
+					processData: false,
+					contentType: false,
+					success: function (dulieu) {
+						window.location = "Charity?status=1";
+					},
+					error: function (err) {
+						e.cancel = true;
+						DevExpress.ui.notify('Failed', 'error', 2000);
+					}
+				});
+			}
+		}).dxDataGrid("instance");
+	});
+</script>

@@ -52,22 +52,29 @@ namespace Infrastructure.Migrations
                         {
                             Id = 1,
                             ContentType = "image/jpeg",
+                            FileName = "notfound.jpg",
+                            Url = "/uploads/image/notfound.jpg"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ContentType = "image/jpeg",
                             FileName = "banner.jpg",
                             Url = "/uploads/posts/Post-21262023220332-banner.jpg"
                         },
                         new
                         {
-                            Id = 2,
+                            Id = 3,
                             ContentType = "image/jpeg",
                             FileName = "tieu-su-ca-si-lisa-blackpink-3.jpeg",
                             Url = "/uploads/posts/Post-21242023220345-tieu-su-ca-si-lisa-blackpink-3.jpeg"
                         },
                         new
                         {
-                            Id = 3,
+                            Id = 4,
                             ContentType = "image/jpeg",
-                            FileName = "photo-2.jpg",
-                            Url = "/uploads/charity/Post-20230320142324-photo-2.jpg"
+                            FileName = "lisa.jpg",
+                            Url = "/uploads/posts/Post-20230320161632-lisa_blackpink_la_ngoi_sao_co_luong_fan_quoc_te_hung_hau_nhat_han_quoc_112605.jpg"
                         });
                 });
 
@@ -103,18 +110,18 @@ namespace Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2023, 3, 24, 16, 9, 26, 100, DateTimeKind.Local).AddTicks(4487),
+                            CreatedAt = new DateTime(2023, 3, 27, 15, 48, 28, 947, DateTimeKind.Local).AddTicks(9373),
                             Description = "Nhóm máu A",
                             Name = "A",
-                            UpdatedAt = new DateTime(2023, 3, 24, 16, 9, 26, 100, DateTimeKind.Local).AddTicks(4488)
+                            UpdatedAt = new DateTime(2023, 3, 27, 15, 48, 28, 947, DateTimeKind.Local).AddTicks(9373)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2023, 3, 24, 16, 9, 26, 100, DateTimeKind.Local).AddTicks(4490),
+                            CreatedAt = new DateTime(2023, 3, 27, 15, 48, 28, 947, DateTimeKind.Local).AddTicks(9375),
                             Description = "Nhóm máu B",
                             Name = "B",
-                            UpdatedAt = new DateTime(2023, 3, 24, 16, 9, 26, 100, DateTimeKind.Local).AddTicks(4490)
+                            UpdatedAt = new DateTime(2023, 3, 27, 15, 48, 28, 947, DateTimeKind.Local).AddTicks(9376)
                         });
                 });
 
@@ -217,11 +224,11 @@ namespace Infrastructure.Migrations
                         {
                             Id = 1,
                             Content = "Hiến máu chủ yếu là hiến hồng cầu. Máu gồm có huyết tương chiếm 55% thể tích máu và các tế bào máu chiếm 45% còn lại.",
-                            CreatedAt = new DateTime(2023, 3, 24, 16, 9, 26, 100, DateTimeKind.Local).AddTicks(4399),
+                            CreatedAt = new DateTime(2023, 3, 27, 15, 48, 28, 947, DateTimeKind.Local).AddTicks(9308),
                             Description = "Chúng ta nên chia sẻ và cho đi",
-                            ImageId = 2,
+                            ImageId = 3,
                             Title = "Lợi ích việc hiến máu",
-                            UpdatedAt = new DateTime(2023, 3, 24, 16, 9, 26, 100, DateTimeKind.Local).AddTicks(4401)
+                            UpdatedAt = new DateTime(2023, 3, 27, 15, 48, 28, 947, DateTimeKind.Local).AddTicks(9309)
                         });
                 });
 
@@ -270,13 +277,13 @@ namespace Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            Content = "Em Gấm bị bệnh máu trắng",
-                            CreatedAt = new DateTime(2023, 3, 24, 16, 9, 26, 100, DateTimeKind.Local).AddTicks(4460),
-                            ImageId = 3,
+                            Content = "Em Gấm bị bệnh cảm",
+                            CreatedAt = new DateTime(2023, 3, 27, 15, 48, 28, 947, DateTimeKind.Local).AddTicks(9353),
+                            ImageId = 4,
                             Money = 10000000,
                             Name = "Nguyễn Thị Hồng Gấm",
-                            Situation = "Bị bệnh máu trắng",
-                            UpdatedAt = new DateTime(2023, 3, 24, 16, 9, 26, 100, DateTimeKind.Local).AddTicks(4462)
+                            Situation = "Bị cảm",
+                            UpdatedAt = new DateTime(2023, 3, 27, 15, 48, 28, 947, DateTimeKind.Local).AddTicks(9354)
                         });
                 });
 
@@ -332,14 +339,14 @@ namespace Infrastructure.Migrations
                         {
                             Id = 1,
                             Content = "Yêu cầu trên 42kg, sức khỏe tốt",
-                            CreatedAt = new DateTime(2023, 3, 24, 16, 9, 26, 100, DateTimeKind.Local).AddTicks(4432),
+                            CreatedAt = new DateTime(2023, 3, 27, 15, 48, 28, 947, DateTimeKind.Local).AddTicks(9329),
                             Description = "Sinh viên các trường hiến máu",
                             EndTime = new DateTime(2023, 3, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EventName = "Hiến máu nhân đạo",
-                            ImageId = 1,
+                            ImageId = 2,
                             StartTime = new DateTime(2023, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
-                            UpdatedAt = new DateTime(2023, 3, 24, 16, 9, 26, 100, DateTimeKind.Local).AddTicks(4433)
+                            UpdatedAt = new DateTime(2023, 3, 27, 15, 48, 28, 947, DateTimeKind.Local).AddTicks(9330)
                         });
                 });
 
@@ -386,21 +393,21 @@ namespace Infrastructure.Migrations
                         {
                             Id = 1,
                             Address = "None",
-                            CreatedAt = new DateTime(2023, 3, 24, 16, 9, 26, 100, DateTimeKind.Local).AddTicks(4224),
+                            CreatedAt = new DateTime(2023, 3, 27, 15, 48, 28, 947, DateTimeKind.Local).AddTicks(9247),
                             Lat = "0",
                             Long = "0",
                             Name = "None",
-                            UpdatedAt = new DateTime(2023, 3, 24, 16, 9, 26, 100, DateTimeKind.Local).AddTicks(4236)
+                            UpdatedAt = new DateTime(2023, 3, 27, 15, 48, 28, 947, DateTimeKind.Local).AddTicks(9257)
                         },
                         new
                         {
                             Id = 2,
                             Address = "16 Lê Lợi, Vĩnh Ninh, Thành phố Huế, Thừa Thiên Huế, Việt Nam",
-                            CreatedAt = new DateTime(2023, 3, 24, 16, 9, 26, 100, DateTimeKind.Local).AddTicks(4322),
+                            CreatedAt = new DateTime(2023, 3, 27, 15, 48, 28, 947, DateTimeKind.Local).AddTicks(9264),
                             Lat = "16.462613301814663",
                             Long = "107.58851619580426",
                             Name = "Bệnh viện Trung Ương Huế",
-                            UpdatedAt = new DateTime(2023, 3, 24, 16, 9, 26, 100, DateTimeKind.Local).AddTicks(4323)
+                            UpdatedAt = new DateTime(2023, 3, 27, 15, 48, 28, 947, DateTimeKind.Local).AddTicks(9265)
                         });
                 });
 
@@ -501,7 +508,7 @@ namespace Infrastructure.Migrations
                             LockoutEnabled = true,
                             NormalizedEmail = "CHAUDU301@GMAIL.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJFiDXvBurLvaJ7hi7kcNhXIkP+BnTtoAd2hXKlTYhvlupkayo6eow1d0VGiueBgoQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEA7LGdnHYBoNUOfKfJOx+IhBfEUJK8aL8Dquphe4Vp18NYMc0aRAuZVDe7cL/ijSsA==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "AKMZLDVQDMJAX4AKBITZL5OOVZB6SHPN",
                             TwoFactorEnabled = false,
@@ -539,28 +546,28 @@ namespace Infrastructure.Migrations
                         new
                         {
                             Id = "0d4492c3-c15e-4986-bbd6-d6157c06dbe1",
-                            ConcurrencyStamp = "4726d1c2-4cdb-461e-a02b-475f62e3a274",
+                            ConcurrencyStamp = "5bcb1ec5-25d8-43b3-b070-674b79946616",
                             Name = "ADMIN",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = "3c84e231-ddb0-4794-8c48-3dbf4ed01d1c",
-                            ConcurrencyStamp = "a6a0c19c-08a1-4748-b65f-d5a3968fa22d",
+                            ConcurrencyStamp = "6a3c1c89-3a11-4b24-a3de-97a694dbb3e9",
                             Name = "USER",
                             NormalizedName = "USER"
                         },
                         new
                         {
                             Id = "4f077375-71ce-4b2c-88cc-96d3fc60ecf5",
-                            ConcurrencyStamp = "b9d8a91c-fe02-400d-8cb6-cd571f3ff095",
+                            ConcurrencyStamp = "da5f0e21-8f6b-4435-880f-4018d5f5c793",
                             Name = "STAFF",
                             NormalizedName = "STAFF"
                         },
                         new
                         {
                             Id = "9fd9a17b-59d2-4e0d-996a-00014aba94d8",
-                            ConcurrencyStamp = "cd9a935f-0355-4b7e-bfb3-18109c86f0cb",
+                            ConcurrencyStamp = "e6d194a4-d72b-47b1-8c71-1f27ebcd5736",
                             Name = "HOSPITAL",
                             NormalizedName = "HOSPITAL"
                         });

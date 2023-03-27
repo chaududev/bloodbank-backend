@@ -317,10 +317,6 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\charity\\Post-20230320142324-photo-2.jpg",
-      "PackagePath": "staticwebassets\\uploads\\charity\\Post-20230320142324-photo-2.jpg"
-    },
-    {
       "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\image\\ban.jpg",
       "PackagePath": "staticwebassets\\uploads\\image\\ban.jpg"
     },
@@ -343,6 +339,10 @@
     {
       "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\image\\myqr.jpg",
       "PackagePath": "staticwebassets\\uploads\\image\\myqr.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\image\\notfound.jpg",
+      "PackagePath": "staticwebassets\\uploads\\image\\notfound.jpg"
     },
     {
       "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\image\\photo-1.jpg",
@@ -551,6 +551,122 @@
     {
       "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-24312023170316-DuChau-MFA-Done.JPG",
       "PackagePath": "staticwebassets\\uploads\\posts\\Post-24312023170316-DuChau-MFA-Done.JPG"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-24362023170306-DuChau-MFA-Done.JPG",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-24362023170306-DuChau-MFA-Done.JPG"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-24502023170321-anh-1-9607.jpg",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-24502023170321-anh-1-9607.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-24532023170316-ban.jpg",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-24532023170316-ban.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-27002023170305-Capture.JPG",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-27002023170305-Capture.JPG"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-27042023170317-967119.png",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-27042023170317-967119.png"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-27112023090319-ban.jpg",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-27112023090319-ban.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-27172023110341-DuChau-MFA-Done.JPG",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-27172023110341-DuChau-MFA-Done.JPG"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-27252023160303-967119.png",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-27252023160303-967119.png"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-27262023110333-banner.jpg",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-27262023110333-banner.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-27302023170344-banner.jpg",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-27302023170344-banner.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-27302023170359-ban.jpg",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-27302023170359-ban.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-27332023080330-anh-1-9607.jpg",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-27332023080330-anh-1-9607.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-27342023150332-ban.jpg",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-27342023150332-ban.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-27362023080345-DuChau-MFA-Done.JPG",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-27362023080345-DuChau-MFA-Done.JPG"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-27362023150325-ban.jpg",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-27362023150325-ban.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-27362023160359-banner.jpg",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-27362023160359-banner.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-27372023160312-Capture.JPG",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-27372023160312-Capture.JPG"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-27402023160350-DuChau-MFA-Done.JPG",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-27402023160350-DuChau-MFA-Done.JPG"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-27412023160323-967119.png",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-27412023160323-967119.png"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-27432023140310-DuChau-MFA-Done.JPG",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-27432023140310-DuChau-MFA-Done.JPG"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-27452023160312-notfound.png",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-27452023160312-notfound.png"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-27472023100318-banner.jpg",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-27472023100318-banner.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-27482023140324-DuChau-MFA-Done.JPG",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-27482023140324-DuChau-MFA-Done.JPG"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-27482023160338-notfound.png",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-27482023160338-notfound.png"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-27482023160351-Capture.JPG",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-27482023160351-Capture.JPG"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-27492023160313-967119.png",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-27492023160313-967119.png"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-27512023090336-banner.jpg",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-27512023090336-banner.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-27522023100320-967119.png",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-27522023100320-967119.png"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-27522023160330-anh-1-9607.jpg",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-27522023160330-anh-1-9607.jpg"
     },
     {
       "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\anh-20230316114759tieu-su-ca-si-lisa-blackpink-3.jpeg",

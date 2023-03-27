@@ -7,6 +7,8 @@ using System.Drawing;
 using System.Linq;
 using QRCoder;
 using ZXing.QrCode.Internal;
+using Domain.Model.Users;
+using static QRCoder.PayloadGenerator;
 
 namespace Application.Service
 {
@@ -87,5 +89,13 @@ namespace Application.Service
             if (!folderExists)
                 Directory.CreateDirectory(uploadPath);
         }
-    }
+
+		public int CreateImageIdNotFound()
+        {
+
+			Image entity = new Image("notfound.jpg", "image/jpeg", "/uploads/image/notfound.jpg");
+			repository.Add(entity);
+            return entity.Id;
+		}
+	}
 }

@@ -58,27 +58,32 @@ namespace BlogBank.ApiControllers
         }
         [HttpPost]
         [Authorize(Roles = "ADMIN")]
-        public async Task<IActionResult> Insert([FromForm] BlogAddViewModel entity, IFormFile file)
+        public async Task<IActionResult> Insert([FromForm] BlogAddViewModel entity, IFormFile? file)
         {
-            if (file == null || file.Length == 0)
-            {
-                return BadRequest("No image uploaded");
-            }
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    var productImage = await ImageService.ConvertImageToProductImageAsync(file);
-                    BlogService.Add(entity.Title, entity.Description, entity.Content, productImage.Id);
-                    return Ok();
-                }
-                return UnprocessableEntity(ModelState);
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e.Message);
-            }
-        }
+			try
+			{
+				if (ModelState.IsValid)
+				{
+					int imageId;
+					if (file == null || file.Length == 0)
+					{
+                        imageId = ImageService.CreateImageIdNotFound();
+					}
+					else
+					{
+						var productImage = await ImageService.ConvertImageToProductImageAsync(file);
+						imageId = productImage.Id;
+					}
+					BlogService.Add(entity.Title, entity.Description, entity.Content, imageId);
+					return Ok();
+				}
+				return UnprocessableEntity(ModelState);
+			}
+			catch (Exception e)
+			{
+				return BadRequest(e.Message);
+			}
+		}
         [HttpPut("{id}")]
         [Authorize(Roles = "ADMIN")]
         public async Task<IActionResult> Update(int id, [FromForm] BlogAddViewModel entity, IFormFile? file)

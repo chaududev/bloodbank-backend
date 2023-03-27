@@ -59,27 +59,32 @@ namespace BloodBank.ApiControllers
         }
         [HttpPost]
         [Authorize(Policy = "Roles")]
-        public async Task<IActionResult> Insert([FromForm] EventAddViewModel entity, IFormFile file)
+        public async Task<IActionResult> Insert([FromForm] EventAddViewModel entity, IFormFile? file)
         {
-            if (file == null || file.Length == 0)
-            {
-                return BadRequest("No image uploaded");
-            }
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    var productImage = await ImageService.ConvertImageToProductImageAsync(file);
-                    EventService.Add(entity.EventName, entity.Description, entity.Content,entity.StartTime,entity.EndTime,entity.Status, productImage.Id);
-                    return Ok();
-                }
-                return UnprocessableEntity(ModelState);
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e.Message);
-            }
-        }
+			try
+			{
+				if (ModelState.IsValid)
+				{
+					int imageId;
+					if (file == null || file.Length == 0)
+					{
+						imageId = ImageService.CreateImageIdNotFound();
+					}
+					else
+					{
+						var productImage = await ImageService.ConvertImageToProductImageAsync(file);
+						imageId = productImage.Id;
+					}
+					EventService.Add(entity.EventName, entity.Description, entity.Content, entity.StartTime, entity.EndTime, entity.Status, imageId);
+					return Ok();
+				}
+				return UnprocessableEntity(ModelState);
+			}
+			catch (Exception e)
+			{
+				return BadRequest(e.Message);
+			}
+		}
         [HttpPut("{id}")]
         [Authorize(Policy = "Roles")]
         public async Task<IActionResult> Update(int id, [FromForm] EventAddViewModel entity, IFormFile? file)

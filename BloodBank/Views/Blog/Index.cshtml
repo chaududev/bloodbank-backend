@@ -10,17 +10,13 @@
 		<h2 class="content-row-title">@ViewData["Title"] Management</h2>
 		<div class="demo-container">
 			<div id="data-grid-demo">
-				<div id="gridContainer"></div>
+				<div id="gridContainer">
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<!-- Devexpress -->
-<link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/17.1.5/css/dx.common.css" />
-<link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/17.1.5/css/dx.light.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/devextreme/22.2.4/js/dx.all.js"></script>
+
 <script>
 	$(function () {
 		function getParameterByName(name, url) {
@@ -55,6 +51,9 @@
 						})
 					},
 					update: function (key, values) {
+						return $.getJSON("/api/Blog/"+key).then((rs) => {
+							return rs.data
+						})
 					}
 
 				})
@@ -114,25 +113,79 @@
 									{
 										type: "required",
 										message: "Description is required"
-									},
+									}
 								],
+								editorType: "dxTextArea",
+								editorOptions: {
+									template: function (data, container) {
+										$("<textarea>")
+											.attr("name", "description")
+											.appendTo(container);
+									}
+								}
 							},
 							{
 								dataField: "content",
-								label: { text: 'Content' },
-								colSpan: 2,
+								colSpan:2,
+								label: {
+									text: "Content"
+								},
+								editorType: "dxHtmlEditor",
+								editorOptions: {
+									toolbar: {
+										items: [
+											"undo",
+											"redo",
+											"separator",
+											{
+												name: "size",
+												acceptedValues: ["8pt", "10pt", "12pt", "14pt", "18pt", "24pt", "36pt"]
+											},
+											{
+												name: "font",
+												acceptedValues: ["Arial", "Courier New", "Georgia", "Impact", "Lucida Console", "Tahoma", "Times New Roman", "Verdana"]
+											},
+											"separator",
+											"bold",
+											"italic",
+											"underline",
+											"strike",
+											"separator",
+											"alignLeft",
+											"alignCenter",
+											"alignRight",
+											"alignJustify",
+											"separator",
+											"orderedList",
+											"bulletList",
+											"separator",
+											"color",
+											"background",
+											"separator",
+											"link",
+											"image",
+											"separator",
+											"clear",
+											"codeBlock"
+										]
+									},
+									height: "300px",
+									width: "100%"
+
+								},
+
 								validationRules: [
 									{
 										type: "required",
 										message: "Content is required"
-									},
-								],
+									}
+								]
 							},
 							{
 								dataField: "file",
 								colSpan: 2,
 								label: {
-									text: '',
+									text: 'Image',
 									visible: false
 								},
 
@@ -164,7 +217,7 @@
 			},
 			columns: [
 				{
-					caption: "STT",
+					caption: "#",
 					width: 40,
 					cellTemplate: function (cellElement, cellInfo) {
 						var index = dataGrid.pageIndex() * dataGrid.pageSize() + cellInfo.rowIndex + 1;
@@ -184,22 +237,32 @@
 					visible: false,
 					template: function (data, itemElement) {
 						itemElement.append("<div>")
-						.attr('id', 'myUpload')
-						.dxFileUploader({
-							multiple: false,
-							name: "myFile",
-							accept: "image/*",
-							// Các thuộc tính và sự kiện khác có thể được thêm vào ở đây
-							uploadMode: 'useForm',
-							onValueChanged: function(e) {
-								if (e.value.length > 0) {
-									$("#submitBtn").prop("disabled", false);
-								} else {
-									$("#submitBtn").prop("disabled", true);
+							.attr('id', 'myUpload')
+							.dxFileUploader({
+								multiple: false,
+								name: "myFile",
+								accept: "image/*",
+								// Các thuộc tính và sự kiện khác có thể được thêm vào ở đây
+								uploadMode: 'useForm',
+								onValueChanged: function (e) {
+									var files = e.value;
+									if (files.length > 0) {
+										var file = files[0];
+										var reader = new FileReader();
+										reader.readAsDataURL(file);
+										reader.onload = function () {
+											data.image = {
+												id: null,
+												fileName: file.name,
+												contentType: file.type,
+												url: reader.result
+											};
+										};
+									}
 								}
-							}
-						});
-					}
+							});
+					},
+
 				},
 				{
 					dataField: "title",
@@ -306,15 +369,14 @@
 				formData.append("Title",form.title);
 				formData.append("Description", form.description);
 				formData.append("Content", form.content);
-				if (file) formData.append("file",file);
+				formData.append("file",file);
 				$.ajax({
-					url: "/api/blog" + form.id,
+					url: "/api/blog/" + form.id,
 					type: "PUT",
 					data: formData,
 					processData: false,
 					contentType: false,
 					success: function (dulieu) {
-						DevExpress.ui.notify('Success', 'success', 2000);
 						window.location = "Blog?status=1";
 					},
 					error: function (err) {

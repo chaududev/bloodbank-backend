@@ -41,18 +41,19 @@ namespace Infrastructure.Data
               new { Id = 2, Name = "Bệnh viện Trung Ương Huế", Address = "16 Lê Lợi, Vĩnh Ninh, Thành phố Huế, Thừa Thiên Huế, Việt Nam",Lat= "16.462613301814663", Long = "107.58851619580426", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now }
              );
             modelBuilder.Entity<Image>().HasData(
-                new { Id = 1, FileName = "banner.jpg", ContentType = "image/jpeg", Url = "/uploads/posts/Post-21262023220332-banner.jpg" },
-                new { Id = 2, FileName = "tieu-su-ca-si-lisa-blackpink-3.jpeg", ContentType = "image/jpeg", Url = "/uploads/posts/Post-21242023220345-tieu-su-ca-si-lisa-blackpink-3.jpeg" },
-                new { Id = 3, FileName = "photo-2.jpg", ContentType = "image/jpeg", Url = "/uploads/charity/Post-20230320142324-photo-2.jpg" }
+				new { Id = 1, FileName = "notfound.jpg", ContentType = "image/jpeg", Url = "/uploads/image/notfound.jpg" },
+				new { Id = 2, FileName = "banner.jpg", ContentType = "image/jpeg", Url = "/uploads/posts/Post-21262023220332-banner.jpg" },
+                new { Id = 3, FileName = "tieu-su-ca-si-lisa-blackpink-3.jpeg", ContentType = "image/jpeg", Url = "/uploads/posts/Post-21242023220345-tieu-su-ca-si-lisa-blackpink-3.jpeg" },
+                new { Id = 4, FileName = "lisa.jpg", ContentType = "image/jpeg", Url = "/uploads/posts/Post-20230320161632-lisa_blackpink_la_ngoi_sao_co_luong_fan_quoc_te_hung_hau_nhat_han_quoc_112605.jpg" }
                 );
             modelBuilder.Entity<Blog>().HasData(
-                new { Id = 1, Title = "Lợi ích việc hiến máu", Description = "Chúng ta nên chia sẻ và cho đi", Content = "Hiến máu chủ yếu là hiến hồng cầu. Máu gồm có huyết tương chiếm 55% thể tích máu và các tế bào máu chiếm 45% còn lại.", ImageId = 2, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now }
+                new { Id = 1, Title = "Lợi ích việc hiến máu", Description = "Chúng ta nên chia sẻ và cho đi", Content = "Hiến máu chủ yếu là hiến hồng cầu. Máu gồm có huyết tương chiếm 55% thể tích máu và các tế bào máu chiếm 45% còn lại.", ImageId = 3, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now }
                 );
             modelBuilder.Entity<Event>().HasData(
-                   new { Id = 1, EventName = "Hiến máu nhân đạo", Description = "Sinh viên các trường hiến máu", Content = "Yêu cầu trên 42kg, sức khỏe tốt", StartTime = new DateTime(2023, 3, 1), EndTime = new DateTime(2023, 3, 30), Status = EventStatus.Ongoing, ImageId = 1, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now }
+                   new { Id = 1, EventName = "Hiến máu nhân đạo", Description = "Sinh viên các trường hiến máu", Content = "Yêu cầu trên 42kg, sức khỏe tốt", StartTime = new DateTime(2023, 3, 1), EndTime = new DateTime(2023, 3, 30), Status = EventStatus.Ongoing, ImageId = 2, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now }
               );
             modelBuilder.Entity<Charity>().HasData(
-                  new { Id = 1, Name = "Nguyễn Thị Hồng Gấm", Situation = "Bị bệnh máu trắng", Content = "Em Gấm bị bệnh máu trắng",Money=10000000, ImageId = 3, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now }
+                  new { Id = 1, Name = "Nguyễn Thị Hồng Gấm", Situation = "Bị cảm", Content = "Em Gấm bị bệnh cảm",Money=10000000, ImageId = 4, CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now }
 
                 );
             modelBuilder.Entity<BloodGroup>().HasData(
