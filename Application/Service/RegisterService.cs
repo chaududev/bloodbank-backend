@@ -1,15 +1,8 @@
 ﻿using Application.IService;
-using Domain.Model.Base;
+using Domain.Enum;
 using Domain.Model.BloodRegister;
 using Infrastructure.IRepository;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Service
 {

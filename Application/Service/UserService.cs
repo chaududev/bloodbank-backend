@@ -1,19 +1,11 @@
 ﻿using Application.IService;
-using Domain.Model.Base;
-using Domain.Model.Posts;
 using Domain.Model.Users;
-using Infrastructure.IRepository;
+using Domain.ValueObject;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Linq.Expressions;
 using System.Security.Claims;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Service
 {

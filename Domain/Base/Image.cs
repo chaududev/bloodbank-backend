@@ -2,14 +2,14 @@
 using Domain.Model.Posts;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace Domain.Model.Base
+namespace Domain.Base
 {
     public class Image
     {
@@ -36,7 +36,7 @@ namespace Domain.Model.Base
         {
             FileName = fileName.Trim();
             ContentType = contentType.Trim();
-            Url=url.Trim();
+            Url = url.Trim();
         }
     }
 }

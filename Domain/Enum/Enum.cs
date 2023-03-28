@@ -1,5 +1,5 @@
 ﻿
-namespace Domain.Model.Base
+namespace Domain.Enum
 {
     public enum EventStatus
     {

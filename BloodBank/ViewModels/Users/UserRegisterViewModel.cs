@@ -1,4 +1,4 @@
-﻿using Domain.Model.Base;
+﻿using Domain.Enum;
 using System.ComponentModel.DataAnnotations;
 
 namespace BloodBank.ViewModels.Users
@@ -32,6 +32,6 @@ namespace BloodBank.ViewModels.Users
         public string? Address { get; set; } = "Unknown";
         public int? HospitalId { get; set; } = 1;
         [EnumDataType(typeof(Role), ErrorMessage = "{0} must be between 0 and 3")]
-        public Role Role { get; set; } = Domain.Model.Base.Role.USER;
+        public Role Role { get; set; } = Role.USER;
     }
 }

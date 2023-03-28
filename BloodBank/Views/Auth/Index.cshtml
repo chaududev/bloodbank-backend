@@ -1,13 +1,10 @@
 ﻿@model LoginViewModel
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-    <link rel="stylesheet" href="~/css/login.css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
-</head>
-<body>
+@{
+    ViewData["Title"] = "Login";
+} 
+ <link rel="stylesheet" href="~/css/login.css">
+ <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+   
     <div class="content-wrapper">
         <div class="content">
             <div class="signup-wrapper shadow-box">
@@ -23,7 +20,7 @@
                     <div class="wrapper-2">
                         <div class="form-title">Sign in today!</div>
                         <div class="form">
-                            <form role="form" method="post" action="/Auth/Login">
+                            <form role="form" method="post" action="/auth/Login">
                                 <p class="content-item">
                                     <label>
                                         username 
@@ -50,5 +47,3 @@
             </div>
         </div>
     </div>
-</body>
-

@@ -1,11 +1,5 @@
-﻿using Domain.Model.Base;
-using Domain.Model.Posts;
-using Domain.Model.Users;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Domain.Model.Users;
+using Domain.ValueObject;
 
 namespace Application.IService
 {

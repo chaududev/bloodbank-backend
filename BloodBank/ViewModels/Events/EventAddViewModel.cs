@@ -1,4 +1,4 @@
-﻿using Domain.Model.Base;
+﻿using Domain.Enum;
 using System.ComponentModel.DataAnnotations;
 
 namespace BloodBank.ViewModels.Events

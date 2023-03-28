@@ -1,6 +1,5 @@
 ﻿using Application.IService;
 using BloodBank.Mapper;
-using BloodBank.ViewModels;
 using BloodBank.ViewModels.Base;
 using BloodBank.ViewModels.Events;
 using Domain.Model.Posts;

@@ -1,4 +1,5 @@
-﻿using Domain.Model.Base;
+﻿using Domain.Base;
+using Domain.Enum;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 

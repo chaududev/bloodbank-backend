@@ -2,7 +2,7 @@
 using BloodBank.Mapper;
 using BloodBank.ViewModels.Base;
 using BloodBank.ViewModels.Registers;
-using Domain.Model.Base;
+using Domain.Base;
 using Domain.Model.BloodRegister;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

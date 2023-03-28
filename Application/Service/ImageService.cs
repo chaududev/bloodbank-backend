@@ -1,14 +1,8 @@
 ﻿using Application.IService;
-using Domain.Model.Base;
 using Infrastructure.IRepository;
 using Microsoft.AspNetCore.Http;
-using System;
-using System.Drawing;
-using System.Linq;
 using QRCoder;
-using ZXing.QrCode.Internal;
-using Domain.Model.Users;
-using static QRCoder.PayloadGenerator;
+using Domain.Base;
 
 namespace Application.Service
 {

@@ -1,13 +1,10 @@
 ﻿@model LoginViewModel
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+@{
+    ViewData["Title"] = "Register";
+} 
     <link rel="stylesheet" href="~/css/login.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
-</head>
-<body>
+
     <div class="content-wrapper">
         <div class="content">
             <div class="signup-wrapper shadow-box">
@@ -24,7 +21,7 @@
                     <div class="wrapper-2">
                         <div class="form-title">Sign up today!</div>
                         <div class="form">
-                            <form method="post" action="/Auth/Register">
+                            <form method="post" action="/auth/register">
                                 <p class="content-item">
                                     <label>
                                         username *
@@ -51,13 +48,13 @@
                                         <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" required>
                                     </label>
                                 </p>
-                                 <p class="content-item">
+                                 <p class="content-item"> 
                                     <label>
                                         Email *
-                                        <input type="email" class="form-control" name="email" id="email" required>
+                                        <input type="text" class="form-control" name="email" id="email" required>
                                     </label>
                                 </p>
-                                 <p class="content-item">
+                                 <p class="content-item"> 
                                     <label>
                                         Birthday *
                                         <input type="date" class="form-control" name="birthday" id="birthday" required>
@@ -81,6 +78,4 @@
             </div>
         </div>
     </div>
-</body>
-
 

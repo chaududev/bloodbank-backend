@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Model.Base
+namespace Domain.ValueObject
 {
-    public class JWToken 
+    public class JWToken
     {
         public string Token { get; private set; }
         public DateTime Expires { get; private set; }

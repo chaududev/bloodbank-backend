@@ -28,7 +28,7 @@
 		}
 		var url = window.location.href;
 		var status = getParameterByName('status', url);
-		window.history.pushState(null, null, "Register");
+		window.history.pushState(null, null, "register");
 		if (status == 1)
 			DevExpress.ui.notify('Success', 'success', 2000);
 		jQuery.fn.load = function (callback) {
@@ -207,7 +207,7 @@
 			},
 			{
 				dataField: "bloodId",
-				caption: "Blood Id",
+				caption: "Blood Group",
 				visible: false,
 				validationRules: [
 					{
@@ -225,7 +225,7 @@
 			
 			{
 				dataField: "userId",
-				caption: "User Id",
+				caption: "Username",
 				visible: false,
 				validationRules: [
 					{
@@ -247,7 +247,7 @@
 			
 			{
 				dataField: "hospitalId",
-				caption: "Hospital Id",
+				caption: "Hospital",
 				visible: false,
 				validationRules: [
 					{

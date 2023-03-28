@@ -1,4 +1,5 @@
-﻿using Domain.Model.Base;
+﻿
+using Domain.Enum;
 using Domain.Model.BloodRegister;
 
 namespace Application.IService

@@ -1,10 +1,10 @@
 ﻿using Application.IService;
 using BloodBank.Mapper;
-using BloodBank.ViewModels;
 using BloodBank.ViewModels.Base;
 using BloodBank.ViewModels.Users;
-using Domain.Model.Base;
+using Domain.Enum;
 using Domain.Model.Users;
+using Domain.ValueObject;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;

@@ -9,16 +9,8 @@
       "PackagePath": "staticwebassets\\css\\login.css"
     },
     {
-      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\css\\site.css",
-      "PackagePath": "staticwebassets\\css\\site.css"
-    },
-    {
       "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\css\\site.min.css",
       "PackagePath": "staticwebassets\\css\\site.min.css"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\css\\site2.min.css",
-      "PackagePath": "staticwebassets\\css\\site2.min.css"
     },
     {
       "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\favicon.ico",
@@ -317,6 +309,10 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\image\\1297136.png",
+      "PackagePath": "staticwebassets\\uploads\\image\\1297136.png"
+    },
+    {
       "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\image\\ban.jpg",
       "PackagePath": "staticwebassets\\uploads\\image\\ban.jpg"
     },
@@ -355,6 +351,10 @@
     {
       "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\image\\photo-3.jpg",
       "PackagePath": "staticwebassets\\uploads\\image\\photo-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\image\\qr.jpg",
+      "PackagePath": "staticwebassets\\uploads\\image\\qr.jpg"
     },
     {
       "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\20230316115653-anh-1-9607.jpg",
@@ -667,6 +667,22 @@
     {
       "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-27522023160330-anh-1-9607.jpg",
       "PackagePath": "staticwebassets\\uploads\\posts\\Post-27522023160330-anh-1-9607.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-28032023150349-group.jpg",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-28032023150349-group.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-28102023150354-banner.jpg",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-28102023150354-banner.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-28112023150318-anh-1-9607.jpg",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-28112023150318-anh-1-9607.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\Post-28112023150339-DuChau-MFA-Done.JPG",
+      "PackagePath": "staticwebassets\\uploads\\posts\\Post-28112023150339-DuChau-MFA-Done.JPG"
     },
     {
       "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\posts\\anh-20230316114759tieu-su-ca-si-lisa-blackpink-3.jpeg",

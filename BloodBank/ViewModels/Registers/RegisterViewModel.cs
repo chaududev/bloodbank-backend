@@ -2,8 +2,6 @@
 using BloodBank.ViewModels.Hospitals;
 using BloodBank.ViewModels.Images;
 using BloodBank.ViewModels.Users;
-using Domain.Model.BloodRegister;
-using Domain.Model.Users;
 
 namespace BloodBank.ViewModels.Registers
 {

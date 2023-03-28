@@ -1,10 +1,11 @@
 ﻿using Domain.Model.BloodRegister;
 using Domain.Model.Posts;
 using Domain.Model.Users;
-using Domain.Model.Base;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using Domain.Base;
+using Domain.Enum;
 
 namespace Infrastructure.Data
 {

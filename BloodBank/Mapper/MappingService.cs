@@ -3,7 +3,7 @@ using BloodBank.ViewModels.BloodGroups;
 using BloodBank.ViewModels.Hospitals;
 using BloodBank.ViewModels.Images;
 using BloodBank.ViewModels.Users;
-using Domain.Model.Base;
+using Domain.Base;
 using Domain.Model.BloodRegister;
 using Domain.Model.Users;
 

@@ -1,0 +1,33 @@
+﻿@{
+	ViewData["Title"] = "Documentation";
+}
+
+<div class="panel-heading">
+	<h3 class="panel-title"><a href="javascript:void(0);" class="toggle-sidebar"><span class="fa fa-angle-double-left" data-toggle="offcanvas" title="Maximize Panel"></span></a>@ViewData["Title"]</h3>
+</div>
+<div class="panel-body">
+	<div id="swagger"></div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.51.1/swagger-ui-bundle.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.51.1/swagger-ui-standalone-preset.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.51.1/swagger-ui.css" />
+
+<script>
+    $(function () {
+        const ui = SwaggerUIBundle({
+            url: "/swagger/v1/swagger.json",
+            dom_id: '#swagger',
+            deepLinking: true,
+            presets: [
+                SwaggerUIBundle.presets.apis,
+                SwaggerUIStandalonePreset
+            ],
+            plugins: [
+                SwaggerUIBundle.plugins.DownloadUrl
+            ],
+            layout: "BaseLayout"
+        });
+
+        window.ui = ui;
+    });
+</script>

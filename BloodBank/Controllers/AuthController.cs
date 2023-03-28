@@ -1,14 +1,10 @@
-﻿using BloodBank.ViewModels;
+﻿
 using BloodBank.ViewModels.Users;
-using Domain.Model.Base;
+using Domain.Enum;
 using Domain.Model.Users;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System.Globalization;
-using System.Net.Http;
-using ZXing;
-
 namespace BloodBank.Controllers
 {
     [AllowAnonymous]

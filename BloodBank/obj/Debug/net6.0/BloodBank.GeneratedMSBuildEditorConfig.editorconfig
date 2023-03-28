@@ -44,20 +44,32 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Admin/source/repos/BloodBank/BloodBank/Views/Documentation/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jdW1lbnRhdGlvblxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Admin/source/repos/BloodBank/BloodBank/Views/Event/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/source/repos/BloodBank/BloodBank/Views/GettingStarted/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2V0dGluZ1N0YXJ0ZWRcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Admin/source/repos/BloodBank/BloodBank/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/source/repos/BloodBank/BloodBank/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/Admin/source/repos/BloodBank/BloodBank/Views/Hospital/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9zcGl0YWxcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/source/repos/BloodBank/BloodBank/Views/Introduction/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW50cm9kdWN0aW9uXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/source/repos/BloodBank/BloodBank/Views/Privacy/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJpdmFjeVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Admin/source/repos/BloodBank/BloodBank/Views/Register/Index.cshtml]

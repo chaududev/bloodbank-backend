@@ -30,7 +30,7 @@
 		}
 		var url = window.location.href;
 		var status = getParameterByName('status', url);
-		window.history.pushState(null, null, "Charity");
+		window.history.pushState(null, null, "charity");
 		if (status == 1)
 			DevExpress.ui.notify('Success', 'success', 2000);
 		jQuery.fn.load = function (callback) {

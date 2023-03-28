@@ -1,4 +1,4 @@
-﻿using Domain.Model.Base;
+﻿using Domain.Enum;
 using Domain.Model.Users;
 
 namespace BloodBank.ViewModels.Users
