@@ -4540,9 +4540,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\BloodBank.csproj",
-      "projectName": "BloodBank",
-      "projectPath": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\BloodBank.csproj",
+      "projectUniqueName": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\UI.csproj",
+      "projectName": "UI",
+      "projectPath": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\UI.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\obj\\",
       "projectStyle": "PackageReference",

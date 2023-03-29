@@ -1,4 +1,4 @@
-﻿* {
+﻿﻿* {
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
 }
@@ -105,7 +105,7 @@ p {
     text-align: center;
 }
 
-.signup-wrapper .signup-form .form input[type=text], .signup-wrapper .signup-form .form input[type=date], .signup-wrapper .signup-form .form input[type=password], .signup-wrapper .signup-form .form input[type=email] {
+.signup-wrapper .signup-form .form input[type=text], .signup-wrapper .signup-form .form input[type=password] {
     border: none;
     border-bottom: 1px solid #e4e4e4;
     padding-top: 10px;
@@ -137,10 +137,12 @@ p {
     display: inline-block;
     text-align: center;
 }
+
 .text-danger {
     color: #a80d0d;
-    font-weight:600;
+    font-weight: 600;
 }
+
 input::placeholder {
     color: #575757;
 }
@@ -225,7 +227,7 @@ input::placeholder {
             text-align: initial;
         }
 
-        .signup-wrapper .signup-form .form input[type=text], .signup-wrapper .signup-form .form input[type=date], .signup-wrapper .signup-form .form input[type=email], .signup-wrapper .signup-form .form input[type=password] .form input[type=email] {
+        .signup-wrapper .signup-form .form input[type=text], .signup-wrapper .signup-form .form input[type=password] {
             text-align: initial;
         }
 

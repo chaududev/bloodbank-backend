@@ -3,106 +3,187 @@
 } 
 
 <div class="panel-heading">
-	<h3 class="panel-title"><a href="javascript:void(0);" class="toggle-sidebar"><span class="fa fa-angle-double-left" data-toggle="offcanvas" title="Maximize Panel"></span></a>@ViewData["Title"]</h3>
+    <h3 class="panel-title"><a href="javascript:void(0);" class="toggle-sidebar"><span class="fa fa-angle-double-left" data-toggle="offcanvas" title="Maximize Panel"></span></a>@ViewData["Title"]</h3>
 </div>
 <div class="panel-body">
     <div class="content-row">
-        <h2 class="content-row-title">@ViewData["Title"]</h2>
-        <div class="col-md-12">
-            <div>
-                <img src="~/uploads/image/ban.jpg" height="400px" width="100%" />
+        <h2 class="content-row-title">@ViewData["Title"] Management</h2>
+        <form id="date-form">
+            <label for="from-date">From:</label>
+            <input type="date" id="from-date" name="from-date">
+
+            <label for="to-date">To:</label>
+            <input type="date" id="to-date" name="to-date">
+
+            <button type="submit">Submit</button>
+        </form>
+        <div class="dx-viewport">
+            <div class="demo-container">
+                <div id="chart1"></div>
+                <div id="chart2"></div>
+                <div id="chart3"></div>
             </div>
-        </div>
-        <h2 class="content-row-title">Recent</h2>
-        <h3 class="content-row-title">Event</h3>
-        <div class="row" id="row">
-        </div>
-        <h3 class="content-row-title">Blog</h3>
-        <div class="row" id="row2">
         </div>
     </div>
 </div>
+<script src="https://momentjs.com/downloads/moment.js"></script>
 <script>
-     const main = async () => {
-        var url = '/api/event';
-        var reponse = await fetch(url);
-        var data = await reponse.json();
-        renderSlide0(data.data,data.total);
-    }
-    const main2 = async () => {
-        var url = '/api/blog';
-        var reponse = await fetch(url);
-        var data = await reponse.json();
-        renderSlide1(data.data, data.total);
-    }
-    const renderSlide0 = (data,count) => {
-        var domSlide = document.querySelector("#row");
-        var html ='';
-        var j=count-5;
-        if (count<5) j=0;
-        for (let i = count-1; i >= j; i--) {
-            html += `
-                   <div class="col-sm-6 col-md-3">
-                    <div class="thumbnail">
-                                    <img class="img-rounded" src="${data[i].image.url}" style="height:100px;"">
-                        <div class="caption text-center">
-                                    <h3>${data[i].eventName}</h3>
-                                        <p>${data[i].description}</p>
-                            <p>
-                                <a href="/event" class="btn btn-warning" role="button">Manage</a> 
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                    `;
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const fromDate = urlParams.get('from-date');
+    const toDate = urlParams.get('to-date');
+    document.getElementById("from-date").value =fromDate;
+    document.getElementById("to-date").value =toDate;
+    var urladd='';
+    if (fromDate != null && toDate!= null) urladd = '?fromDate='+fromDate.toString()+'&toDate='+toDate.toString();
+    else if (fromDate != null && toDate == null) urladd = '?fromDate=' + fromDate.toString();
+    else if (fromDate == null && toDate != null) urladd = '?toDate=' + toDate.toString();
+    else urladd='';
+    var urlBlood = '/api/Chart/Blood' + urladd;
+    var urlDate = '/api/Chart/Date' + urladd;
+    var urlHospital = '/api/Chart/Hospital' + urladd;
+    console.log(urlBlood);
+    $.ajax({
+        url: urlBlood,
+        type: 'GET',
+        success: function (data) {
+            var dataSource = [];
+            for (var i = 0; i < data.length; i++) {
+                var item = {
+                    bloodGroup: data[i].bloodGroup,
+                    count: data[i].count,
+                    totalMl: data[i].totalMl
+                };
+
+                dataSource.push(item);
+            }
+
+            $('#chart1').dxChart({
+                dataSource: dataSource,
+                series: [{
+                    argumentField: 'bloodGroup',
+                    valueField: 'totalMl',
+                    name: 'Total ml',
+                    type: 'bar',
+                    color: '#ffaa66',
+                }, {
+                    argumentField: 'bloodGroup',
+                    valueField: 'count',
+                    name: 'Register Count',
+                     type: 'scatter',
+                    symbol: 'circle',
+                    color: '#000000',
+                }],
+                legend: {
+                    visible: true
+                },
+                title: 'Blood Chart (TotalMl, Count)',
+                tooltip: {
+                    enabled: true,
+                    customizeTooltip: function (arg) {
+                        return { text: arg.valueText};
+                    }
+                }
+            });
+        },
+        error: function (err) {
+            console.log(err);
         }
-        domSlide.innerHTML = html;
-    }
-     const renderSlide1 = (data,count) => {
-        var domSlide = document.querySelector("#row2");
-        var html ='';
-        var j=count-5;
-        if (count<5) j=0;
-        for (let i = count-1; i >= j; i--) {
-            html += `
-                   <div class="col-sm-6 col-md-3">
-                    <div class="thumbnail">
-                                <img class="img-rounded" src="${data[i].image.url}" style="height:150px;">
-                        <div class="caption text-center">
-                                        <h3>${data[i].title}</h3>
-                                        <p>${data[i].description}</p>
-                            <p>
-                                <a href="/blog" class="btn btn-warning" role="button">Manage</a> 
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                    `;
+    });
+    $.ajax({
+        url: urlDate,
+        type: 'GET',
+        success: function (data) {
+            var dataSource = [];
+
+            for (var i = 0; i < data.length; i++) {
+                var item = {
+                    date: moment(data[i].date).format('DD/MM/YYYY'),
+                    count: data[i].count,
+                    totalMl: data[i].totalMl
+                };
+
+                dataSource.push(item);
+            }
+
+            $('#chart2').dxChart({
+                dataSource: dataSource,
+                series: [{
+                    argumentField: 'date',
+                    valueField: 'totalMl',
+                    name: 'Total ml',
+                    type: 'bar',
+                    color: '#79154c',
+                }, {
+                    argumentField: 'date',
+                    valueField: 'count',
+                    name: 'Count',
+                    type: 'scatter',
+                    symbol: 'circle',
+                    color: '#000000',
+                }],
+                legend: {
+                    visible: true
+                },
+                title: 'Date Chart (TotalMl, Count)',
+                tooltip: {
+                    enabled: true,
+                    customizeTooltip: function (arg) {
+                        return { text: arg.valueText };
+                    }
+                }
+            });
+        },
+        error: function (err) {
+            console.log(err);
         }
-        domSlide.innerHTML = html;
-    }
-    main()
-    main2()
+    });
+    $.ajax({
+        url: urlHospital,
+        type: 'GET',
+        success: function (data) {
+            var dataSource = [];
+
+            for (var i = 0; i < data.length; i++) {
+                var item = {
+                    hospital: data[i].hospital,
+                    count: data[i].count,
+                    totalMl: data[i].totalMl
+                };
+
+                dataSource.push(item);
+            }
+
+            $('#chart3').dxChart({
+                dataSource: dataSource,
+                series: [{
+                    argumentField: 'hospital',
+                    valueField: 'totalMl',
+                    name: 'Total ml',
+                    type: 'bar',
+                    color: '#2596be',
+                }, {
+                    argumentField: 'hospital',
+                    valueField: 'count',
+                    name: 'Count',
+                    type: 'scatter',
+                    symbol: 'circle',
+                    color: '#000000',
+                }],
+                legend: {
+                    visible: true
+                },
+                title: 'Hospital Chart (TotalMl, Count)',
+                tooltip: {
+                    enabled: true,
+                    customizeTooltip: function (arg) {
+                        return { text: arg.valueText };
+                    }
+                }
+            });
+        },
+        error: function (err) {
+            console.log(err);
+        }
+    });
 </script>
-<style>
-    h3{
-        display: -webkit-box;
-        height: 1.6rem;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: normal;
-        -webkit-line-clamp: 1;
-        line-height: 1.6rem;
-    }
-    p {
-        display: -webkit-box;
-        height: 3.2rem;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: normal;
-        -webkit-line-clamp: 2;
-        line-height: 1.6rem;
-    }
-</style>

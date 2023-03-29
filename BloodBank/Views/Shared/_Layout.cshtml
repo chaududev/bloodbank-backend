@@ -102,16 +102,16 @@
             </div>
         </div>
 
-    }
+    } 
     else
     {
-        <div role="main">
+        <div role="main" class="container-fluid">
             @RenderBody()
         </div>
     }
     <footer class="border-top footer text-muted" style="margin-top:auto;">
         <div class="container">
-            &copy; 2023 - BloodBank - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2023 - BloodBank - <a asp-area="" asp-controller="privacy">Privacy</a>
         </div>
     </footer>
     @await RenderSectionAsync("Scripts", required: false)

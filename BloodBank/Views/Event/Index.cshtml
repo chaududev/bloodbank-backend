@@ -1,8 +1,6 @@
 ﻿@{
 	ViewData["title"] = "Event";
 }
-
-
 <div class="panel-heading">
 	<h3 class="panel-title"><a href="javascript:void(0);" class="toggle-sidebar"><span class="fa fa-angle-double-left" data-toggle="offcanvas" title="Maximize Panel"></span></a>@ViewData["Title"]</h3>
 </div>
@@ -371,17 +369,17 @@
 									})[0];
 									return role ? role.name : '';
 								}
-							},
+							}, 
 				{
 					dataField: "startTime",
 					caption: "Start Time",
 					visible: true,
 					dataType: 'date',
-					format: 'dd/MM/yyyy',
+					format: 'dd/MM/yyyy', 
 					editorOptions: {
 						type: 'date',
 						displayFormat: 'dd/MM/yyyy',
-						useMaskBehavior: true
+						useMaskBehavior: true,
 					}
 				},
 				{

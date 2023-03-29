@@ -101,6 +101,8 @@ builder.Services.AddTransient<IHospitalService,HospitalService>();
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IRegisterService, RegisterService>();
 builder.Services.AddTransient<ICharityService, CharityService>();
+builder.Services.AddTransient<IChartService, ChartService>();
+builder.Services.AddTransient<IChartRepository, ChartRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

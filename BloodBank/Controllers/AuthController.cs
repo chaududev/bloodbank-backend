@@ -1,5 +1,4 @@
-﻿
-using BloodBank.ViewModels.Users;
+﻿using BloodBank.ViewModels.Users;
 using Domain.Enum;
 using Domain.Model.Users;
 using Microsoft.AspNetCore.Authorization;

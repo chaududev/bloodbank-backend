@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BloodBank", "BloodBank\BloodBank.csproj", "{2D1A90C6-B940-4AC3-888D-6D5F492634C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UI", "BloodBank\UI.csproj", "{2D1A90C6-B940-4AC3-888D-6D5F492634C9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{CDE0C3E3-1DBB-43EB-AEBB-C7D04B5683EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{E4ED0B7A-1787-4922-ADC8-C7631CDFF64F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{E4ED0B7A-1787-4922-ADC8-C7631CDFF64F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{85A52DA1-5A7B-4A69-97B7-272DCDCB9A2C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{85A52DA1-5A7B-4A69-97B7-272DCDCB9A2C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

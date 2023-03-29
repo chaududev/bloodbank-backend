@@ -1,8 +1,8 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\BloodBank.bundle.scp.css",
-      "PackagePath": "staticwebassets\\BloodBank.bundle.scp.css"
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\UI.bundle.scp.css",
+      "PackagePath": "staticwebassets\\UI.bundle.scp.css"
     },
     {
       "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\css\\login.css",
@@ -765,20 +765,40 @@
       "PackagePath": "staticwebassets\\uploads\\qrcode\\Qrcode-27362023170307.png"
     },
     {
-      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.BloodBank.Microsoft.AspNetCore.StaticWebAssets.props",
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\qrcode\\Qrcode-29192023100324.png",
+      "PackagePath": "staticwebassets\\uploads\\qrcode\\Qrcode-29192023100324.png"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\qrcode\\Qrcode-29342023100315.png",
+      "PackagePath": "staticwebassets\\uploads\\qrcode\\Qrcode-29342023100315.png"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\qrcode\\Qrcode-29352023100327.png",
+      "PackagePath": "staticwebassets\\uploads\\qrcode\\Qrcode-29352023100327.png"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\qrcode\\Qrcode-29452023100345.png",
+      "PackagePath": "staticwebassets\\uploads\\qrcode\\Qrcode-29452023100345.png"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\qrcode\\Qrcode-29462023100303.png",
+      "PackagePath": "staticwebassets\\uploads\\qrcode\\Qrcode-29462023100303.png"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.UI.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },
     {
-      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.BloodBank.props",
-      "PackagePath": "build\\BloodBank.props"
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.UI.props",
+      "PackagePath": "build\\UI.props"
     },
     {
-      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.BloodBank.props",
-      "PackagePath": "buildMultiTargeting\\BloodBank.props"
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.UI.props",
+      "PackagePath": "buildMultiTargeting\\UI.props"
     },
     {
-      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.BloodBank.props",
-      "PackagePath": "buildTransitive\\BloodBank.props"
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.UI.props",
+      "PackagePath": "buildTransitive\\UI.props"
     }
   ],
   "ElementsToRemove": []
