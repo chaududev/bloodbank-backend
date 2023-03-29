@@ -4,7 +4,7 @@
 @inject UserManager<User> UserManager
 
 @if (UserManager.IsInRoleAsync(await UserManager.GetUserAsync(User), "ADMIN").Result)
-{
+{ 
     <div class="col-xs-6 col-sm-3 sidebar-offcanvas" role="navigation">
         <ul class="list-group panel">
             <li class="list-group-item"><i class="glyphicon glyphicon-align-justify"></i> <b>SIDE PANEL</b></li>
@@ -34,8 +34,6 @@ else if (UserManager.IsInRoleAsync(await UserManager.GetUserAsync(User), "HOSPIT
             <li class="list-group-item"><a href="/dashboard"><i class="glyphicon glyphicon-stats"></i>Dashboard </a></li>
             <li class="list-group-item"><a href="/register"><i class="glyphicon glyphicon-list-alt"></i>Register </a></li>
             <li class="list-group-item"><a href="/event"><i class="glyphicon glyphicon-pushpin"></i>Event </a></li>
-        </ul>
-    </div>
-}
-
-
+        </ul> 
+    </div> 
+} 

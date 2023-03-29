@@ -4809,7 +4809,9 @@ a.thumbnail.active, a.thumbnail:focus, a.thumbnail:hover {
     background-color: #fff;
     border: 1px solid #ddd
 }
-
+    .list-group-item a:active, .list-group-item a:hover, .list-group-item a.active {
+        color: orange !important;
+    }
     .list-group-item:first-child {
         border-top-left-radius: 4px;
         border-top-right-radius: 4px

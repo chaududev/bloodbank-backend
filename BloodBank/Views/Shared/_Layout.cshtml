@@ -117,3 +117,9 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+<script>
+    $('ul.list-group-item li').click(function () {
+        $('li.active').removeClass('active'); 
+        $(this).addClass('active'); 
+    });
+</script>
