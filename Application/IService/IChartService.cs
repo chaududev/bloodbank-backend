@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using Domain.ValueObject;
 namespace Application.IService
 {
 	public interface IChartService
 	{
-		IEnumerable<object> GetBloodGroupStatistics(DateTime? fromDate, DateTime? toDate);
-		IEnumerable<object> GetDateStatistics(DateTime? fromDate, DateTime? toDate);
-		IEnumerable<object> GetHospitalStatistics(DateTime? fromDate, DateTime? toDate);
+		IEnumerable<BloodChart> GetBloodGroupStatistics(DateTime? fromDate, DateTime? toDate);
+		IEnumerable<DateChart> GetDateStatistics(DateTime? fromDate, DateTime? toDate);
+		IEnumerable<HospitalChart> GetHospitalStatistics(DateTime? fromDate, DateTime? toDate);
 	}
 }

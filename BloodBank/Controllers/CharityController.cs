@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BloodBank.Controllers
 {
 	public class CharityController : Controller
 	{
-		public IActionResult Index()
+        [Authorize(Policy = "Roles")]
+        public IActionResult Index()
 		{
 			return View();
 		}

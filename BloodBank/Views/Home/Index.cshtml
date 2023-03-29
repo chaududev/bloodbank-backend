@@ -1,7 +1,7 @@
 ﻿<div class="panel-body">
 <div class="content-row">
     <h3>Home</h3>
-        <h4>Hot <span class="glyphicon glyphicon-fire"></span></h4>
+        <h3>Hot <span class="glyphicon glyphicon-fire"></span></h3>
         <div class="row content-row-popover">
         <div class="col-md-8">
             <div class="jumbotron">
@@ -85,11 +85,8 @@
                             <div class="thumbnail">
                                         <img class="img-rounded" src="${data[i].image.url}" style="height:150px;">
                                 <div class="caption text-center">
-                                                <h3>${data[i].title}</h3>
+                                                <h4>${data[i].title}</h4>
                                                 <p>${data[i].description}</p>
-                                    <p>
-                                        <a href="/blog" class="btn btn-warning" role="button">Manage</a>
-                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -139,7 +136,7 @@
                           <div class="thumbnail">
                              <img class="img-rounded" src="${data[i].image.url}" style="height:250px;" >
                             <div class="caption text-center">
-                              <h3>${data[i].name}</h3>
+                              <h4>${data[i].name}</h4>
                               <p>${data[i].situation}</p>
                             </div>
                           </div>
@@ -154,3 +151,26 @@
     main1();
     main2();
 </script>
+<style>
+    h4 {
+        display: -webkit-box;
+        height: 1.6rem;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: normal;
+        -webkit-line-clamp: 1;
+        line-height: 1.6rem;
+    }
+
+    p {
+        display: -webkit-box;
+        height: 3.2rem;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: normal; 
+        -webkit-line-clamp: 2;
+        line-height: 1.6rem;
+    }
+</style>
