@@ -1,5 +1,4 @@
-
-                <div>
+ <div class="docs-article docs--start" id="Install">
                     <h3>Install</h3>
                     <ul class="item__infos">
                         <li>Clone the repo: <code>git clone https://github.com/chauuduu/BloodBankWeb</code></li>
