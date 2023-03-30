@@ -13,8 +13,6 @@
                     </ul>
                 </div>
 
-                <!-- What's included
-                ================================================== -->
                 <div class="docs-article docs--start" id="included">
                     <h3>Folder Structure</h3>
                     <h4>Apply</h4>
@@ -52,8 +50,6 @@ BloodBankWeb
 └──└── wwwroot   #include css,js, fonts, lib, uploads
 </code></pre>
                 </div>
-                <!-- CSS/SASS
-                ================================================== -->
 
                 <div class="docs-article docs--start" id="download">
                     <h3>Download</h3>
@@ -78,19 +74,15 @@ BloodBankWeb
                     <p>link : <b>https://cdnjs.cloudflare.com/ajax/libs/devextreme/22.2.4/js/dx.all.js</b></p>
 
                 </div>
-                <!-- Color Picker
-                ================================================== -->
 
                 <div class="docs-article docs--start" id="licensing">
                     <h3>Credits</h3>
                     <p>Code by <a href="https://github.com/chauuduu">Châu Du</a></p>
                 </div>
-                <!-- Licensing
-                ================================================== -->
 
             </div>
 
 
         </div>
     </div>
-</div><!-- panel body -->
+</div>
