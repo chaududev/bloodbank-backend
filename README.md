@@ -3,7 +3,7 @@
         <h3>Getting Started</h3>
         <div class="row">
             <div class="col-md-12">
-                <div class="docs-article docs--start" id="Install">
+                <div>
                     <h3>Install</h3>
                     <ul class="item__infos">
                         <li>Clone the repo: <code>git clone https://github.com/chauuduu/BloodBankWeb</code></li>
@@ -13,7 +13,7 @@
                     </ul>
                 </div>
 
-                <div class="docs-article docs--start" id="included">
+                <div>
                     <h3>Folder Structure</h3>
                     <h4>Apply</h4>
                     <ul class="item__infos">
@@ -51,12 +51,12 @@ BloodBankWeb
 </code></pre>
                 </div>
 
-                <div class="docs-article docs--start" id="download">
+                <div>
                     <h3>Download</h3>
                     <p>You can download project by zip</p>
                     <p><a class="btn btn-primary" href="https://github.com/chauuduu/BloodBankWeb/archive/main.zip">Download Project</a></p>
                 </div>
-                <div class="docs-article docs--start" id="Install">
+                <div>
                     <h3>Customize / Modify / Workflow</h3>
                     <div class="alert alert-success col-md-10">
                         <code>dotnet run</code> will monitor any changes to sass, css and js files and automatically combine, minify and clean all files to
@@ -75,7 +75,7 @@ BloodBankWeb
 
                 </div>
 
-                <div class="docs-article docs--start" id="licensing">
+                <div>
                     <h3>Credits</h3>
                     <p>Code by <a href="https://github.com/chauuduu">Châu Du</a></p>
                 </div>
