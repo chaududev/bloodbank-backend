@@ -2,7 +2,7 @@
                     <h3>Install</h3>
                     <ul class="item__infos">
                         <li>Clone the repo : <code>git clone https://github.com/chauuduu/BloodBankWeb.git</code></li>
-                       <li>Install database in package Infrastructure :<code>dotnet ef database update</code> </li>
+                       <li>Install database in package Infrastructure :<code>PM > update-database</code> </li>
                         <li>Run project: <code>dotnet run</code></li>
                     </ul>
                 </div>
