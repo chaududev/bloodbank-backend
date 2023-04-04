@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "0mo5xQcWta/21GgaaU/qbneeMEoi4Mh3vkf0VF8CrKg=",
+  "Hash": "J5zyY3cUSBZaYYW1HFMU+ZwvylBOA7PePMdJfpNakMg=",
   "Source": "UI",
   "BasePath": "_content/UI",
   "Mode": "Default",
@@ -2956,6 +2956,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\qrcode\\Qrcode-29462023100303.png"
+    },
+    {
+      "Identity": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\qrcode\\Qrcode-30212023170353.png",
+      "SourceId": "UI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\",
+      "BasePath": "_content/UI",
+      "RelativePath": "uploads/qrcode/Qrcode-30212023170353.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\qrcode\\Qrcode-30212023170353.png"
     }
   ]
 }

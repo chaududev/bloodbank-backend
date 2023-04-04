@@ -99,3 +99,10 @@ C:\Users\Admin\source\repos\BloodBank\BloodBank\obj\Debug\net6.0\refint\UI.dll
 C:\Users\Admin\source\repos\BloodBank\BloodBank\obj\Debug\net6.0\UI.pdb
 C:\Users\Admin\source\repos\BloodBank\BloodBank\obj\Debug\net6.0\UI.genruntimeconfig.cache
 C:\Users\Admin\source\repos\BloodBank\BloodBank\obj\Debug\net6.0\ref\UI.dll
+C:\Users\Admin\source\repos\BloodBank\BloodBank\bin\Debug\net6.0\Azure.Core.dll
+C:\Users\Admin\source\repos\BloodBank\BloodBank\bin\Debug\net6.0\Azure.Storage.Blobs.dll
+C:\Users\Admin\source\repos\BloodBank\BloodBank\bin\Debug\net6.0\Azure.Storage.Common.dll
+C:\Users\Admin\source\repos\BloodBank\BloodBank\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\Admin\source\repos\BloodBank\BloodBank\bin\Debug\net6.0\System.IO.Hashing.dll
+C:\Users\Admin\source\repos\BloodBank\BloodBank\bin\Debug\net6.0\System.Memory.Data.dll
+C:\Users\Admin\source\repos\BloodBank\BloodBank\bin\Debug\net6.0\Microsoft.WindowsAzure.Storage.dll

@@ -32,8 +32,7 @@ namespace Application.Service
 
         public Event GetById(int id)
         {
-            Expression<Func<Event, object>>[] includeProperties = { p => p.Image };
-            return repository.GetById(id, includeProperties);
+            return repository.GetById(id, new Expression<Func<Event, object>>[] { p => p.Image });
         }
 
         public (IEnumerable<Event> data, int total) GetList(string? key, int? pageSize, int? page)
@@ -41,9 +40,7 @@ namespace Application.Service
             Expression<Func<Event, bool>> filter = null;
             if (key != null)
                 filter = e => e.EventName.ToUpper().Contains(key.ToUpper());
-            Expression<Func<Event, object>>[] includeProperties = { p => p.Image };
-            Expression<Func<Event, object>> sort = null;
-            return repository.Get(includeProperties, filter, sort, pageSize ?? int.MaxValue, page ?? 1);
+            return repository.Get(new Expression<Func<Event, object>>[] { p => p.Image }, filter, null, pageSize, page);
         }
         public void Update(int id, string eventName, string description, string content, DateTime startTime, DateTime endTime, EventStatus status, int imageId)
         {

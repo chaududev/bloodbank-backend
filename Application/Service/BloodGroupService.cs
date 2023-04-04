@@ -30,6 +30,7 @@ namespace Application.Service
             repository.Delete(entity);
         }
 
+
         public BloodGroup GetById(int id)
         {
             return repository.GetById(id, null);
@@ -40,7 +41,7 @@ namespace Application.Service
             Expression<Func<BloodGroup, bool>> filter = null;
             if (key != null)
                 filter = e => e.Name.ToUpper().Contains(key.ToUpper());
-            return repository.Get(null, filter,null, pageSize ?? int.MaxValue, page ?? 1);
+            return repository.Get(null, filter,null, pageSize, page);
         }
 
         public void Update(int id, string name, string description)

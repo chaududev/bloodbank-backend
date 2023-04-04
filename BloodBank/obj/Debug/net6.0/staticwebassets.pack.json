@@ -449,6 +449,10 @@
       "PackagePath": "staticwebassets\\uploads\\qrcode\\Qrcode-29462023100303.png"
     },
     {
+      "Id": "C:\\Users\\Admin\\source\\repos\\BloodBank\\BloodBank\\wwwroot\\uploads\\qrcode\\Qrcode-30212023170353.png",
+      "PackagePath": "staticwebassets\\uploads\\qrcode\\Qrcode-30212023170353.png"
+    },
+    {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.UI.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

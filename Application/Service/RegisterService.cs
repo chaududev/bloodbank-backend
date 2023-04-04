@@ -31,6 +31,7 @@ namespace Application.Service
             repository.Delete(entity);
         }
 
+
         public Register GetById(int id)
         {
             Expression<Func<Register, object>>[] includeProperties =
@@ -55,8 +56,7 @@ namespace Application.Service
                     p => p.User,
                     p => p.Hospital
                 };
-            Expression<Func<Register, object>> sort = null;
-            return repository.Get(includeProperties, filter, sort, pageSize ?? int.MaxValue, page ?? 1);
+            return repository.Get(includeProperties, filter, null, pageSize, page);
         }
 
         public (IEnumerable<Register> data, int total) GetListByUser(string username, int? pageSize, int? page)
@@ -69,8 +69,7 @@ namespace Application.Service
                     p => p.User,
                     p => p.Hospital
                 };
-            Expression<Func<Register, object>> sort = e => e.User.UserName;
-            return repository.Get(includeProperties, filter, sort, pageSize ?? int.MaxValue, page ?? 1);
+            return repository.Get(includeProperties, filter, e => e.User.UserName, pageSize , page);
         }
 
         public void Update(int id, string note, Status status, int bloodId, DateTime timeSign, int hospitalId, int ml)

@@ -32,8 +32,7 @@ namespace Application.Service
 
         public Charity GetById(int id)
         {
-            Expression<Func<Charity, object>>[] includeProperties = { p => p.Image };
-            return repository.GetById(id, includeProperties);
+            return repository.GetById(id, new Expression<Func<Charity, object>>[] { p => p.Image });
         }
 
         public (IEnumerable<Charity> data, int total) GetList(string? key, int? pageSize, int? page)
@@ -41,17 +40,7 @@ namespace Application.Service
             Expression<Func<Charity, bool>> filter = null;
             if (key != null)
                 filter = e => e.Name.ToUpper().Contains(key.ToUpper());
-            Expression<Func<Charity, object>>[] includeProperties = { p => p.Image };
-            Expression<Func<Charity, object>> sort = null;
-            return repository.Get(includeProperties, filter, sort, pageSize ?? int.MaxValue, page ?? 1);
-        }
-
-        public (IEnumerable<Charity> data, int total) GetListHaveMoney(int? pageSize, int? page)
-        {
-            Expression<Func<Charity, bool>> filter = e => e.Money>0;
-            Expression<Func<Charity, object>>[] includeProperties = { p => p.Image };
-            Expression<Func<Charity, object>> sort = null;
-            return repository.Get(includeProperties, filter, sort, pageSize ?? int.MaxValue, page ?? 1);
+            return repository.Get(new Expression<Func<Charity, object>>[] { p => p.Image }, filter, null, pageSize, page);
         }
 
         public void Update(int id, string name, string situation, string content, int money, int imageId)

@@ -36,17 +36,15 @@ namespace Application.Service
 
         public Hospital GetById(int id)
         {
-            Expression<Func<Hospital, object>>[] includeProperties = null;
-            return repository.GetById(id, includeProperties);
+            return repository.GetById(id, null);
         }
 
         public (IEnumerable<Hospital> data, int total) GetList(string? key, int? pageSize, int? page)
         {
             Expression<Func<Hospital, bool>> filter = null;
-            Expression<Func<Hospital, object>>[] includeProperties = null;
             if (key != null)
                 filter = e => e.Name.ToUpper().Contains(key.ToUpper());
-            return repository.Get(includeProperties, filter, null, pageSize ?? int.MaxValue, page ?? 1);
+            return repository.Get(null, filter, null, pageSize, page);
         }
 
         public void Update(int id, string name, string address, string lat, string longdata)

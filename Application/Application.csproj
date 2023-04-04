@@ -11,6 +11,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="2.2.0" />
     <PackageReference Include="MimeKit" Version="2.14.0" />
     <PackageReference Include="QRCoder" Version="1.4.3" />
+    <PackageReference Include="WindowsAzure.Storage" Version="9.3.3" />
     <PackageReference Include="ZXing.Net" Version="0.16.9" />
   </ItemGroup>
 

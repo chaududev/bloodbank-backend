@@ -45,9 +45,25 @@ namespace Infrastructure.Repository
                         rs = rs.Include(includeProperty);
                     }
                 }
-                rs = rs.Skip((page.Value - 1) * pageSize.Value).Take(pageSize.Value);
+                int pageNumber = page ?? 1;
+                 int pageSizes = pageSize ?? 100;
+                rs = rs.Skip((pageNumber - 1) * pageSizes).Take(pageSizes);
                 return (rs.ToList(), total);
             
+        }
+
+        public (IEnumerable<T> data, int total) GetAll(Expression<Func<T, object>>[]? includeProperties)
+        {
+            IQueryable<T> rs = db.Set<T>();
+            var total = rs.Count();
+            if (includeProperties != null)
+            {
+                foreach (var includeProperty in includeProperties)
+                {
+                    rs = rs.Include(includeProperty);
+                }
+            }
+            return (rs.ToList(), total);
         }
 
         public T GetById(int id, Expression<Func<T, object>>[]? includeProperties)

@@ -29,10 +29,10 @@ namespace Application.Service
             repository.Delete(entity);
         }
 
+
         public Blog GetById(int id)
         {
-            Expression<Func<Blog, object>>[] includeProperties = {p => p.Image};
-            return repository.GetById(id, includeProperties);
+            return repository.GetById(id, new Expression<Func<Blog, object>>[] { p => p.Image });
         }
 
         public (IEnumerable<Blog> data, int total) GetList(string? key, int? pageSize, int? page)
@@ -40,9 +40,7 @@ namespace Application.Service
             Expression<Func<Blog, bool>> filter = null;
             if (key != null)
                 filter = e => e.Title.ToUpper().Contains(key.ToUpper());
-            Expression<Func<Blog, object>>[] includeProperties = { p => p.Image };
-            Expression<Func<Blog, object>> sort = null;
-            return repository.Get(includeProperties, filter, sort, pageSize ?? int.MaxValue, page ?? 1);
+            return repository.Get(new Expression<Func<Blog, object>>[] { p => p.Image }, filter, null, pageSize, page);
         }
 
         public void Update(int id, string title, string description, string content, int imageId)

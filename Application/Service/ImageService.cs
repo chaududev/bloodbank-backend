@@ -3,17 +3,23 @@ using Infrastructure.IRepository;
 using Microsoft.AspNetCore.Http;
 using QRCoder;
 using Domain.Base;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.Extensions.Configuration;
+using Microsoft.WindowsAzure.Storage.Blob;
 
 namespace Application.Service
 {
     public class ImageService : IImageService
     {
         readonly IBaseRepository<Image> repository;
+        readonly IConfiguration Configuration;
 
-        public ImageService(IBaseRepository<Image> repository)
+        public ImageService(IBaseRepository<Image> repository, IConfiguration configuration)
         {
             this.repository = repository;
+            Configuration = configuration;
         }
+
         public async Task<Image> ConvertImageToProductImageAsync(IFormFile file)
         {
             var uploadPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads", "posts");
@@ -91,5 +97,31 @@ namespace Application.Service
 			repository.Add(entity);
             return entity.Id;
 		}
-	}
+
+        public async Task<Image> UploadToAzureAsync(IFormFile file)
+        {
+            string storageConnectionString = Configuration["Storage:ConnectionString"];
+            string containerName = Configuration["Storage:ContainerName"];
+
+            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(storageConnectionString);
+            CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+            CloudBlobContainer container = blobClient.GetContainerReference(containerName);
+            await container.CreateIfNotExistsAsync();
+
+            string imageName = $"Post-{DateTime.Now.ToString("ddmmyyyyHHMMss")}-{file.FileName}"; 
+            CloudBlockBlob blockBlob = container.GetBlockBlobReference(imageName);
+            using (Stream stream = file.OpenReadStream())
+            {
+                await blockBlob.UploadFromStreamAsync(stream);
+                if (file == null)
+                {
+                    throw new Exception($"Failed to process image");
+                }
+                var url = $"https://bloodbank2023.blob.core.windows.net/bloodbank2023/{imageName}";
+                Image Image = new Image(file.FileName, file.ContentType, url);
+                repository.Add(Image);
+                return Image;
+            }
+        }
+    }
 }

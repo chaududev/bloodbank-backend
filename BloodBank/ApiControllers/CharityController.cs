@@ -39,23 +39,7 @@ namespace BloodBank.ApiControllers
                 return BadRequest(e.Message);
             }
         }
-        [HttpGet("money")]
-        public IActionResult GetMoney(int? pageSize, int? page)
-        {
-            try
-            {
-                var rs = CharityService.GetListHaveMoney(pageSize, page);
-                return Ok(new PagingResponse<CharityViewModel>()
-                {
-                    Total = rs.total,
-                    Data = mapper.Map(rs.data)
-                });
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e.Message);
-            }
-        }
+     
         [HttpGet("{id}")]
         public IActionResult GetId(int id)
         {

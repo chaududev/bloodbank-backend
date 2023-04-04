@@ -9,5 +9,7 @@ namespace Application.IService
         Task<Image> ConvertImageToProductImageAsync(IFormFile file);
         Image GenerateQRCode(string data);
         int CreateImageIdNotFound();
+
+        Task<Image> UploadToAzureAsync(IFormFile file);
     }
 }

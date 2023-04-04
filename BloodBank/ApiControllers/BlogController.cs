@@ -39,6 +39,7 @@ namespace BlogBank.ApiControllers
                 return BadRequest(e.Message);
             }
         }
+
         [HttpGet("{id}")]
         public IActionResult GetId(int id)
         {

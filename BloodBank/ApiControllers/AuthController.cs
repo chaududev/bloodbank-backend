@@ -173,7 +173,7 @@ namespace BloodBank.ApiControllers
         }
         [HttpGet]
         [Authorize(Roles = "ADMIN")]
-        public async Task<IActionResult> Get(string? role, int? hospitalId, int? pageSize, int? page)
+        public async Task<IActionResult> GetAll(string? role, int? hospitalId)
         {
             try
             {

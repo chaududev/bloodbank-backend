@@ -63,6 +63,10 @@
               "target": "Package",
               "version": "[1.4.3, )"
             },
+            "WindowsAzure.Storage": {
+              "target": "Package",
+              "version": "[9.3.3, )"
+            },
             "ZXing.Net": {
               "target": "Package",
               "version": "[0.16.9, )"
